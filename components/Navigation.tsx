@@ -116,7 +116,7 @@ export default function Navigation() {
               alt="Mumbai Meridians Logo"
               width={120}
               height={56}
-              className="h-10 sm:h-14 w-auto object-contain max-w-[110px] sm:max-w-none"
+              className="h-14 sm:h-20 w-auto object-contain max-w-[140px] sm:max-w-none"
               priority
             />
           </Link>
