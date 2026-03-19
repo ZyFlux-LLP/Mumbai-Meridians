@@ -100,12 +100,26 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobilePrograms, setMobilePrograms] = useState(false)
   const [mobileEvents, setMobileEvents] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const isActiveSection = (paths: string[]) =>
     paths.some((p) => (p === '/' ? pathname === '/' : pathname.startsWith(p)))
 
+  const isHome = pathname === '/'
+
   return (
-    <nav className="fixed w-full z-50 bg-meridian-navy/95 backdrop-blur-md border-b border-meridian-accent/20">
+    <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${
+      scrolled || !isHome
+        ? 'bg-meridian-navy/95 backdrop-blur-md border-meridian-accent/20'
+        : 'bg-transparent border-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
 
@@ -116,7 +130,7 @@ export default function Navigation() {
               alt="Mumbai Meridians Logo"
               width={120}
               height={56}
-              className="h-14 sm:h-20 object-contain max-w-[140px] sm:max-w-none"
+              className="h-16 sm:h-24 object-contain max-w-[160px] sm:max-w-none"
               style={{ width: 'auto' }}
               priority
             />
@@ -185,7 +199,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-[#001229] border-t border-meridian-accent/20">
+        <div className="md:hidden bg-meridian-navy border-t border-meridian-accent/20">
           <div className="px-4 py-3 space-y-1">
             <Link
               href="/"
