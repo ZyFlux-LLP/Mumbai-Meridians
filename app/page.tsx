@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
+import HeroReveal from '@/components/HeroReveal'
 import Footer from '@/components/Footer'
 import CountdownTimer from '@/components/CountdownTimer'
 
@@ -10,7 +11,7 @@ export default function HomePage() {
       <Navigation />
 
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden w-full">
         <div className="absolute inset-0 z-0" data-gsap="parallax">
           <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw_S-jb0QaYzdMUZbkv6B11rehzWF2uZnfD3cTCgBcNafjsruEP005yxhDwzgxhuTwyDIKgqWF23xXX45kwRxMnbENNFIqs_xeG9YReRLcYpl4p8VMp7871FWUAwD81GloPBfoLk4NI6Jiz2xCxmY4nW4dizNb1pyPuXV6FSMfirSzfu3Bv3b7aUe-4PgOlhzZqnw3OMNGHVfYHjw4VNe1FFh8TC6QBNIywlQK8eQs1jrzdFU38q9TBTklfwilPsNdECKGyA0e7aWc"
@@ -22,17 +23,14 @@ export default function HomePage() {
           <div className="absolute inset-0 hero-gradient" />
         </div>
 
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto animate-fade-in-up">
-          <p className="font-athletic text-meridian-accent uppercase tracking-[0.3em] text-sm mb-4">
-            Indian Sailing League Franchise
-          </p>
-          <h1 className="font-athletic text-6xl sm:text-7xl md:text-9xl font-extrabold uppercase italic leading-none mb-6">
+        <HeroReveal>
+          <h1 className="font-athletic text-[2.6rem] xs:text-5xl sm:text-7xl md:text-9xl font-extrabold uppercase italic leading-none mb-6">
             Mumbai{' '}
             <span className="text-red-500 [text-shadow:0_0_60px_rgba(239,68,68,0.5)]">
               Meridians
             </span>
           </h1>
-          <p className="text-lg md:text-2xl font-light tracking-[0.2em] uppercase text-white/80 mb-14">
+          <p className="text-sm sm:text-lg md:text-2xl font-light tracking-[0.1em] sm:tracking-[0.2em] uppercase text-white/80 mb-14">
             Riding the Winds of Umiam
           </p>
 
@@ -66,14 +64,8 @@ export default function HomePage() {
               Join the Academy
             </Link>
           </div>
-        </div>
+        </HeroReveal>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-60">
-          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-          </svg>
-        </div>
       </section>
 
       {/* ── Stats Bar ───────────────────────────────────────────── */}

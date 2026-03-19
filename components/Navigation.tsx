@@ -107,16 +107,16 @@ export default function Navigation() {
   return (
     <nav className="fixed w-full z-50 bg-meridian-navy/95 backdrop-blur-md border-b border-meridian-accent/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
 
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center">
+          <Link href="/" className="flex-shrink-0 flex items-center min-w-0">
             <Image
               src="/MM_Logo.svg"
               alt="Mumbai Meridians Logo"
               width={120}
               height={56}
-              className="h-14 w-auto object-contain"
+              className="h-10 sm:h-14 w-auto object-contain max-w-[110px] sm:max-w-none"
               priority
             />
           </Link>
@@ -166,7 +166,7 @@ export default function Navigation() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-white p-2 rounded-theme hover:bg-white/10 transition-colors"
+            className="md:hidden flex-shrink-0 text-white p-2 rounded-theme hover:bg-white/10 transition-colors"
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"

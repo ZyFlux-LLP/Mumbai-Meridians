@@ -1,99 +1,129 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import gsap from 'gsap'
 
 export default function Loader() {
   const overlayRef = useRef<HTMLDivElement>(null)
-  const logoRef = useRef<HTMLDivElement>(null)
-  const mumbaiRef = useRef<HTMLDivElement>(null)
-  const meridiansRef = useRef<HTMLDivElement>(null)
-  const taglineRef = useRef<HTMLParagraphElement>(null)
-  const progressBarRef = useRef<HTMLDivElement>(null)
-  const progressTrackRef = useRef<HTMLDivElement>(null)
-  const ripple1Ref = useRef<HTMLDivElement>(null)
-  const ripple2Ref = useRef<HTMLDivElement>(null)
-  const ripple3Ref = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const percentRef = useRef<HTMLDivElement>(null)
+  const statusRef = useRef<HTMLDivElement>(null)
   const [done, setDone] = useState(false)
 
   useEffect(() => {
-    // prevent body scroll during load
     document.body.style.overflow = 'hidden'
 
-    const tl = gsap.timeline({
-      defaults: { ease: 'power3.out' },
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let width = 0
+    let height = 0
+    let rafId = 0
+
+    function resize() {
+      width = canvas!.width = window.innerWidth
+      height = canvas!.height = window.innerHeight
+    }
+    window.addEventListener('resize', resize)
+    resize()
+
+    const loadState = { progress: 0 }
+    let time = 0
+
+    const bubbles: { x: number; y: number; radius: number; speed: number; wobble: number }[] = []
+    for (let i = 0; i < 60; i++) {
+      bubbles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        radius: Math.random() * 4 + 1,
+        speed: Math.random() * 3 + 1,
+        wobble: Math.random() * Math.PI * 2,
+      })
+    }
+
+    function drawWater() {
+      ctx!.clearRect(0, 0, width, height)
+
+      const targetY = height - (loadState.progress / 100) * height
+      time += 0.05
+
+      // Bubbles
+      ctx!.fillStyle = 'rgba(255, 255, 255, 0.4)'
+      bubbles.forEach((b) => {
+        if (b.y > targetY) {
+          ctx!.beginPath()
+          ctx!.arc(b.x + Math.sin(time + b.wobble) * 5, b.y, b.radius, 0, Math.PI * 2)
+          ctx!.fill()
+        }
+        b.y -= b.speed
+        if (b.y < targetY) {
+          b.y = height + 10
+          b.x = Math.random() * width
+        }
+      })
+
+      // 3 wave layers
+      const waveLayers = [
+        { color: 'rgba(0, 105, 170, 0.6)', offset: 0, amplitude: 15, frequency: 0.01 },
+        { color: 'rgba(0, 140, 200, 0.8)', offset: 2, amplitude: 20, frequency: 0.008 },
+        { color: 'rgba(2, 60, 110, 1)', offset: 4, amplitude: 10, frequency: 0.012 },
+      ]
+
+      waveLayers.forEach((layer) => {
+        ctx!.beginPath()
+        ctx!.moveTo(0, height)
+        for (let x = 0; x <= width; x += 10) {
+          const y = targetY + Math.sin(x * layer.frequency + time + layer.offset) * layer.amplitude
+          ctx!.lineTo(x, y)
+        }
+        ctx!.lineTo(width, height)
+        ctx!.lineTo(0, height)
+        ctx!.fillStyle = layer.color
+        ctx!.fill()
+      })
+
+      rafId = requestAnimationFrame(drawWater)
+    }
+
+    drawWater()
+
+    const tl = gsap.timeline()
+
+    tl.to(loadState, {
+      progress: 100,
+      duration: 4.5,
+      ease: 'power2.inOut',
+      onUpdate: () => {
+        const pct = Math.round(loadState.progress)
+        if (percentRef.current) percentRef.current.innerText = pct + '%'
+        if (statusRef.current) {
+          if (pct > 40 && pct < 80) {
+            statusRef.current.innerText = 'Rigging the sail...'
+          } else if (pct >= 80) {
+            statusRef.current.innerText = 'Ready for launch.'
+          }
+        }
+      },
+    }).to(overlayRef.current, {
+      yPercent: -100,
+      duration: 1.0,
+      ease: 'power4.inOut',
+      delay: 0.4,
       onComplete: () => {
-        // Exit: split curtain — overlay slides up
-        gsap.to(overlayRef.current, {
-          yPercent: -105,
-          duration: 0.9,
-          ease: 'power4.inOut',
-          onComplete: () => {
-            document.body.style.overflow = ''
-            setDone(true)
-          },
-        })
+        cancelAnimationFrame(rafId)
+        window.removeEventListener('resize', resize)
+        document.body.style.overflow = ''
+        window.dispatchEvent(new CustomEvent('loader:done'))
+        setDone(true)
       },
     })
 
-    // Ripple rings expand behind logo
-    tl.fromTo(
-      [ripple1Ref.current, ripple2Ref.current, ripple3Ref.current],
-      { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1, stagger: 0.18, ease: 'power2.out' },
-      0
-    )
-    tl.to(
-      [ripple1Ref.current, ripple2Ref.current, ripple3Ref.current],
-      { scale: 1.5, opacity: 0, duration: 1.6, stagger: 0.18, ease: 'sine.out' },
-      0.4
-    )
-
-    // Logo spins + scales in
-    tl.fromTo(
-      logoRef.current,
-      { scale: 0.4, opacity: 0, rotation: -25, filter: 'blur(12px)' },
-      { scale: 1, opacity: 1, rotation: 0, filter: 'blur(0px)', duration: 0.9 },
-      0
-    )
-
-    // "MUMBAI" — letters fall in with stagger
-    const mumbaiLetters = mumbaiRef.current?.querySelectorAll('span')
-    if (mumbaiLetters) {
-      tl.fromTo(
-        mumbaiLetters,
-        { opacity: 0, y: 40, skewX: -8 },
-        { opacity: 1, y: 0, skewX: 0, duration: 0.5, stagger: 0.045 },
-        0.55
-      )
-    }
-
-    // "MERIDIANS" — letters rise in red
-    const meridiansLetters = meridiansRef.current?.querySelectorAll('span')
-    if (meridiansLetters) {
-      tl.fromTo(
-        meridiansLetters,
-        { opacity: 0, y: -36, skewX: 8 },
-        { opacity: 1, y: 0, skewX: 0, duration: 0.5, stagger: 0.045 },
-        0.75
-      )
-    }
-
-    // Tagline fades in
-    tl.fromTo(taglineRef.current, { opacity: 0, letterSpacing: '0.5em' }, { opacity: 1, letterSpacing: '0.3em', duration: 0.6 }, 1.15)
-
-    // Progress track expands
-    tl.fromTo(progressTrackRef.current, { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: 'power2.out' }, 1.2)
-
-    // Progress bar fills
-    tl.fromTo(progressBarRef.current, { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: 'power1.inOut' }, 1.3)
-
-    // Hold briefly
-    tl.to({}, { duration: 0.25 })
-
     return () => {
       tl.kill()
+      cancelAnimationFrame(rafId)
+      window.removeEventListener('resize', resize)
       document.body.style.overflow = ''
     }
   }, [])
@@ -103,93 +133,42 @@ export default function Loader() {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[200] flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #000d1f 0%, #001f3d 60%, #00122e 100%)' }}
+      className="fixed inset-0 z-[200] flex items-center justify-center"
+      style={{ backgroundColor: '#050a15' }}
     >
-      {/* Animated wave lines background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        <svg className="w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-          {[0, 60, 120, 180, 240, 300].map((offset, i) => (
-            <path
-              key={i}
-              d={`M0 ${450 + offset} Q360 ${400 + offset} 720 ${450 + offset} T1440 ${450 + offset}`}
-              fill="none"
-              stroke="#0074e4"
-              strokeWidth="1"
-              opacity={0.6 - i * 0.08}
-            />
-          ))}
-        </svg>
-      </div>
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* Compass ripple rings */}
-      {[ripple1Ref, ripple2Ref, ripple3Ref].map((ref, i) => (
+      <div className="relative z-10 text-center pointer-events-none w-full px-6" style={{ maxWidth: '100vw' }}>
         <div
-          key={i}
-          ref={ref}
-          className="absolute rounded-full border border-meridian-accent/30"
-          style={{ width: `${180 + i * 70}px`, height: `${180 + i * 70}px`, opacity: 0 }}
-        />
-      ))}
-
-      {/* Logo */}
-      <div ref={logoRef} className="relative mb-7" style={{ opacity: 0 }}>
-        <Image
-          src="/logo3.jpeg"
-          alt="Mumbai Meridians"
-          width={110}
-          height={144}
-          className="h-36 w-auto drop-shadow-2xl"
-          priority
-        />
-      </div>
-
-      {/* MUMBAI */}
-      <div
-        ref={mumbaiRef}
-        className="flex font-athletic font-black italic uppercase text-white tracking-tight"
-        style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', lineHeight: 1 }}
-      >
-        {'MUMBAI'.split('').map((ch, i) => (
-          <span key={i} style={{ opacity: 0, display: 'inline-block' }}>{ch}</span>
-        ))}
-      </div>
-
-      {/* MERIDIANS in red */}
-      <div
-        ref={meridiansRef}
-        className="flex font-athletic font-black italic uppercase text-red-500 tracking-tight"
-        style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', lineHeight: 1.05 }}
-      >
-        {'MERIDIANS'.split('').map((ch, i) => (
-          <span key={i} style={{ opacity: 0, display: 'inline-block' }}>{ch}</span>
-        ))}
-      </div>
-
-      {/* Tagline */}
-      <p
-        ref={taglineRef}
-        className="mt-5 uppercase text-white/40 text-xs font-body tracking-[0.3em]"
-        style={{ opacity: 0 }}
-      >
-        Riding the Winds of Umiam
-      </p>
-
-      {/* Progress bar */}
-      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white/5">
-        <div
-          ref={progressTrackRef}
-          className="absolute inset-0 bg-white/10 origin-left"
-          style={{ transform: 'scaleX(0)' }}
-        />
-        <div
-          ref={progressBarRef}
-          className="absolute inset-0 origin-left"
+          ref={statusRef}
           style={{
-            transform: 'scaleX(0)',
-            background: 'linear-gradient(90deg, #0074e4, #ef4444)',
+            fontFamily: "var(--font-montserrat, 'Montserrat', sans-serif)",
+            fontSize: 'clamp(0.65rem, 3.5vw, 1.1rem)',
+            letterSpacing: '0.25em',
+            textTransform: 'uppercase',
+            fontWeight: 400,
+            marginBottom: '10px',
+            color: 'rgba(255,255,255,0.8)',
+            textShadow: '0 4px 10px rgba(0,0,0,0.5)',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
           }}
-        />
+        >
+          Catching the Wind
+        </div>
+        <div
+          ref={percentRef}
+          style={{
+            fontFamily: "var(--font-montserrat, 'Montserrat', sans-serif)",
+            fontSize: 'clamp(3rem, 18vw, 5rem)',
+            fontWeight: 800,
+            color: '#fff',
+            textShadow: '0 4px 15px rgba(0,0,0,0.6)',
+          }}
+        >
+          0%
+        </div>
       </div>
     </div>
   )

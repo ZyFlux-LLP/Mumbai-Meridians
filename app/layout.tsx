@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Oswald } from 'next/font/google'
+import { Inter, Oswald, Montserrat } from 'next/font/google'
 import './globals.css'
 import Loader from '@/components/Loader'
 import GSAPAnimations from '@/components/GSAPAnimations'
@@ -17,6 +17,13 @@ const oswald = Oswald({
   display: 'swap',
 })
 
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  weight: ['400', '800'],
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'Mumbai Meridians | Riding the Winds of Umiam',
   description:
@@ -26,7 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${oswald.variable} font-body antialiased`}>
+      <body className={`${inter.variable} ${oswald.variable} ${montserrat.variable} font-body antialiased`}>
         <Loader />
         <GSAPAnimations />
         {children}
