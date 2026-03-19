@@ -100,26 +100,11 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobilePrograms, setMobilePrograms] = useState(false)
   const [mobileEvents, setMobileEvents] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   const isActiveSection = (paths: string[]) =>
     paths.some((p) => (p === '/' ? pathname === '/' : pathname.startsWith(p)))
 
-  const isHome = pathname === '/'
-
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${
-      scrolled || !isHome
-        ? 'bg-meridian-navy/95 backdrop-blur-md border-meridian-accent/20'
-        : 'bg-transparent border-transparent'
-    }`}>
+    <nav className="fixed w-full z-50 bg-meridian-navy/95 backdrop-blur-md border-b border-meridian-accent/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
 
