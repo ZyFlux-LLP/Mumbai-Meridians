@@ -3,16 +3,27 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
+// Persists across route changes — true once the loader has played
+let loaderHasPlayed = false
+
 export default function HeroReveal({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!ref.current) return
-    // Hide all direct children initially
     const els = Array.from(ref.current.children) as HTMLElement[]
+
+    // Loader already played on a previous visit — show immediately
+    if (loaderHasPlayed) {
+      gsap.set(els, { opacity: 1, y: 0 })
+      return
+    }
+
+    // First load — hide and wait for loader:done
     gsap.set(els, { opacity: 0, y: 36 })
 
     function handleReveal() {
+      loaderHasPlayed = true
       gsap.to(els, {
         opacity: 1,
         y: 0,
