@@ -110,18 +110,15 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
 
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center gap-2 group">
+          <Link href="/" className="flex-shrink-0 flex items-center">
             <Image
-              src="/logo3.jpeg"
+              src="/MM_Logo.svg"
               alt="Mumbai Meridians Logo"
-              width={44}
-              height={58}
-              className="h-14 w-auto object-contain rounded-sm"
+              width={120}
+              height={56}
+              className="h-14 w-auto object-contain"
               priority
             />
-            <span className="font-athletic text-xl font-bold tracking-tighter italic text-white hidden lg:inline">
-              MUMBAI<span className="text-red-500">MERIDIANS</span>
-            </span>
           </Link>
 
           {/* Desktop Menu */}

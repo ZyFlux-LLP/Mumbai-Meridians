@@ -54,17 +54,14 @@ export default function Footer() {
         <div className="py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3 mb-4 group">
+            <Link href="/" className="inline-flex items-center mb-4">
               <Image
-                src="/logo3.jpeg"
+                src="/MM_Logo.svg"
                 alt="Mumbai Meridians Logo"
-                width={40}
-                height={52}
-                className="h-12 w-auto object-contain rounded-sm"
+                width={160}
+                height={60}
+                className="h-14 w-auto object-contain"
               />
-              <span className="font-athletic text-xl font-bold tracking-tighter italic text-white">
-                MUMBAI<span className="text-red-500">MERIDIANS</span>
-              </span>
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-6">
               India's premier sailing franchise — elevating nautical athleticism from Mumbai's shores to

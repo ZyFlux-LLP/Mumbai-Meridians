@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mumbai Meridian - Sailing Team</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4; /* Main page background */
+            overflow: hidden; /* Prevent scrolling while loading */
+        }
+
+        /* Loader Overlay Container */
+        #nautical-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, #1e3a8a 0%, #0f172a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        /* Logo Styling */
+        .logo-container {
+            position: relative;
+            z-index: 10;
+            /* Adjust width as needed for your specific SVG */
+            width: 250px;
+            height: auto;
+            filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.5));
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Loading Text */
+        .loading-text {
+            margin-top: 40px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            letter-spacing: 0.3em;
+            font-weight: 600;
+            text-transform: uppercase;
+            z-index: 10;
+            opacity: 0; /* Hidden initially for GSAP to reveal */
+        }
+
+        /* SVG Ocean Waves at the bottom */
+        .ocean {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            min-height: 100px;
+            z-index: 5;
+        }
+
+        .parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+        }
+        .parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+        .parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+        .parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+        .parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+
+        @keyframes move-forever {
+            0% { transform: translate3d(-90px, 0, 0); }
+            100% { transform: translate3d(85px, 0, 0); }
+        }
+
+        /* Dummy Main Content */
+        #main-content {
+            padding: 50px;
+            text-align: center;
+            opacity: 0; /* Hidden until loader finishes */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="nautical-loader">
+
+        <div class="logo-container" id="team-logo">
+            <img src="MM_Logo.svg" alt="Mumbai Meridian Logo">
+        </div>
+
+        <div class="loading-text" id="loading-text">Setting Sail...</div>
+
+        <svg class="ocean" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.05)" />
+                <use href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.1)" />
+                <use href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.15)" />
+                <use href="#gentle-wave" x="48" y="7" fill="rgba(255,255,255,0.2)" />
+            </g>
+        </svg>
+    </div>
+
+    <div id="main-content">
+        <h1>Welcome Aboard</h1>
+        <p>The Mumbai Meridian website has successfully loaded.</p>
+    </div>
+
+    <script>
+        // Wait for the DOM to load
+        document.addEventListener("DOMContentLoaded", (event) => {
+
+            // 1. Initial Entry Animation
+            gsap.from("#team-logo", {
+                duration: 1.5,
+                y: 50,
+                scale: 0.8,
+                opacity: 0,
+                ease: "back.out(1.5)"
+            });
+
+            gsap.to("#loading-text", {
+                duration: 1,
+                opacity: 1,
+                delay: 0.5,
+                ease: "power2.inOut"
+            });
+
+            // 2. Continuous "Sailing" (Bobbing & Rocking) Animation
+            // We use an infinite yoyo to make the boat/logo rock on the waves
+            let sailingAnim = gsap.to("#team-logo", {
+                y: "-=15", // move up 15px
+                rotation: 3, // slight tilt
+                duration: 2,
+                ease: "sine.inOut",
+                yoyo: true,
+                repeat: -1 // infinite loop
+            });
+
+            // 3. Loader Exit Animation (Simulating page load complete)
+            // Change the 'delay' to however long you want the loader to show
+            gsap.to("#nautical-loader", {
+                duration: 1.2,
+                y: "-100%", // Slide the whole loader up and out
+                ease: "power3.inOut",
+                delay: 4, // Shows loader for 4 seconds before exiting
+                onComplete: () => {
+                    // Stop the infinite animation to save performance
+                    sailingAnim.kill();
+                    // Restore scrolling
+                    document.body.style.overflow = "auto";
+
+                    // Fade in the main content
+                    gsap.to("#main-content", {
+                        opacity: 1,
+                        duration: 1
+                    });
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
