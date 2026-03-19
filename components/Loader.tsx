@@ -147,7 +147,7 @@ export default function Loader() {
             alt="Mumbai Meridians"
             width={120}
             height={120}
-            className="h-20 w-auto object-contain"
+            className="h-32 w-auto object-contain"
             priority
           />
         </div>
@@ -173,7 +173,7 @@ export default function Loader() {
           ref={percentRef}
           style={{
             fontFamily: "var(--font-montserrat, 'Montserrat', sans-serif)",
-            fontSize: 'clamp(3rem, 18vw, 5rem)',
+            fontSize: 'clamp(1.8rem, 10vw, 2.8rem)',
             fontWeight: 800,
             color: '#fff',
             textShadow: '0 4px 15px rgba(0,0,0,0.6)',
