@@ -139,19 +139,18 @@ export default function Loader() {
     >
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* Logo */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
-        <Image
-          src="/MM_Logo.svg"
-          alt="Mumbai Meridians"
-          width={120}
-          height={120}
-          className="h-20 w-auto object-contain"
-          priority
-        />
-      </div>
-
       <div className="relative z-10 text-center pointer-events-none w-full px-6" style={{ maxWidth: '100vw' }}>
+        {/* Logo above text */}
+        <div className="flex justify-center mb-6">
+          <Image
+            src="/MM_Logo.svg"
+            alt="Mumbai Meridians"
+            width={120}
+            height={120}
+            className="h-20 w-auto object-contain"
+            priority
+          />
+        </div>
         <div
           ref={statusRef}
           style={{
