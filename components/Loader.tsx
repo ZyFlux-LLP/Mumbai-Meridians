@@ -147,7 +147,8 @@ export default function Loader() {
             alt="Mumbai Meridians"
             width={120}
             height={120}
-            className="h-32 w-auto object-contain"
+            className="h-32 object-contain"
+            style={{ width: 'auto' }}
             priority
           />
         </div>

@@ -60,7 +60,8 @@ export default function Footer() {
                 alt="Mumbai Meridians Logo"
                 width={160}
                 height={60}
-                className="h-20 w-auto object-contain"
+                className="h-20 object-contain"
+                style={{ width: 'auto' }}
               />
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-6">
