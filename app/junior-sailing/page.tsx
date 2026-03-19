@@ -40,7 +40,7 @@ export default function JuniorSailingPage() {
         <section className="py-24 px-4 bg-slate-900" id="what-is-sailing">
           <div className="container mx-auto max-w-5xl">
             <div className="grid md:grid-cols-2 gap-16 items-center">
-              <div>
+              <div data-gsap="fade-left">
                 <h2 className="text-3xl font-black mb-6 uppercase border-l-4 border-sea-blue pl-4">
                   What is Sailing?
                 </h2>
@@ -88,7 +88,7 @@ export default function JuniorSailingPage() {
                 </div>
               </div>
 
-              <div className="relative">
+              <div className="relative" data-gsap="fade-right">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVRywbmLPJ9FwrxUYdeaxEn2GVsb3N7LH3PtCDI2YJVuaBGFJXvxGXo_xdQRuvCIJ5tSJX8LKCP2sllP2TAty0AoyX9vYYzZUd8ZW2LVskQWYE38cqPZDDl716JZMvcdfamK1ZE77mrNhpFonwhmymU9BeqB_u48AfWzPeNFTCpLZ4sHYgKwDkxR9csb3nMeBiRzl2MwIVaa1RRaFyW3nJ1wnTNaZsivzmK_FLY4tEkZQs-apGJVbyb__lPTpLAs5b8O26sIaI1ABU"
                   alt="Youth sailing in Mumbai harbor"
@@ -108,13 +108,13 @@ export default function JuniorSailingPage() {
         {/* Programs */}
         <section className="bg-deep-ocean py-24 px-4" id="programs">
           <div className="container mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16" data-gsap="fade-up">
               <h2 className="text-4xl font-black uppercase mb-2">Our Programs</h2>
-              <div className="w-24 h-1 bg-sea-blue mx-auto mb-4" />
+              <div className="w-24 h-1 bg-sea-blue mx-auto mb-4" data-gsap="line-draw" />
               <p className="text-slate-400">Tailored coaching for every stage of development.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8" data-gsap="stagger">
               {/* Beginner */}
               <div className="bg-meridian-navy p-8 rounded-custom shadow-lg border-t-4 border-slate-700 hover:border-sea-blue transition-all group">
                 <div className="mb-6 flex justify-center">
@@ -196,8 +196,8 @@ export default function JuniorSailingPage() {
         {/* Pathway Timeline */}
         <section className="py-24 px-4 bg-slate-900" id="pathway">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-3xl font-black text-center uppercase mb-16">A Pathway to Performance</h2>
-            <div className="relative">
+            <h2 className="text-3xl font-black text-center uppercase mb-16" data-gsap="fade-up">A Pathway to Performance</h2>
+            <div className="relative" data-gsap="stagger">
               {/* Central line */}
               <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 timeline-line hidden md:block opacity-30" />
 

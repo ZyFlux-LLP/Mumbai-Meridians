@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Oswald } from 'next/font/google'
 import './globals.css'
+import Loader from '@/components/Loader'
+import GSAPAnimations from '@/components/GSAPAnimations'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,17 +20,15 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   title: 'Mumbai Meridians | Riding the Winds of Umiam',
   description:
-    'Mumbai Meridians — India\'s premier sailing franchise dedicated to elevating Indian sailing to the global stage.',
+    "Mumbai Meridians — India's premier sailing franchise dedicated to elevating Indian sailing to the global stage.",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${oswald.variable} font-body antialiased`}>
+        <Loader />
+        <GSAPAnimations />
         {children}
       </body>
     </html>

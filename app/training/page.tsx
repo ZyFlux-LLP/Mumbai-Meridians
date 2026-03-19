@@ -118,13 +118,13 @@ export default function TrainingPage() {
         {/* Professional Training */}
         <section className="py-24 bg-white text-meridian-navy" id="training">
           <div className="container mx-auto px-6">
-            <div className="mb-16">
+            <div className="mb-16" data-gsap="fade-up">
               <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-sea-blue mb-2">Programs</h2>
               <h3 className="text-4xl font-black uppercase italic font-athletic">Professional Training</h3>
-              <div className="w-20 h-1.5 bg-meridian-navy mt-4 rounded-full" />
+              <div className="w-20 h-1.5 bg-meridian-navy mt-4 rounded-full" data-gsap="line-draw" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8" data-gsap="stagger">
               {trainingPrograms.map((prog) =>
                 prog.featured ? (
                   <div key={prog.title} className="p-8 bg-meridian-navy text-white shadow-2xl transform md:-translate-y-4 rounded-custom">
@@ -169,13 +169,13 @@ export default function TrainingPage() {
         {/* The Fleet */}
         <section className="py-24 bg-deep-blue overflow-hidden" id="fleet">
           <div className="container mx-auto px-6">
-            <div className="mb-16 text-right">
+            <div className="mb-16 text-right" data-gsap="fade-up">
               <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-sea-blue mb-2">Technical Specs</h2>
               <h3 className="text-4xl font-black uppercase italic font-athletic">The Fleet</h3>
-              <div className="w-20 h-1.5 bg-sea-blue mt-4 ml-auto rounded-full" />
+              <div className="w-20 h-1.5 bg-sea-blue mt-4 ml-auto rounded-full" data-gsap="line-draw" />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" data-gsap="stagger">
               {fleet.map((boat) => (
                 <div key={boat.name} className="glass-effect p-8 flex flex-col md:flex-row gap-8 rounded-custom">
                   <div className="w-full md:w-1/2 overflow-hidden rounded-custom">
@@ -210,7 +210,7 @@ export default function TrainingPage() {
         <section className="py-24 bg-sea-blue text-meridian-navy">
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="md:w-1/2">
+              <div className="md:w-1/2" data-gsap="fade-left">
                 <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2">Environment</h2>
                 <h3 className="text-4xl font-black uppercase italic mb-6 font-athletic">Our Facilities</h3>
                 <p className="text-lg font-medium leading-relaxed mb-8">
@@ -228,7 +228,7 @@ export default function TrainingPage() {
                 </div>
               </div>
 
-              <div className="md:w-1/2 grid grid-cols-2 gap-4">
+              <div className="md:w-1/2 grid grid-cols-2 gap-4" data-gsap="fade-right">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaaiZ3cPIKgQZPvKjCNTlNmUJ-D_uVUivekZiKRmGpxszQz0y2KN9Gqm8nZ92foY-ZJOVy7OFHGEDYOw-j0ByEXkgbOgXa_0EulKfj-WPp--I5K0U8rOCsHJI4rVZwlHAhIhFhdYmT1Z2CLmcUtTTFfKO52FiBqdVJmGpkrwnGpMgNZ_c0OhtXgUX15rorYBtzABLr4OaHliXJgErkYf-IjgwdIv3DM-L0U4_gAaTXG4x6EgpI4F3g1O7Bz-1KpaIhe1Zo2ILtt6Jo"
                   alt="Maintenance Bay"

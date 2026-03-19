@@ -11,12 +11,12 @@ export default function HomePage() {
 
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0" data-gsap="parallax">
           <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw_S-jb0QaYzdMUZbkv6B11rehzWF2uZnfD3cTCgBcNafjsruEP005yxhDwzgxhuTwyDIKgqWF23xXX45kwRxMnbENNFIqs_xeG9YReRLcYpl4p8VMp7871FWUAwD81GloPBfoLk4NI6Jiz2xCxmY4nW4dizNb1pyPuXV6FSMfirSzfu3Bv3b7aUe-4PgOlhzZqnw3OMNGHVfYHjw4VNe1FFh8TC6QBNIywlQK8eQs1jrzdFU38q9TBTklfwilPsNdECKGyA0e7aWc"
             alt="Sailing boat at Umiam Lake"
             fill
-            className="object-cover scale-105"
+            className="object-cover scale-110"
             priority
           />
           <div className="absolute inset-0 hero-gradient" />
@@ -79,15 +79,21 @@ export default function HomePage() {
       {/* ── Stats Bar ───────────────────────────────────────────── */}
       <div className="bg-meridian-accent/10 border-y border-meridian-accent/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center" data-gsap="stagger">
             {[
-              { stat: '13', label: 'ISL Teams' },
-              { stat: '130+', label: 'Elite Sailors' },
-              { stat: '100+', label: 'Certified Juniors' },
-              { stat: '4', label: 'Boat Classes' },
+              { stat: '13', value: '13', label: 'ISL Teams' },
+              { stat: '130+', value: '130+', label: 'Elite Sailors' },
+              { stat: '100+', value: '100+', label: 'Certified Juniors' },
+              { stat: '4', value: '4', label: 'Boat Classes' },
             ].map((item) => (
               <div key={item.label}>
-                <p className="font-athletic text-3xl font-bold text-meridian-accent">{item.stat}</p>
+                <p
+                  className="font-athletic text-3xl font-bold text-meridian-accent"
+                  data-gsap="counter"
+                  data-value={item.value}
+                >
+                  {item.stat}
+                </p>
                 <p className="text-xs uppercase tracking-widest text-white/50 mt-1">{item.label}</p>
               </div>
             ))}
@@ -99,13 +105,13 @@ export default function HomePage() {
       <section className="py-28 bg-white text-meridian-navy" id="about">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16 xl:gap-24">
-            <div className="lg:w-1/2">
-              <p className="section-label text-meridian-accent">Our Story</p>
+            <div className="lg:w-1/2" data-gsap="fade-left">
+              <p className="section-label text-meridian-accent" data-gsap="label">Our Story</p>
               <h2 className="font-athletic text-4xl md:text-6xl font-bold uppercase leading-tight mb-6">
                 About the{' '}
                 <span className="text-white bg-meridian-navy px-3 py-1 inline-block">Meridians</span>
               </h2>
-              <div className="w-16 h-1.5 bg-meridian-accent mb-8 rounded-full" />
+              <div className="w-16 h-1.5 bg-meridian-accent mb-8 rounded-full" data-gsap="line-draw" />
               <p className="text-lg leading-relaxed mb-6 text-gray-700">
                 The Mumbai Meridians are more than just a sailing franchise — we are a movement dedicated
                 to elevating Indian sailing to the global stage. Born from the bustling energy of Mumbai
@@ -127,8 +133,8 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="lg:w-1/2 relative mt-8 lg:mt-0">
-              <div className="relative z-10">
+            <div className="lg:w-1/2 relative mt-8 lg:mt-0" data-gsap="fade-right">
+              <div className="relative z-10" data-gsap="scale-in">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcVrcji0hmBa1Opahc0TVcKcCYjHtaU3HYcHR8ZOIoDcNqWx48kpfaiD6YWdYku05RqJfyoTerzSvFzj6_WKt-D9vl-TM2IXFamVYEVRrCXY2jr8603oJCrkErDERBnY5ps0KM5H7GX1NXTDI0WoHl8VAG3ZvcRtf7x06ouMHNeKl89GHfNHdYQp-hQFBrfsJde4JpcLknpkJh5Ke8mWfO1XFuE9I-9ULAjpfrZ_di7cIw76Z0aHYeyVMgo81VhEVHumQ_GV5h_qxw"
                   alt="High performance sailing action"
@@ -137,9 +143,7 @@ export default function HomePage() {
                   className="rounded-2xl shadow-2xl w-full object-cover"
                 />
               </div>
-              {/* Decorative accent frame */}
               <div className="absolute -bottom-5 -right-5 w-full h-full border-4 border-meridian-accent/20 rounded-2xl z-0" />
-              {/* Floating badge */}
               <div className="absolute -bottom-4 -left-4 bg-meridian-navy text-white px-6 py-4 rounded-xl shadow-xl z-20 hidden lg:block">
                 <p className="font-athletic text-3xl font-bold text-meridian-accent">2026</p>
                 <p className="text-xs uppercase tracking-widest text-white/60 mt-0.5">ISL Season</p>
@@ -152,7 +156,7 @@ export default function HomePage() {
       {/* ── Featured Event ──────────────────────────────────────── */}
       <section className="py-28 bg-meridian-navy" id="events">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16" data-gsap="fade-up">
             <p className="section-label">Season Highlight</p>
             <h2 className="font-athletic text-4xl md:text-5xl font-bold uppercase">Upcoming Events</h2>
             <p className="text-white/40 tracking-widest uppercase mt-3 text-sm font-semibold">
@@ -160,7 +164,10 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-[#001f3d] to-[#000d1f] border border-meridian-accent/15 rounded-2xl overflow-hidden shadow-2xl">
+          <div
+            className="bg-gradient-to-br from-[#001f3d] to-[#000d1f] border border-meridian-accent/15 rounded-2xl overflow-hidden shadow-2xl"
+            data-gsap="scale-in"
+          >
             <div className="flex flex-col md:flex-row">
               <div className="md:w-[38%] relative min-h-[280px]">
                 <Image
@@ -217,7 +224,6 @@ export default function HomePage() {
 
       {/* ── CTA Grid ────────────────────────────────────────────── */}
       <section className="py-28 bg-[#000d1f] relative overflow-hidden" id="join">
-        {/* Subtle grid background */}
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
           <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -228,11 +234,10 @@ export default function HomePage() {
             <rect fill="url(#grid)" height="100%" width="100%" />
           </svg>
         </div>
-        {/* Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-meridian-accent/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16" data-gsap="fade-up">
             <p className="section-label">Get Involved</p>
             <h2 className="font-athletic text-4xl md:text-5xl font-bold uppercase mb-5">
               Be Part of the <span className="text-meridian-accent">Legacy</span>
@@ -243,7 +248,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6" data-gsap="stagger">
             {/* Junior Sailing */}
             <div className="relative group bg-white/[0.03] border border-white/10 p-8 rounded-2xl flex flex-col items-center text-center hover:border-meridian-accent/40 hover:bg-white/[0.06] transition-all duration-300 cursor-pointer cta-button">
               <div className="w-14 h-14 bg-meridian-accent/15 border border-meridian-accent/25 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-meridian-accent/25 transition-colors">
@@ -263,7 +268,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Training Programs — featured */}
+            {/* Training Programs */}
             <div className="relative group bg-meridian-accent p-8 rounded-2xl flex flex-col items-center text-center shadow-2xl shadow-meridian-accent/20 cta-button md:scale-105">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-meridian-navy text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full">
                 Popular

@@ -91,7 +91,7 @@ export default function EventsPage() {
         {/* Race Calendar */}
         <section className="py-16 md:py-24 bg-white text-gray-900" id="calendar">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16" data-gsap="fade-up">
               <h2 className="text-4xl font-extrabold text-meridian-navy mb-4">Race Calendar</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Track our journey across the waves. Join us for upcoming regattas, intensive training
@@ -100,7 +100,7 @@ export default function EventsPage() {
             </div>
 
             {/* Featured Event */}
-            <div className="mb-12">
+            <div className="mb-12" data-gsap="scale-in">
               <div className="relative overflow-hidden rounded-theme bg-meridian-navy text-white p-8 md:p-12 shadow-2xl border-l-8 border-meridian-gold">
                 <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
                   <div className="flex-1">
@@ -136,7 +136,7 @@ export default function EventsPage() {
             </div>
 
             {/* Upcoming Events Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8" data-gsap="stagger">
               {upcomingEvents.map((event) => (
                 <div
                   key={event.title}
@@ -157,7 +157,7 @@ export default function EventsPage() {
         {/* Meet the Team */}
         <section className="py-16 md:py-24 bg-meridian-navy text-white" id="team">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16" data-gsap="fade-up">
               <h2 className="text-4xl font-extrabold mb-4">Meet the Team</h2>
               <p className="text-meridian-accent text-lg max-w-2xl mx-auto">
                 The strength of the meridian lies in our people. From world-class tactical coaches to our
@@ -165,7 +165,7 @@ export default function EventsPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10" data-gsap="stagger">
               {teamMembers.map((member) => (
                 <div key={member.name} className="text-center group">
                   <div className="mb-6 relative mx-auto w-48 h-48">
@@ -199,7 +199,7 @@ export default function EventsPage() {
               </a>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4" data-gsap="stagger">
               {/* Large featured image */}
               <div className="row-span-2 col-span-2 relative group overflow-hidden rounded-theme">
                 <Image
