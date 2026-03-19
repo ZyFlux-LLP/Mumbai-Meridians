@@ -38,7 +38,7 @@ export default function HeroReveal({ children }: { children: React.ReactNode }) 
   }, [])
 
   return (
-    <div ref={ref} className="relative z-10 w-full text-center px-4 max-w-5xl mx-auto pt-20">
+    <div ref={ref} className="relative z-10 w-full text-center px-4 max-w-5xl mx-auto pt-20 md:pt-36">
       {children}
     </div>
   )
