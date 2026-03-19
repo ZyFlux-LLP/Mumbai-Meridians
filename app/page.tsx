@@ -11,7 +11,7 @@ export default function HomePage() {
       <Navigation />
 
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden w-full">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden w-full py-8">
         <div className="absolute inset-0 z-0" data-gsap="parallax">
           <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw_S-jb0QaYzdMUZbkv6B11rehzWF2uZnfD3cTCgBcNafjsruEP005yxhDwzgxhuTwyDIKgqWF23xXX45kwRxMnbENNFIqs_xeG9YReRLcYpl4p8VMp7871FWUAwD81GloPBfoLk4NI6Jiz2xCxmY4nW4dizNb1pyPuXV6FSMfirSzfu3Bv3b7aUe-4PgOlhzZqnw3OMNGHVfYHjw4VNe1FFh8TC6QBNIywlQK8eQs1jrzdFU38q9TBTklfwilPsNdECKGyA0e7aWc"
