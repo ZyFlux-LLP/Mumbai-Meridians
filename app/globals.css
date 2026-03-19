@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: #0074e4;
+    color: white;
+  }
+}
+
+@layer utilities {
+  .nav-link {
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 18, 41, 0.3) 0%,
+      rgba(0, 31, 61, 0.65) 50%,
+      rgba(0, 18, 41, 0.92) 100%
+    );
+  }
+
+  .cta-button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -8px rgba(0, 116, 228, 0.35);
+  }
+
+  .hover-lift {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.2);
+  }
+
+  .bg-navy-gradient {
+    background: linear-gradient(135deg, #001f3d 0%, #000c1a 100%);
+  }
+
+  .timeline-line {
+    background: linear-gradient(to bottom, #00D4FF 0%, #001f3d 100%);
+  }
+
+  .glass-effect {
+    background: rgba(0, 20, 50, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 209, 230, 0.15);
+  }
+
+  /* Subtle section divider */
+  .section-label {
+    @apply text-xs font-bold tracking-[0.3em] uppercase text-meridian-accent mb-2;
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.7s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+}

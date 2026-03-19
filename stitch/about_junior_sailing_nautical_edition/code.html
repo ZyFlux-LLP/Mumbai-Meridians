@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About &amp; Junior Sailing | Mumbai Meridians</title>
+<!-- BEGIN: Scripts and Meta -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#001f3d', // Primary Navy from THEME_6
+            seaBlue: '#00D4FF', // High-saturation sea blue for highlights
+            deepOcean: '#001529', // Darker structural navy
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          },
+          borderRadius: {
+            'custom': '8px', // Roundness from THEME_6
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: Scripts and Meta -->
+<style data-purpose="custom-gradients">
+    .bg-navy-gradient {
+      background: linear-gradient(135deg, #001f3d 0%, #000c1a 100%);
+    }
+    .timeline-line {
+      background: linear-gradient(to bottom, #00D4FF 0%, #001f3d 100%);
+    }
+    .custom-round { border-radius: 8px; }
+  </style>
+</head>
+<body class="bg-slate-900 text-white antialiased">
+<!-- BEGIN: Navigation -->
+<nav class="sticky top-0 z-50 bg-deepOcean text-white p-4 shadow-lg border-b border-navy" data-purpose="main-navigation">
+<div class="container mx-auto flex justify-between items-center">
+<div class="text-2xl font-bold tracking-tighter">
+        MUMBAI<span class="text-seaBlue">MERIDIANS</span>
+</div>
+<div class="hidden md:flex space-x-8 font-medium uppercase text-sm tracking-widest">
+<a class="hover:text-seaBlue transition-colors" href="#">Home</a>
+<a class="text-seaBlue underline underline-offset-8" href="#">Junior Sailing</a>
+<a class="hover:text-seaBlue transition-colors" href="#">Racing</a>
+<a class="hover:text-seaBlue transition-colors" href="#">Contact</a>
+</div>
+</div>
+</nav>
+<!-- END: Navigation -->
+<!-- BEGIN: Hero Section -->
+<header class="relative h-[45vh] bg-navy-gradient flex items-center justify-center text-center px-4 overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<pattern height="20" id="waves" patternunits="userSpaceOnUse" width="100" x="0" y="0">
+<path d="M0 10 Q25 0 50 10 T100 10" fill="none" stroke="#00D4FF" stroke-width="1"></path>
+</pattern>
+<rect fill="url(#waves)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="max-w-3xl relative z-10">
+<h1 class="text-5xl md:text-7xl font-black text-white mb-4 uppercase italic tracking-tighter">Junior Sailing</h1>
+<p class="text-seaBlue text-lg font-semibold tracking-wide uppercase">Nurturing the next generation of Indian Mariners</p>
+</div>
+</header>
+<!-- END: Hero Section -->
+<main>
+<!-- BEGIN: What is Sailing Section -->
+<section class="py-24 px-4 bg-slate-900" data-purpose="educational-content" id="what-is-sailing">
+<div class="container mx-auto max-w-5xl">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-3xl font-black mb-6 uppercase border-l-4 border-seaBlue pl-4">What is Sailing?</h2>
+<p class="text-slate-300 leading-relaxed mb-8">
+              Sailing is more than just a sport; it's a profound engagement with the elements. At Mumbai Meridians, we believe the ocean is the ultimate classroom. It demands physical fitness, mental agility, and a deep respect for nature.
+            </p>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="bg-navy p-2 rounded-custom mr-4 mt-1 border border-seaBlue/20">
+<svg class="w-5 h-5 text-seaBlue" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<h4 class="font-bold uppercase tracking-tight text-white">Fitness &amp; Agility</h4>
+<p class="text-sm text-slate-400">Developing core strength, balance, and fine motor skills through boat handling.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-navy p-2 rounded-custom mr-4 mt-1 border border-seaBlue/20">
+<svg class="w-5 h-5 text-seaBlue" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.040L3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622l-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<h4 class="font-bold uppercase tracking-tight text-white">Leadership &amp; Responsibility</h4>
+<p class="text-sm text-slate-400">Empowering young sailors to make split-second decisions and manage their own craft.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-navy p-2 rounded-custom mr-4 mt-1 border border-seaBlue/20">
+<svg class="w-5 h-5 text-seaBlue" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<h4 class="font-bold uppercase tracking-tight text-white">Strategy &amp; Tactics</h4>
+<p class="text-sm text-slate-400">Learning to read the wind and tide, turning every race into a high-speed game of chess.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<img alt="Youth sailing in Mumbai harbor" class="rounded-custom shadow-2xl border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVRywbmLPJ9FwrxUYdeaxEn2GVsb3N7LH3PtCDI2YJVuaBGFJXvxGXo_xdQRuvCIJ5tSJX8LKCP2sllP2TAty0AoyX9vYYzZUd8ZW2LVskQWYE38cqPZDDl716JZMvcdfamK1ZE77mrNhpFonwhmymU9BeqB_u48AfWzPeNFTCpLZ4sHYgKwDkxR9csb3nMeBiRzl2MwIVaa1RRaFyW3nJ1wnTNaZsivzmK_FLY4tEkZQs-apGJVbyb__lPTpLAs5b8O26sIaI1ABU"/>
+<div class="absolute -bottom-6 -left-6 bg-seaBlue p-6 hidden lg:block rounded-custom shadow-xl">
+<span class="text-navy font-black text-4xl">100+</span>
+<p class="text-navy font-bold uppercase text-xs">Certified Juniors</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: What is Sailing Section -->
+<!-- BEGIN: Junior Sailing Programs Section -->
+<section class="bg-deepOcean py-24 px-4" data-purpose="program-breakdown" id="programs">
+<div class="container mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-black uppercase mb-2">Our Programs</h2>
+<div class="w-24 h-1 bg-seaBlue mx-auto mb-4"></div>
+<p class="text-slate-400">Tailored coaching for every stage of development.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Program 1 -->
+<div class="bg-navy p-8 rounded-custom shadow-lg border-t-4 border-slate-700 hover:border-seaBlue transition-all group">
+<div class="mb-6 flex justify-center">
+<div class="bg-slate-800 p-4 rounded-full group-hover:bg-seaBlue transition-colors duration-300">
+<!-- Icon: Beginner -->
+<svg class="w-12 h-12 text-white group-hover:text-navy" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+</div>
+</div>
+<h3 class="text-xl font-bold text-center uppercase mb-2">Beginner Sailors</h3>
+<p class="text-seaBlue font-bold text-center mb-4">Ages 6 - 9</p>
+<p class="text-slate-400 text-sm mb-6 text-center leading-relaxed">
+              Introduction to water safety, boat parts, and basic steering in Optimist class boats. Focus is on fun and confidence.
+            </p>
+<ul class="text-xs space-y-3 text-slate-500 font-medium">
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-seaBlue rounded-full mr-2"></span> Saturday Morning Sessions</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-seaBlue rounded-full mr-2"></span> Life-jacket Provided</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-seaBlue rounded-full mr-2"></span> Pool &amp; Harbor Training</li>
+</ul>
+</div>
+<!-- Program 2 -->
+<div class="bg-navy p-8 rounded-custom shadow-2xl border-t-4 border-seaBlue hover:shadow-seaBlue/10 transition-all group md:scale-105 z-10">
+<div class="mb-6 flex justify-center">
+<div class="bg-seaBlue/10 p-4 rounded-full group-hover:bg-seaBlue transition-colors duration-300">
+<!-- Icon: Intermediate -->
+<svg class="w-12 h-12 text-seaBlue group-hover:text-navy" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+</div>
+</div>
+<h3 class="text-xl font-bold text-center uppercase mb-2 text-white">Intermediate</h3>
+<p class="text-seaBlue font-bold text-center mb-4">Ages 10 - 14</p>
+<p class="text-slate-300 text-sm mb-6 text-center leading-relaxed">
+              Transitioning to independent sailing. Learning sail trim, point of sail, and introductory race rules.
+            </p>
+<ul class="text-xs space-y-3 text-slate-400 font-medium">
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-seaBlue rounded-full mr-2"></span> Twice-weekly Training</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-seaBlue rounded-full mr-2"></span> Intro to Regattas</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-seaBlue rounded-full mr-2"></span> Advanced Maneuvers</li>
+</ul>
+</div>
+<!-- Program 3 -->
+<div class="bg-navy p-8 rounded-custom shadow-lg border-t-4 border-slate-700 hover:border-seaBlue transition-all group">
+<div class="mb-6 flex justify-center">
+<div class="bg-slate-800 p-4 rounded-full group-hover:bg-seaBlue transition-colors duration-300">
+<!-- Icon: Racing -->
+<svg class="w-12 h-12 text-white group-hover:text-navy" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+</div>
+</div>
+<h3 class="text-xl font-bold text-center uppercase mb-2">Racing Squad</h3>
+<p class="text-seaBlue font-bold text-center mb-4">Ages 15 - 18</p>
+<p class="text-slate-400 text-sm mb-6 text-center leading-relaxed">
+              High-performance training for national level competition. Focus on speed, team tactics, and fitness.
+            </p>
+<ul class="text-xs space-y-3 text-slate-500 font-medium">
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-seaBlue rounded-full mr-2"></span> Daily Elite Coaching</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-seaBlue rounded-full mr-2"></span> National Travel Circuit</li>
+<li class="flex items-center"><span class="w-1.5 h-1.5 bg-seaBlue rounded-full mr-2"></span> Sponsorship Guidance</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Junior Sailing Programs Section -->
+<!-- BEGIN: Pathway Section -->
+<section class="py-24 px-4 bg-slate-900" data-purpose="visual-timeline" id="pathway">
+<div class="container mx-auto max-w-4xl">
+<h2 class="text-3xl font-black text-center uppercase mb-16">A Pathway to Performance</h2>
+<div class="relative">
+<!-- Central Line -->
+<div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 timeline-line hidden md:block opacity-30"></div>
+<!-- Step 1 -->
+<div class="relative flex items-center justify-between mb-20 md:mb-28 group">
+<div class="hidden md:block w-5/12 text-right pr-12">
+<span class="text-sm font-bold text-seaBlue uppercase">Year 1</span>
+<h4 class="text-xl font-black uppercase text-white">The First Splash</h4>
+</div>
+<div class="z-10 bg-deepOcean border-4 border-seaBlue w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,212,255,0.4)]">
+<div class="w-2 h-2 bg-white rounded-full"></div>
+</div>
+<div class="w-full md:w-5/12 pl-8 md:pl-12">
+<div class="md:hidden mb-1"><span class="text-xs font-bold text-seaBlue uppercase">Year 1</span></div>
+<p class="text-slate-400">Students learn to steer their first boat and gain water confidence in protected bays.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex items-center justify-between mb-20 md:mb-28 flex-row-reverse">
+<div class="hidden md:block w-5/12 text-left pl-12">
+<span class="text-sm font-bold text-seaBlue uppercase">Year 2-3</span>
+<h4 class="text-xl font-black uppercase text-white">Skill Mastery</h4>
+</div>
+<div class="z-10 bg-deepOcean border-4 border-seaBlue w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,212,255,0.4)]">
+<div class="w-2 h-2 bg-white rounded-full"></div>
+</div>
+<div class="w-full md:w-5/12 text-right pr-8 md:pr-12">
+<div class="md:hidden mb-1"><span class="text-xs font-bold text-seaBlue uppercase">Year 2-3</span></div>
+<p class="text-slate-400">Mastering sail trim and beginning to compete in local club races across Mumbai.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex items-center justify-between group">
+<div class="hidden md:block w-5/12 text-right pr-12">
+<span class="text-sm font-bold text-seaBlue uppercase">Year 4+</span>
+<h4 class="text-xl font-black uppercase text-white">Elite Racing</h4>
+</div>
+<div class="z-10 bg-deepOcean border-4 border-seaBlue w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,212,255,0.4)]">
+<div class="w-2 h-2 bg-white rounded-full"></div>
+</div>
+<div class="w-full md:w-5/12 pl-8 md:pl-12">
+<div class="md:hidden mb-1"><span class="text-xs font-bold text-seaBlue uppercase">Year 4+</span></div>
+<p class="text-slate-400">Joining the Racing Squad for national selections and international exposure.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Pathway Section -->
+</main>
+<!-- BEGIN: Footer / Call to Action -->
+<footer class="bg-deepOcean text-white pt-24 pb-12 px-4" data-purpose="footer-cta">
+<div class="container mx-auto text-center border-b border-slate-800 pb-20">
+<h2 class="text-4xl md:text-6xl font-black uppercase mb-8 italic tracking-tighter">Ready to Set Sail?</h2>
+<p class="text-lg mb-12 text-slate-400 max-w-xl mx-auto leading-relaxed">Registration for the Monsoon &amp; Winter seasons is now open. Secure your spot in the squad.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<a class="bg-seaBlue text-navy px-12 py-5 font-black uppercase tracking-widest hover:bg-white transition-all duration-300 rounded-custom shadow-lg shadow-seaBlue/20" href="#">
+          Register Now
+        </a>
+<a class="border-2 border-slate-700 px-12 py-5 font-black uppercase tracking-widest hover:border-white hover:text-white transition-all duration-300 rounded-custom" href="#">
+          Download Prospectus
+        </a>
+</div>
+</div>
+<div class="container mx-auto pt-12 flex flex-col md:flex-row justify-between items-center opacity-60 text-[10px] tracking-widest uppercase">
+<p>© 2023 Mumbai Meridians Sailing Club. All rights reserved.</p>
+<div class="flex space-x-8 mt-6 md:mt-0 font-bold">
+<a class="hover:text-seaBlue transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-seaBlue transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-seaBlue transition-colors" href="#">Sitemap</a>
+</div>
+</div>
+</footer>
+<!-- END: Footer / Call to Action -->
+</body></html>

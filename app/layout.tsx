@@ -1,0 +1,36 @@
+import type { Metadata } from 'next'
+import { Inter, Oswald } from 'next/font/google'
+import './globals.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const oswald = Oswald({
+  subsets: ['latin'],
+  variable: '--font-oswald',
+  weight: ['400', '700'],
+  display: 'swap',
+})
+
+export const metadata: Metadata = {
+  title: 'Mumbai Meridians | Riding the Winds of Umiam',
+  description:
+    'Mumbai Meridians — India\'s premier sailing franchise dedicated to elevating Indian sailing to the global stage.',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} ${oswald.variable} font-body antialiased`}>
+        {children}
+      </body>
+    </html>
+  )
+}

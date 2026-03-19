@@ -1,0 +1,299 @@
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import Navigation from '@/components/Navigation'
+
+export const metadata: Metadata = {
+  title: 'Training & Fleet | Mumbai Meridians',
+  description: 'Advanced training methodologies and a world-class fleet for competitive sailors.',
+}
+
+const trainingPrograms = [
+  {
+    num: '01',
+    title: 'Learn to Sail',
+    desc: 'Foundational courses focusing on aerodynamics, hydrodynamics, and basic maneuvers. Perfect for high-potential athletes starting their journey.',
+    items: ['BASIC RIGGING', 'WIND AWARENESS', 'BOAT HANDLING'],
+    featured: false,
+  },
+  {
+    num: '02',
+    title: 'Racing Squad',
+    desc: 'Elite tactical training, data analysis, and regatta simulation. Focused on podium finishes at national and international levels.',
+    items: ['RACE STRATEGY', 'VIDEO ANALYSIS', 'FITNESS & NUTRITION'],
+    featured: true,
+  },
+  {
+    num: '03',
+    title: 'Coach Dev',
+    desc: 'Advanced pedagogy for experienced sailors looking to mentor. Certification programs recognized by global sailing bodies.',
+    items: ['MENTORSHIP SKILLS', 'SAFETY MANAGEMENT', 'CLASS CURRICULUM'],
+    featured: false,
+  },
+]
+
+const fleet = [
+  {
+    name: 'Optimist',
+    subtitle: 'Junior Development Class',
+    desc: 'The global standard for young sailors under 15. Known for safety and tactical depth.',
+    specs: [
+      { label: 'LENGTH', value: '2.31 M' },
+      { label: 'SAIL AREA', value: '3.3 SQ M' },
+      { label: 'OPTIMAL WEIGHT', value: '35-55 KG' },
+    ],
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDNKO4ZXiqo1GSF-jAMYD37-L0qfjWvxahqzaYkXBMFLlhqPUvQjooLaLZZ63EfRG84PAND2EXUyR3HiaiAFNQj0_05q-SnL1l7wLAEkAxY_WK1KHW6Ues6ZF8k4rzSD8V7XZojDrk3WEr4mHWciem7tSnPncSG6zeQB3VVoP--Q-wwLrUjIDdrt4bMOIzTTHKS-Nx5UZMw72SO0ltqua2TjhGLkTOQ-YIylcNftBppKWnVFB7OArLEXSMDw2uAiFTQXzs1CPd-rVgX',
+  },
+  {
+    name: 'ILCA / Laser',
+    subtitle: 'Single-Handed Olympic Class',
+    desc: 'Demanding, athletic, and purely skill-based. The most popular racing dinghy in the world.',
+    specs: [
+      { label: 'LENGTH', value: '4.23 M' },
+      { label: 'SAIL AREA', value: '4.7-7.0 SQ M' },
+      { label: 'CREW', value: '1 PERSON' },
+    ],
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB17r5wzNkhgNE43ZncvY7OuKwnSRUAWnNSKhY9S3mfY1EZ6TpGoZ6dSd0HFlqBuyShO8pnKy4FEWxpue73rDuxQDGu-L3OUQtHAMM1v3BHkvYAGJhuwKypUgB9racCVqMEW56Txpc-HVaFvuTe7EgwCEWEFJD03hh4TolkLndMRp0hEszEYwpEPotoRlXe45Jgb7aNYlWYuaZryk46j1g8mnaVCDWYpguMO_C2dnv9e3CuE7sO0EtU-3iaajiF-L8UZkx5lTCEIsl1',
+  },
+  {
+    name: '420',
+    subtitle: 'Double-Handed Performance',
+    desc: 'Introduces spinnaker and trapeze. Perfect for building teamwork and technical coordination.',
+    specs: [
+      { label: 'LENGTH', value: '4.20 M' },
+      { label: 'SAILS', value: 'MAIN, JIB, SPINNAKER' },
+      { label: 'CREW', value: '2 PERSONS' },
+    ],
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD2GBXeftw_C8fnOjdpu93satdQdsr9EtbD0mjCeFPonhBR8ool3mMCazGUj6BGZffhydcS7mheHmhQCn1u7G5BJa3E7wYPyJcD2XEvE8nrDQmvbFpJExdneZb3HTutPtjnG_NaXM3L9L0I8UefV3vR3ptMDDBx1ywFU_NFZgdHJr5MNLAu3WFJKVum-nTV24NcGMPF6lcIU-278E3MjWvjYDOUHICoEWxMQox5uNcJCkYikUsqL3VFSKf9AkYAkJwNvivb7Qu2Vqyj',
+  },
+  {
+    name: 'Keelboats',
+    subtitle: 'Elite Team Racing',
+    desc: 'Large-scale racing focused on high-level navigation, winch handling, and heavy-weather tactics.',
+    specs: [
+      { label: 'LENGTH', value: '7.0-12.0 M' },
+      { label: 'TYPE', value: 'J70 / SEABIRD' },
+      { label: 'CREW', value: '4-6 PERSONS' },
+    ],
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBeFohQWUNQA20GugVhL18sioB0U3oszpNfWXftO22BcNZ_v5GsjQBqoLQMl8IN1mVQCRcVotrDvfX5C3oi5cGhi6dlzaiQYvWqpYHlBGwg4wrzuQ5zw_cFSrOrVT2mzsox2LJUYVdoyKAtSroO-8jbRsgJpBWTLXbiOSnpwkd_tEXhrHVTOGdyx_1pw_UzqNhaf8eDS6GFOY2DU8GvTI0H8wBwASJOfGWD3zdc_4Oyj359r9Zu3RXueobU7WvyBez9x4V-Lu59t06V',
+  },
+]
+
+const facilities = [
+  { stat: '24/7', label: 'Tech Support' },
+  { stat: 'HD', label: 'Drone Analysis' },
+  { stat: 'GPS', label: 'Tracking Kits' },
+  { stat: 'PRO', label: 'Coach Boats' },
+]
+
+export default function TrainingPage() {
+  return (
+    <div className="bg-meridian-navy text-white font-sans antialiased">
+      <Navigation />
+
+      <main className="pt-20">
+        {/* Hero */}
+        <section className="relative h-[65vh] flex items-center justify-center overflow-hidden border-b border-sea-blue/30">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQYMzKo37AZnT9AS9i49OrAcKUMkMIic-jjsX1A3iS_BImgjjsJLE6bo7cFfjaP7xAqp27zDdKcn2a5s7OD12zpRnGIf2H-sJowMOK1-d-rnO3Zh0tX6mKrLhYB2wI-qIl9RzXGq_ad_L7vbNH5OgHFr8qZTqPBmJvkuTlJdnAx99mk7bezjDuFmGU1U9eRngrQH-r6wN-0MuGeLYodE5tK3W1Vjfp82kBbkoLQwVKQLJ-lXNJJdZrVPbB2hGo_5vETWb0Q5xv6Wk1"
+              alt="Sailing Training Hero"
+              fill
+              className="object-cover opacity-30"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-meridian-navy via-meridian-navy/20 to-meridian-navy" />
+          </div>
+          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-4 animate-fade-in-up font-athletic">
+              Precision <span className="text-sea-blue">Performance</span>
+            </h1>
+            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+              Advanced training methodologies and a world-class fleet designed to forge the next generation
+              of competitive sailors.
+            </p>
+          </div>
+        </section>
+
+        {/* Professional Training */}
+        <section className="py-24 bg-white text-meridian-navy" id="training">
+          <div className="container mx-auto px-6">
+            <div className="mb-16">
+              <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-sea-blue mb-2">Programs</h2>
+              <h3 className="text-4xl font-black uppercase italic font-athletic">Professional Training</h3>
+              <div className="w-20 h-1.5 bg-meridian-navy mt-4 rounded-full" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {trainingPrograms.map((prog) =>
+                prog.featured ? (
+                  <div key={prog.title} className="p-8 bg-meridian-navy text-white shadow-2xl transform md:-translate-y-4 rounded-custom">
+                    <div className="mb-6">
+                      <span className="text-4xl font-black text-sea-blue italic">{prog.num}</span>
+                    </div>
+                    <h4 className="text-2xl font-bold mb-4 uppercase">{prog.title}</h4>
+                    <p className="text-sea-blue/80 mb-6 leading-relaxed">{prog.desc}</p>
+                    <ul className="space-y-2 text-sm font-bold text-white">
+                      {prog.items.map((item) => (
+                        <li key={item} className="flex items-center">
+                          <span className="w-2 h-2 bg-sea-blue mr-2 rounded-full" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <div key={prog.title} className="p-8 border-2 border-meridian-navy/10 hover:border-sea-blue transition-all group rounded-custom">
+                    <div className="mb-6">
+                      <span className="text-4xl font-black text-meridian-navy/10 group-hover:text-sea-blue/20 transition-colors italic">
+                        {prog.num}
+                      </span>
+                    </div>
+                    <h4 className="text-2xl font-bold mb-4 uppercase">{prog.title}</h4>
+                    <p className="text-gray-600 mb-6 leading-relaxed">{prog.desc}</p>
+                    <ul className="space-y-2 text-sm font-bold text-meridian-navy/80">
+                      {prog.items.map((item) => (
+                        <li key={item} className="flex items-center">
+                          <span className="w-2 h-2 bg-sea-blue mr-2 rounded-full" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* The Fleet */}
+        <section className="py-24 bg-deep-blue overflow-hidden" id="fleet">
+          <div className="container mx-auto px-6">
+            <div className="mb-16 text-right">
+              <h2 className="text-xs font-bold tracking-[0.3em] uppercase text-sea-blue mb-2">Technical Specs</h2>
+              <h3 className="text-4xl font-black uppercase italic font-athletic">The Fleet</h3>
+              <div className="w-20 h-1.5 bg-sea-blue mt-4 ml-auto rounded-full" />
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {fleet.map((boat) => (
+                <div key={boat.name} className="glass-effect p-8 flex flex-col md:flex-row gap-8 rounded-custom">
+                  <div className="w-full md:w-1/2 overflow-hidden rounded-custom">
+                    <Image
+                      src={boat.img}
+                      alt={boat.name}
+                      width={400}
+                      height={300}
+                      className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+                  <div className="w-full md:w-1/2">
+                    <h4 className="text-2xl font-black italic uppercase text-sea-blue mb-2">{boat.name}</h4>
+                    <p className="text-xs uppercase tracking-widest text-blue-200/60 mb-4">{boat.subtitle}</p>
+                    <p className="text-sm text-blue-100 mb-6">{boat.desc}</p>
+                    <div className="space-y-2 border-t border-sea-blue/30 pt-4">
+                      {boat.specs.map((spec) => (
+                        <div key={spec.label} className="flex justify-between text-[10px] tracking-tighter text-blue-200">
+                          <span>{spec.label}</span>
+                          <span>{spec.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Facilities */}
+        <section className="py-24 bg-sea-blue text-meridian-navy">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col md:flex-row items-center gap-12">
+              <div className="md:w-1/2">
+                <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2">Environment</h2>
+                <h3 className="text-4xl font-black uppercase italic mb-6 font-athletic">Our Facilities</h3>
+                <p className="text-lg font-medium leading-relaxed mb-8">
+                  Operating out of the premier sailing hubs in Mumbai, our training center offers direct
+                  access to diverse tidal conditions. We maintain a rigorous maintenance schedule to ensure
+                  every boat in our fleet is race-ready at all times.
+                </p>
+                <div className="grid grid-cols-2 gap-6">
+                  {facilities.map((f) => (
+                    <div key={f.label} className="border-l-4 border-meridian-navy pl-4">
+                      <p className="text-2xl font-black italic">{f.stat}</p>
+                      <p className="text-xs uppercase font-bold">{f.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="md:w-1/2 grid grid-cols-2 gap-4">
+                <Image
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaaiZ3cPIKgQZPvKjCNTlNmUJ-D_uVUivekZiKRmGpxszQz0y2KN9Gqm8nZ92foY-ZJOVy7OFHGEDYOw-j0ByEXkgbOgXa_0EulKfj-WPp--I5K0U8rOCsHJI4rVZwlHAhIhFhdYmT1Z2CLmcUtTTFfKO52FiBqdVJmGpkrwnGpMgNZ_c0OhtXgUX15rorYBtzABLr4OaHliXJgErkYf-IjgwdIv3DM-L0U4_gAaTXG4x6EgpI4F3g1O7Bz-1KpaIhe1Zo2ILtt6Jo"
+                  alt="Maintenance Bay"
+                  width={400}
+                  height={500}
+                  className="w-full h-full object-cover rounded-custom shadow-xl"
+                />
+                <div className="flex flex-col gap-4">
+                  <Image
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtAvMlqSm_gtppIPWOSDOca9J6PcUZ0G1xf0MObPWf0tCEAtHrNoIwckRTyXr3IagRjbO7yxnnIflYkFp9uAwBs_vpdicqjJLxK9cB5Brd0p6kJz9Os0_fU595zXJysozFF9UFH0lO5e571e9vPrTT1gVekyXZ4g4naOrUH1Zctsjuo-cBNBAzHgrZYJw8vDL6Ywpne-fsYtyVukRhojcT3-mXa5mo_cekyoprwYC7NKSoz05U1__tVuAzRAT7ZaLMfMKa1vJpFKXP"
+                    alt="Tidal Simulator"
+                    width={400}
+                    height={240}
+                    className="w-full h-full object-cover rounded-custom shadow-xl"
+                  />
+                  <Image
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpDzuD7b2QqFFcvIxhhDgqhmDJ5NUaoZrNXCh-fkEbIAlfuxl82PWBGJnnWrsLCFlzHTSxfMlMBy5j5IxtW08JqbgEJPI09K82TXmrUWb5O4flQfwPn18s3wG5Ap6VwDPe895X27tWuVsrbibDi_Noe8F1ZHJ1WOoVoNypJE5b5L2ETaAn8kBaqDVCIvAHszTz6oOXC62xAAzO7dOnSMo1TNKThLw7g9AUg2pkDoE66snah8qZegZIa1_M5g5K_zzEtue8-pJmYWTD"
+                    alt="Equipment Room"
+                    width={400}
+                    height={240}
+                    className="w-full h-full object-cover rounded-custom shadow-xl"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Banner */}
+        <section className="py-20 bg-meridian-navy border-y border-sea-blue/20">
+          <div className="container mx-auto px-6 text-center">
+            <h4 className="text-3xl font-black italic uppercase mb-8 font-athletic">
+              Ready to calibrate your performance?
+            </h4>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="#"
+                className="bg-sea-blue text-meridian-navy px-10 py-4 font-black uppercase text-sm tracking-widest hover:bg-white transition-all rounded-custom"
+              >
+                Download Fleet Guide
+              </a>
+              <a
+                href="/junior-sailing#programs"
+                className="border-2 border-sea-blue text-sea-blue px-10 py-4 font-black uppercase text-sm tracking-widest hover:bg-sea-blue hover:text-meridian-navy transition-all rounded-custom"
+              >
+                Book Trial Session
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-meridian-navy py-12 border-t border-sea-blue/10">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center opacity-70">
+          <div className="text-sm uppercase tracking-widest mb-4 md:mb-0">
+            © 2024 Mumbai Meridians. All Vectors Aligned.
+          </div>
+          <div className="flex space-x-6 text-xs uppercase tracking-[0.2em]">
+            <a href="#" className="hover:text-sea-blue transition-colors">Privacy</a>
+            <a href="#" className="hover:text-sea-blue transition-colors">Safety</a>
+            <a href="#" className="hover:text-sea-blue transition-colors">Instagram</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}

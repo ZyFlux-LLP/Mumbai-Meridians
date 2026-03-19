@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mumbai Meridians | Riding the Winds of Umiam</title>
+<!-- Tailwind CSS CDN with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter for Body, Oswald for Athletic Titles -->
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&amp;family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'meridian-navy': '#001f3d', // Deep Navy from Theme
+            'meridian-sea-blue': '#005bb5', // Nautical Sea Blue
+            'meridian-accent': '#0074e4', // High-performance blue
+            'meridian-white': '#FFFFFF',
+          },
+          fontFamily: {
+            'athletic': ['Oswald', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'theme': '8px', // Roundness: ROUND_EIGHT
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-transitions">
+    .nav-link {
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    .hero-gradient {
+      background: linear-gradient(rgba(0, 31, 61, 0.5), rgba(0, 31, 61, 0.8));
+    }
+    .cta-button {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 8px;
+    }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 116, 228, 0.3);
+    }
+    .selection-blue::selection {
+      background-color: #0074e4;
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-meridian-navy text-meridian-white font-body selection-blue">
+<!-- BEGIN: Navigation -->
+<nav class="fixed w-full z-50 bg-meridian-navy/90 backdrop-blur-md border-b border-meridian-accent/20" data-purpose="main-navigation">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<!-- Logo -->
+<div class="flex-shrink-0 flex items-center">
+<span class="font-athletic text-2xl font-bold tracking-tighter italic">
+            MUMBAI<span class="text-meridian-accent">MERIDIANS</span>
+</span>
+</div>
+<!-- Desktop Menu -->
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-6 font-athletic uppercase tracking-wider text-sm">
+<a class="nav-link text-meridian-accent border-b-2 border-meridian-accent px-1 py-2" href="#">Home</a>
+<a class="nav-link hover:text-meridian-accent border-b-2 border-transparent hover:border-meridian-accent px-1 py-2" href="#about">About</a>
+<a class="nav-link hover:text-meridian-accent border-b-2 border-transparent hover:border-meridian-accent px-1 py-2" href="#">Training</a>
+<a class="nav-link hover:text-meridian-accent border-b-2 border-transparent hover:border-meridian-accent px-1 py-2" href="#">Fleet</a>
+<a class="nav-link hover:text-meridian-accent border-b-2 border-transparent hover:border-meridian-accent px-1 py-2" href="#events">Events</a>
+<a class="nav-link hover:text-meridian-accent border-b-2 border-transparent hover:border-meridian-accent px-1 py-2" href="#">Team</a>
+<a class="nav-link hover:text-meridian-accent border-b-2 border-transparent hover:border-meridian-accent px-1 py-2" href="#">Media</a>
+<a class="bg-meridian-accent text-meridian-white px-4 py-2 rounded-theme font-bold hover:bg-white hover:text-meridian-navy transition-colors shadow-lg" href="#join">Join</a>
+</div>
+</div>
+<!-- Mobile menu button -->
+<div class="md:hidden">
+<button class="text-meridian-white p-2" type="button">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- END: Navigation -->
+<!-- BEGIN: Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden" data-purpose="hero-banner">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Sailing boat at Umiam Lake" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw_S-jb0QaYzdMUZbkv6B11rehzWF2uZnfD3cTCgBcNafjsruEP005yxhDwzgxhuTwyDIKgqWF23xXX45kwRxMnbENNFIqs_xeG9YReRLcYpl4p8VMp7871FWUAwD81GloPBfoLk4NI6Jiz2xCxmY4nW4dizNb1pyPuXV6FSMfirSzfu3Bv3b7aUe-4PgOlhzZqnw3OMNGHVfYHjw4VNe1FFh8TC6QBNIywlQK8eQs1jrzdFU38q9TBTklfwilPsNdECKGyA0e7aWc"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+<h1 class="font-athletic text-5xl md:text-8xl font-extrabold uppercase italic leading-none mb-4">
+        Mumbai <span class="text-meridian-accent">Meridians</span>
+</h1>
+<p class="text-xl md:text-3xl font-light tracking-widest uppercase mb-12">
+        Riding the Winds of Umiam
+      </p>
+<!-- Countdown Timer -->
+<div class="bg-meridian-navy/40 backdrop-blur-md border border-meridian-accent/30 p-8 inline-block rounded-theme" data-purpose="countdown-container">
+<p class="font-athletic uppercase tracking-widest text-meridian-accent mb-4">Indian Sailing League 2026 Countdown</p>
+<div class="flex gap-4 md:gap-10 justify-center text-center" id="countdown">
+<div>
+<span class="block text-4xl md:text-6xl font-bold font-athletic" id="days">--</span>
+<span class="text-xs uppercase tracking-tighter">Days</span>
+</div>
+<div class="text-4xl md:text-6xl font-bold text-meridian-accent">:</div>
+<div>
+<span class="block text-4xl md:text-6xl font-bold font-athletic" id="hours">--</span>
+<span class="text-xs uppercase tracking-tighter">Hrs</span>
+</div>
+<div class="text-4xl md:text-6xl font-bold text-meridian-accent">:</div>
+<div>
+<span class="block text-4xl md:text-6xl font-bold font-athletic" id="minutes">--</span>
+<span class="text-xs uppercase tracking-tighter">Min</span>
+</div>
+<div class="text-4xl md:text-6xl font-bold text-meridian-accent">:</div>
+<div>
+<span class="block text-4xl md:text-6xl font-bold font-athletic" id="seconds">--</span>
+<span class="text-xs uppercase tracking-tighter">Sec</span>
+</div>
+</div>
+<p class="mt-4 text-sm font-semibold text-white/90">March 27 - 31, 2026 | Umiam Lake, Shillong</p>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+<svg class="w-6 h-6 text-meridian-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</section>
+<!-- END: Hero Section -->
+<main>
+<!-- BEGIN: About Section -->
+<section class="py-24 bg-meridian-white text-meridian-navy" data-purpose="about-section" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<h2 class="font-athletic text-4xl md:text-6xl font-bold uppercase mb-6">
+              About the <span class="text-meridian-white bg-meridian-navy px-2">Meridians</span>
+</h2>
+<div class="w-20 h-2 bg-meridian-accent mb-8"></div>
+<p class="text-lg leading-relaxed mb-6 font-medium">
+              The Mumbai Meridians are more than just a sailing franchise; we are a movement dedicated to elevating Indian sailing to the global stage. Born from the bustling energy of Mumbai and tempered by the pristine waters of our nation’s lakes and coasts, we represent the pinnacle of nautical athleticism.
+            </p>
+<p class="text-lg leading-relaxed font-semibold italic text-meridian-sea-blue">
+              Our mission is to foster a culture of high-performance sailing in India, nurturing talent that can dominate the international circuits and inspire a new generation of sailors.
+            </p>
+</div>
+<div class="lg:w-1/2 relative">
+<img alt="High performance sailing action" class="rounded-theme shadow-2xl relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcVrcji0hmBa1Opahc0TVcKcCYjHtaU3HYcHR8ZOIoDcNqWx48kpfaiD6YWdYku05RqJfyoTerzSvFzj6_WKt-D9vl-TM2IXFamVYEVRrCXY2jr8603oJCrkErDERBnY5ps0KM5H7GX1NXTDI0WoHl8VAG3ZvcRtf7x06ouMHNeKl89GHfNHdYQp-hQFBrfsJde4JpcLknpkJh5Ke8mWfO1XFuE9I-9ULAjpfrZ_di7cIw76Z0aHYeyVMgo81VhEVHumQ_GV5h_qxw"/>
+<div class="absolute -top-4 -right-4 w-full h-full border-4 border-meridian-accent/30 rounded-theme z-0"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: About Section -->
+<!-- BEGIN: Events Section -->
+<section class="py-24 bg-meridian-navy border-t border-b border-white/10" data-purpose="events-highlights" id="events">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="font-athletic text-4xl md:text-5xl font-bold uppercase mb-4">Upcoming Events</h2>
+<p class="text-meridian-accent tracking-widest uppercase mb-16 font-semibold">Witness the Spectacle of Speed</p>
+<div class="bg-gradient-to-br from-meridian-navy to-slate-900 border border-meridian-accent/20 rounded-theme overflow-hidden shadow-2xl">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/3">
+<img alt="Indian Sailing League 2026" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgrXUdhjBYkkc84nFcod4hvObssM-BDbehIL6bt-Mo5jkCEkFV8crOTb7I1-QdRV15yqNUbn_7pgG2xn1yS8sHlMvCXjD9cy_AJWRNW89aFZ-pjmySiQ-Fv2rPFD9tYpfUymYy8F7HubwTtmXKTrG11YXoFc7o_Kfl26vJZ3-DXqwswXWHf0h5HeTx50Zoq4ks4B5-MNkYhfbE4EexXYWJ7tgLFdrkQ1kWvp-rvxlP8v62Rf65uLakIzxmdcOUw9gWGS32sssgb7ed"/>
+</div>
+<div class="md:w-2/3 p-8 md:p-12 text-left flex flex-col justify-center">
+<div class="flex items-center gap-4 mb-6">
+<span class="bg-meridian-accent text-white font-bold px-3 py-1 rounded-theme text-sm">FEATURED</span>
+<span class="text-white/60 font-athletic uppercase">March 27-31, 2026</span>
+</div>
+<h3 class="font-athletic text-3xl md:text-5xl font-bold mb-6">Indian Sailing League 2026</h3>
+<p class="text-gray-300 text-lg mb-8 leading-relaxed">
+                The flagship event of the season arrives at the **Umiam Sailing Club, Shillong**. Known as the 'Jewel of the Northeast', Umiam Lake provides a challenging and breathtaking arena for the country's best sailors.
+              </p>
+<div class="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
+<div>
+<p class="text-3xl font-athletic font-bold text-meridian-accent">13</p>
+<p class="uppercase text-xs tracking-widest text-white/60">Elite Teams</p>
+</div>
+<div>
+<p class="text-3xl font-athletic font-bold text-meridian-accent">130+</p>
+<p class="uppercase text-xs tracking-widest text-white/60">Top Sailors</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Events Section -->
+<!-- BEGIN: Call to Action Section -->
+<section class="py-24 bg-meridian-navy relative overflow-hidden" data-purpose="cta-grid" id="join">
+<!-- Background pattern -->
+<div class="absolute inset-0 opacity-5 pointer-events-none">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center mb-16">
+<h2 class="font-athletic text-4xl font-bold uppercase mb-4">Be Part of the <span class="text-meridian-accent">Legacy</span></h2>
+<p class="max-w-2xl mx-auto text-gray-400 font-medium">Whether you are a budding talent, a seasoned professional, or a passionate supporter, there is a place for you in the Mumbai Meridians family.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Junior Sailing -->
+<div class="bg-white/5 border border-white/10 p-10 rounded-theme text-center flex flex-col items-center cta-button">
+<div class="w-16 h-16 bg-meridian-accent/20 rounded-full flex items-center justify-center mb-6">
+<svg class="w-8 h-8 text-meridian-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h4 class="font-athletic text-2xl font-bold mb-4 uppercase">Junior Sailing</h4>
+<p class="text-gray-400 mb-8 flex-grow">Nurturing the champions of tomorrow. Ages 8-16.</p>
+<button class="w-full py-3 border-2 border-meridian-accent text-meridian-accent font-bold hover:bg-meridian-accent hover:text-white transition-all uppercase tracking-widest text-sm rounded-theme">Enroll Now</button>
+</div>
+<!-- Training Programs -->
+<div class="bg-meridian-accent p-10 rounded-theme text-center flex flex-col items-center cta-button">
+<div class="w-16 h-16 bg-meridian-navy/10 rounded-full flex items-center justify-center mb-6">
+<svg class="w-8 h-8 text-meridian-navy" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04 Pel6 0 002.733 4.385 11.95 11.95 0 01-8.618 3.04 A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h4 class="font-athletic text-2xl font-bold mb-4 uppercase text-white">Training Programs</h4>
+<p class="text-white/80 mb-8 flex-grow">Professional coaching for competitive sailors across all classes.</p>
+<button class="w-full py-3 bg-meridian-navy text-white font-bold hover:bg-white hover:text-meridian-navy transition-all uppercase tracking-widest text-sm rounded-theme">View Courses</button>
+</div>
+<!-- Join the Crew -->
+<div class="bg-white/5 border border-white/10 p-10 rounded-theme text-center flex flex-col items-center cta-button">
+<div class="w-16 h-16 bg-meridian-accent/20 rounded-full flex items-center justify-center mb-6">
+<svg class="w-8 h-8 text-meridian-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h4 class="font-athletic text-2xl font-bold mb-4 uppercase">Join the Crew</h4>
+<p class="text-gray-400 mb-8 flex-grow">Operations, media, or technical support—join our shore team.</p>
+<button class="w-full py-3 border-2 border-meridian-accent text-meridian-accent font-bold hover:bg-meridian-accent hover:text-white transition-all uppercase tracking-widest text-sm rounded-theme">Apply Now</button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Call to Action Section -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="bg-slate-950 py-12 border-t border-white/5" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div>
+<span class="font-athletic text-2xl font-bold tracking-tighter italic">
+            MUMBAI<span class="text-meridian-accent">MERIDIANS</span>
+</span>
+<p class="text-gray-500 text-sm mt-2">© 2025 Mumbai Meridians Sailing Franchise. All Rights Reserved.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-gray-400 hover:text-meridian-accent transition-colors" href="#">Instagram</a>
+<a class="text-gray-400 hover:text-meridian-accent transition-colors" href="#">Twitter/X</a>
+<a class="text-gray-400 hover:text-meridian-accent transition-colors" href="#">Facebook</a>
+<a class="text-gray-400 hover:text-meridian-accent transition-colors" href="#">YouTube</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+<!-- BEGIN: Scripts -->
+<script data-purpose="countdown-logic">
+    // Set the date we're counting down to
+    const countDownDate = new Date("March 27, 2026 09:00:00").getTime();
+
+    // Update the count down every 1 second
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      // Time calculations
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display results
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+
+      // If finished
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "REGATTA IN PROGRESS";
+      }
+    }, 1000);
+  </script>
+<!-- END: Scripts -->
+</body></html>
