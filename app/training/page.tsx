@@ -34,48 +34,59 @@ const trainingPrograms = [
 
 const fleet = [
   {
-    name: 'Optimist',
-    subtitle: 'Junior Development Class',
-    desc: 'The global standard for young sailors under 15. Known for safety and tactical depth.',
-    specs: [
-      { label: 'LENGTH', value: '2.31 M' },
-      { label: 'SAIL AREA', value: '3.3 SQ M' },
-      { label: 'OPTIMAL WEIGHT', value: '35-55 KG' },
-    ],
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDNKO4ZXiqo1GSF-jAMYD37-L0qfjWvxahqzaYkXBMFLlhqPUvQjooLaLZZ63EfRG84PAND2EXUyR3HiaiAFNQj0_05q-SnL1l7wLAEkAxY_WK1KHW6Ues6ZF8k4rzSD8V7XZojDrk3WEr4mHWciem7tSnPncSG6zeQB3VVoP--Q-wwLrUjIDdrt4bMOIzTTHKS-Nx5UZMw72SO0ltqua2TjhGLkTOQ-YIylcNftBppKWnVFB7OArLEXSMDw2uAiFTQXzs1CPd-rVgX',
-  },
-  {
-    name: 'ILCA / Laser',
-    subtitle: 'Single-Handed Olympic Class',
-    desc: 'Demanding, athletic, and purely skill-based. The most popular racing dinghy in the world.',
+    name: 'ILCA 7',
+    subtitle: 'Open Single-Handed Olympic Class',
+    desc: 'The full-rig ILCA — physically demanding and the pinnacle of single-handed dinghy racing. Used in ISL mixed-team competition for senior open sailors.',
     specs: [
       { label: 'LENGTH', value: '4.23 M' },
-      { label: 'SAIL AREA', value: '4.7-7.0 SQ M' },
+      { label: 'SAIL AREA', value: '7.06 SQ M' },
       { label: 'CREW', value: '1 PERSON' },
     ],
     img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB17r5wzNkhgNE43ZncvY7OuKwnSRUAWnNSKhY9S3mfY1EZ6TpGoZ6dSd0HFlqBuyShO8pnKy4FEWxpue73rDuxQDGu-L3OUQtHAMM1v3BHkvYAGJhuwKypUgB9racCVqMEW56Txpc-HVaFvuTe7EgwCEWEFJD03hh4TolkLndMRp0hEszEYwpEPotoRlXe45Jgb7aNYlWYuaZryk46j1g8mnaVCDWYpguMO_C2dnv9e3CuE7sO0EtU-3iaajiF-L8UZkx5lTCEIsl1',
   },
   {
-    name: '420',
-    subtitle: 'Double-Handed Performance',
-    desc: 'Introduces spinnaker and trapeze. Perfect for building teamwork and technical coordination.',
+    name: 'ILCA 6',
+    subtitle: 'Radial Single-Handed Olympic Class',
+    desc: 'The radial-rig ILCA — ideal for lighter athletes and female sailors. A core ISL mixed-team class combining speed with tactical finesse.',
+    specs: [
+      { label: 'LENGTH', value: '4.23 M' },
+      { label: 'SAIL AREA', value: '5.76 SQ M' },
+      { label: 'CREW', value: '1 PERSON' },
+    ],
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB17r5wzNkhgNE43ZncvY7OuKwnSRUAWnNSKhY9S3mfY1EZ6TpGoZ6dSd0HFlqBuyShO8pnKy4FEWxpue73rDuxQDGu-L3OUQtHAMM1v3BHkvYAGJhuwKypUgB9racCVqMEW56Txpc-HVaFvuTe7EgwCEWEFJD03hh4TolkLndMRp0hEszEYwpEPotoRlXe45Jgb7aNYlWYuaZryk46j1g8mnaVCDWYpguMO_C2dnv9e3CuE7sO0EtU-3iaajiF-L8UZkx5lTCEIsl1',
+  },
+  {
+    name: 'ILCA 4',
+    subtitle: 'Junior Single-Handed Class',
+    desc: 'The 4.7-rig ILCA — the perfect step up for junior sailors developing race-level skills. Bridges the gap between Optimist and full Olympic racing.',
+    specs: [
+      { label: 'LENGTH', value: '4.23 M' },
+      { label: 'SAIL AREA', value: '4.70 SQ M' },
+      { label: 'CREW', value: '1 PERSON' },
+    ],
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB17r5wzNkhgNE43ZncvY7OuKwnSRUAWnNSKhY9S3mfY1EZ6TpGoZ6dSd0HFlqBuyShO8pnKy4FEWxpue73rDuxQDGu-L3OUQtHAMM1v3BHkvYAGJhuwKypUgB9racCVqMEW56Txpc-HVaFvuTe7EgwCEWEFJD03hh4TolkLndMRp0hEszEYwpEPotoRlXe45Jgb7aNYlWYuaZryk46j1g8mnaVCDWYpguMO_C2dnv9e3CuE7sO0EtU-3iaajiF-L8UZkx5lTCEIsl1',
+  },
+  {
+    name: 'Optimist',
+    subtitle: 'Junior Development Class',
+    desc: 'The global standard for young sailors under 15. The entry point into ISL competition — known for safety, tactical depth, and worldwide adoption.',
+    specs: [
+      { label: 'LENGTH', value: '2.31 M' },
+      { label: 'SAIL AREA', value: '3.3 SQ M' },
+      { label: 'OPTIMAL WEIGHT', value: '35–55 KG' },
+    ],
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDNKO4ZXiqo1GSF-jAMYD37-L0qfjWvxahqzaYkXBMFLlhqPUvQjooLaLZZ63EfRG84PAND2EXUyR3HiaiAFNQj0_05q-SnL1l7wLAEkAxY_WK1KHW6Ues6ZF8k4rzSD8V7XZojDrk3WEr4mHWciem7tSnPncSG6zeQB3VVoP--Q-wwLrUjIDdrt4bMOIzTTHKS-Nx5UZMw72SO0ltqua2TjhGLkTOQ-YIylcNftBppKWnVFB7OArLEXSMDw2uAiFTQXzs1CPd-rVgX',
+  },
+  {
+    name: '420 Mixed',
+    subtitle: 'Double-Handed Mixed Team Class',
+    desc: 'The ISL\'s mixed double-handed class. Spinnaker, trapeze, and two-person coordination — designed to showcase teamwork across genders in franchise competition.',
     specs: [
       { label: 'LENGTH', value: '4.20 M' },
       { label: 'SAILS', value: 'MAIN, JIB, SPINNAKER' },
-      { label: 'CREW', value: '2 PERSONS' },
+      { label: 'CREW', value: '2 PERSONS (MIXED)' },
     ],
     img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD2GBXeftw_C8fnOjdpu93satdQdsr9EtbD0mjCeFPonhBR8ool3mMCazGUj6BGZffhydcS7mheHmhQCn1u7G5BJa3E7wYPyJcD2XEvE8nrDQmvbFpJExdneZb3HTutPtjnG_NaXM3L9L0I8UefV3vR3ptMDDBx1ywFU_NFZgdHJr5MNLAu3WFJKVum-nTV24NcGMPF6lcIU-278E3MjWvjYDOUHICoEWxMQox5uNcJCkYikUsqL3VFSKf9AkYAkJwNvivb7Qu2Vqyj',
-  },
-  {
-    name: 'Keelboats',
-    subtitle: 'Elite Team Racing',
-    desc: 'Large-scale racing focused on high-level navigation, winch handling, and heavy-weather tactics.',
-    specs: [
-      { label: 'LENGTH', value: '7.0-12.0 M' },
-      { label: 'TYPE', value: 'J70 / SEABIRD' },
-      { label: 'CREW', value: '4-6 PERSONS' },
-    ],
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBeFohQWUNQA20GugVhL18sioB0U3oszpNfWXftO22BcNZ_v5GsjQBqoLQMl8IN1mVQCRcVotrDvfX5C3oi5cGhi6dlzaiQYvWqpYHlBGwg4wrzuQ5zw_cFSrOrVT2mzsox2LJUYVdoyKAtSroO-8jbRsgJpBWTLXbiOSnpwkd_tEXhrHVTOGdyx_1pw_UzqNhaf8eDS6GFOY2DU8GvTI0H8wBwASJOfGWD3zdc_4Oyj359r9Zu3RXueobU7WvyBez9x4V-Lu59t06V',
   },
 ]
 

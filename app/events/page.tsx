@@ -61,7 +61,7 @@ const galleryImages = [
   {
     src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSAmDbYpBJpjaCVPxkNzFclpeTmau1NhpoDZdXqWA4DMZXl3e5vhAfJE36a5tinAux88UxTsM-9uFv1YmJa_qe3Bdb9xY1YRp1JH4ypjtlTU8Wl2_yJjvaqnsMXZm_vhf0Uwo0YBHa-FGBMruBR3jtDyFINMq-JFj4Bjp6DJD58J3lZ-hWGEYRe41jjfUifzE6F9K4rDyJ5XKDv8vq2ivo79C26VszhG51F1DZmD9BHmjE34gO1DEBVJmN8y5gSCZrVTUu-b27bP4f',
     alt: 'Sailing action',
-    caption: 'Sunset Sessions, Marine Drive',
+    caption: 'Sunset Sessions, Umiam Lake',
     span: true,
   },
   {
@@ -109,7 +109,7 @@ export default function EventsPage() {
                     </span>
                     <h3 className="text-3xl md:text-5xl font-black mb-4">Indian Sailing League 2026</h3>
                     <p className="text-meridian-accent text-xl font-semibold mb-4">
-                      Feb 15 – Mar 10, 2026 | Marine Drive, Mumbai
+                      March 27–31, 2026 | Umiam Lake, Shillong
                     </p>
                     <p className="text-gray-300 max-w-xl">
                       The pinnacle of competitive sailing in India. Mumbai Meridians returns to defend the

@@ -46,15 +46,15 @@ function DropdownMenu({
     >
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 font-athletic uppercase tracking-wider text-sm px-1 py-2 border-b-2 transition-colors ${
+        className={`flex items-center gap-1 font-athletic uppercase tracking-wider text-sm px-3 py-2 rounded-full transition-colors ${
           isActive
-            ? 'text-meridian-accent border-meridian-accent'
-            : 'border-transparent hover:text-meridian-accent hover:border-meridian-accent text-white'
+            ? 'text-meridian-accent bg-meridian-accent/15'
+            : 'text-white/80 hover:text-white hover:bg-white/10'
         }`}
       >
         {label}
         <svg
-          className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={`w-3 h-3 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -63,17 +63,16 @@ function DropdownMenu({
         </svg>
       </button>
 
-      {/* Dropdown panel — pt-2 fills the gap so hover stays continuous */}
       <div
-        className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-64 transition-all duration-200 origin-top ${
+        className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 w-64 transition-all duration-200 origin-top ${
           open ? 'opacity-100 scale-y-100 pointer-events-auto' : 'opacity-0 scale-y-95 pointer-events-none'
         }`}
       >
         {/* Arrow tip */}
         <div className="flex justify-center">
-          <div className="w-3 h-3 bg-[#001229] border-l border-t border-meridian-accent/20 rotate-45 -mb-1.5 z-10" />
+          <div className="w-2.5 h-2.5 bg-[#001229]/90 border-l border-t border-white/10 rotate-45 -mb-1.5 z-10" />
         </div>
-        <div className="bg-[#001229] border border-meridian-accent/20 rounded-theme shadow-2xl shadow-black/50 overflow-hidden">
+        <div className="bg-[#001229]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden">
           {items.map((item, i) => (
             <Link
               key={item.href}
@@ -104,178 +103,175 @@ export default function Navigation() {
     paths.some((p) => (p === '/' ? pathname === '/' : pathname.startsWith(p)))
 
   return (
-    <nav className="fixed w-full z-50 bg-meridian-navy/95 backdrop-blur-md border-b border-meridian-accent/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
-
+    <div className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4">
+      {/* Floating pill nav */}
+      <nav className="w-full max-w-4xl">
+        <div
+          className="flex items-center justify-between h-14 px-3 rounded-full
+            bg-meridian-navy/50 backdrop-blur-xl
+            border border-white/10
+            shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.05)]"
+        >
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center min-w-0">
+          <Link href="/" className="flex-shrink-0 flex items-center pl-1">
             <Image
               src="/MM_Logo.svg"
               alt="Mumbai Meridians Logo"
-              width={120}
-              height={56}
-              className="h-16 sm:h-24 object-contain max-w-[160px] sm:max-w-none"
+              width={160}
+              height={60}
+              className="h-14 object-contain"
               style={{ width: 'auto' }}
               priority
             />
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-1 lg:gap-2">
-            {/* Home */}
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-1">
             <Link
               href="/"
-              className={`font-athletic uppercase tracking-wider text-sm px-3 py-2 border-b-2 transition-colors ${
+              className={`font-athletic uppercase tracking-wider text-sm px-3 py-2 rounded-full transition-colors ${
                 pathname === '/'
-                  ? 'text-meridian-accent border-meridian-accent'
-                  : 'text-white border-transparent hover:text-meridian-accent hover:border-meridian-accent'
+                  ? 'text-meridian-accent bg-meridian-accent/15'
+                  : 'text-white/80 hover:text-white hover:bg-white/10'
               }`}
             >
               Home
             </Link>
 
-            {/* Separator */}
-            <div className="w-px h-4 bg-white/10" />
-
-            {/* Programs dropdown */}
             <DropdownMenu
               label="Programs"
               items={programsLinks}
               isActive={isActiveSection(['/junior-sailing', '/training'])}
             />
 
-            {/* Events dropdown */}
             <DropdownMenu
               label="Events & Media"
               items={eventsLinks}
               isActive={isActiveSection(['/events'])}
             />
+          </div>
 
-            {/* Separator */}
-            <div className="w-px h-4 bg-white/10" />
-
-            {/* Join CTA */}
+          {/* Join CTA + mobile burger */}
+          <div className="flex items-center gap-2 pr-1">
             <Link
               href="/junior-sailing#programs"
-              className="ml-2 bg-meridian-accent text-white px-5 py-2.5 rounded-theme font-athletic font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-meridian-navy transition-all shadow-lg shadow-meridian-accent/25"
+              className="hidden md:inline-flex bg-meridian-accent text-white px-5 py-2 rounded-full font-athletic font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-meridian-navy transition-all shadow-md shadow-meridian-accent/30"
             >
               Join Us
             </Link>
-          </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden flex-shrink-0 text-white p-2 rounded-theme hover:bg-white/10 transition-colors"
-            type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-meridian-navy border-t border-meridian-accent/20">
-          <div className="px-4 py-3 space-y-1">
-            <Link
-              href="/"
-              onClick={() => setMobileOpen(false)}
-              className={`block font-athletic uppercase tracking-wider text-sm px-3 py-2.5 rounded-theme transition-colors ${
-                pathname === '/' ? 'text-meridian-accent bg-meridian-accent/10' : 'text-white hover:text-meridian-accent hover:bg-white/5'
-              }`}
+            <button
+              className="md:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors"
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
             >
-              Home
-            </Link>
-
-            {/* Programs accordion */}
-            <div>
-              <button
-                onClick={() => setMobilePrograms(!mobilePrograms)}
-                className={`w-full flex items-center justify-between font-athletic uppercase tracking-wider text-sm px-3 py-2.5 rounded-theme transition-colors ${
-                  isActiveSection(['/junior-sailing', '/training'])
-                    ? 'text-meridian-accent bg-meridian-accent/10'
-                    : 'text-white hover:bg-white/5'
-                }`}
-              >
-                Programs
-                <svg
-                  className={`w-3.5 h-3.5 transition-transform ${mobilePrograms ? 'rotate-180' : ''}`}
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                >
-                  <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
-                </svg>
-              </button>
-              {mobilePrograms && (
-                <div className="mt-1 ml-4 border-l-2 border-meridian-accent/30 pl-3 space-y-1">
-                  {programsLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="block text-gray-300 hover:text-meridian-accent text-sm py-2 px-2 rounded transition-colors font-body"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Events accordion */}
-            <div>
-              <button
-                onClick={() => setMobileEvents(!mobileEvents)}
-                className={`w-full flex items-center justify-between font-athletic uppercase tracking-wider text-sm px-3 py-2.5 rounded-theme transition-colors ${
-                  isActiveSection(['/events'])
-                    ? 'text-meridian-accent bg-meridian-accent/10'
-                    : 'text-white hover:bg-white/5'
-                }`}
-              >
-                Events & Media
-                <svg
-                  className={`w-3.5 h-3.5 transition-transform ${mobileEvents ? 'rotate-180' : ''}`}
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                >
-                  <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
-                </svg>
-              </button>
-              {mobileEvents && (
-                <div className="mt-1 ml-4 border-l-2 border-meridian-accent/30 pl-3 space-y-1">
-                  {eventsLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="block text-gray-300 hover:text-meridian-accent text-sm py-2 px-2 rounded transition-colors font-body"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="pt-2 pb-1">
-              <Link
-                href="/junior-sailing#programs"
-                onClick={() => setMobileOpen(false)}
-                className="block bg-meridian-accent text-white px-4 py-3 rounded-theme font-athletic font-bold text-center uppercase tracking-wider text-sm hover:bg-white hover:text-meridian-navy transition-all"
-              >
-                Join Us
-              </Link>
-            </div>
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
-      )}
-    </nav>
+
+        {/* Mobile dropdown — floats below the pill */}
+        {mobileOpen && (
+          <div className="mt-2 rounded-2xl bg-meridian-navy/80 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 overflow-hidden">
+            <div className="px-3 py-3 space-y-1">
+              <Link
+                href="/"
+                onClick={() => setMobileOpen(false)}
+                className={`block font-athletic uppercase tracking-wider text-sm px-4 py-2.5 rounded-full transition-colors ${
+                  pathname === '/' ? 'text-meridian-accent bg-meridian-accent/15' : 'text-white hover:text-meridian-accent hover:bg-white/5'
+                }`}
+              >
+                Home
+              </Link>
+
+              {/* Programs accordion */}
+              <div>
+                <button
+                  onClick={() => setMobilePrograms(!mobilePrograms)}
+                  className={`w-full flex items-center justify-between font-athletic uppercase tracking-wider text-sm px-4 py-2.5 rounded-full transition-colors ${
+                    isActiveSection(['/junior-sailing', '/training'])
+                      ? 'text-meridian-accent bg-meridian-accent/15'
+                      : 'text-white hover:bg-white/5'
+                  }`}
+                >
+                  Programs
+                  <svg
+                    className={`w-3.5 h-3.5 transition-transform ${mobilePrograms ? 'rotate-180' : ''}`}
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  >
+                    <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
+                  </svg>
+                </button>
+                {mobilePrograms && (
+                  <div className="mt-1 ml-4 border-l-2 border-meridian-accent/30 pl-3 space-y-1">
+                    {programsLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block text-gray-300 hover:text-meridian-accent text-sm py-2 px-2 rounded-full transition-colors font-body"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Events accordion */}
+              <div>
+                <button
+                  onClick={() => setMobileEvents(!mobileEvents)}
+                  className={`w-full flex items-center justify-between font-athletic uppercase tracking-wider text-sm px-4 py-2.5 rounded-full transition-colors ${
+                    isActiveSection(['/events'])
+                      ? 'text-meridian-accent bg-meridian-accent/15'
+                      : 'text-white hover:bg-white/5'
+                  }`}
+                >
+                  Events & Media
+                  <svg
+                    className={`w-3.5 h-3.5 transition-transform ${mobileEvents ? 'rotate-180' : ''}`}
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  >
+                    <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
+                  </svg>
+                </button>
+                {mobileEvents && (
+                  <div className="mt-1 ml-4 border-l-2 border-meridian-accent/30 pl-3 space-y-1">
+                    {eventsLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block text-gray-300 hover:text-meridian-accent text-sm py-2 px-2 rounded-full transition-colors font-body"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="pt-1 pb-1">
+                <Link
+                  href="/junior-sailing#programs"
+                  onClick={() => setMobileOpen(false)}
+                  className="block bg-meridian-accent text-white px-4 py-3 rounded-full font-athletic font-bold text-center uppercase tracking-wider text-sm hover:bg-white hover:text-meridian-navy transition-all"
+                >
+                  Join Us
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
+      </nav>
+    </div>
   )
 }

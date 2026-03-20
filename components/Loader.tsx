@@ -116,6 +116,7 @@ export default function Loader() {
         cancelAnimationFrame(rafId)
         window.removeEventListener('resize', resize)
         document.body.style.overflow = ''
+        ;(window as any).__loaderDone = true
         window.dispatchEvent(new CustomEvent('loader:done'))
         setDone(true)
       },

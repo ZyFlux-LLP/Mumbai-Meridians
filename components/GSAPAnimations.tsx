@@ -122,6 +122,50 @@ export default function GSAPAnimations() {
         })
       })
 
+      // ─── Stats bar reveal + counter (fires on loader:done) ──────
+      const statsBar = document.querySelector<HTMLElement>('[data-gsap="stats-reveal"]')
+      const heroCounterEls = gsap.utils.toArray<HTMLElement>('[data-gsap="counter-reveal"]')
+
+      // Hide stats bar immediately so there's no flash
+      if (statsBar) gsap.set(statsBar, { opacity: 0, y: 36 })
+
+      const STATS_DELAY = 0.75 // fires after the last hero stagger item
+
+      function animateStatsReveal() {
+        // Fade-up the stats bar — same easing as HeroReveal
+        if (statsBar) {
+          gsap.to(statsBar, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: STATS_DELAY,
+            ease: 'power3.out',
+          })
+        }
+        // Count up each number
+        heroCounterEls.forEach((el) => {
+          const raw = el.getAttribute('data-value') ?? '0'
+          const isPlus = raw.endsWith('+')
+          const target = parseInt(raw.replace('+', ''), 10)
+          const obj = { val: 0 }
+          gsap.to(obj, {
+            val: target,
+            duration: 1.8,
+            ease: 'power2.out',
+            delay: STATS_DELAY + 0.2,
+            onUpdate: () => {
+              el.textContent = Math.floor(obj.val) + (isPlus ? '+' : '')
+            },
+          })
+        })
+      }
+
+      if ((window as any).__loaderDone) {
+        animateStatsReveal()
+      } else {
+        window.addEventListener('loader:done', animateStatsReveal, { once: true })
+      }
+
       // ─── Parallax hero image ────────────────────────────────────
       gsap.utils.toArray<HTMLElement>('[data-gsap="parallax"]').forEach((el) => {
         gsap.to(el, {

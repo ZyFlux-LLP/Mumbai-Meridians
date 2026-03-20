@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import HeroReveal from '@/components/HeroReveal'
+import HeroBgVideo from '@/components/HeroBgVideo'
 import Footer from '@/components/Footer'
 import CountdownTimer from '@/components/CountdownTimer'
 
@@ -11,28 +12,42 @@ export default function HomePage() {
       <Navigation />
 
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden w-full py-8">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden w-full pb-24">
         <div className="absolute inset-0 z-0" data-gsap="parallax">
-          <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw_S-jb0QaYzdMUZbkv6B11rehzWF2uZnfD3cTCgBcNafjsruEP005yxhDwzgxhuTwyDIKgqWF23xXX45kwRxMnbENNFIqs_xeG9YReRLcYpl4p8VMp7871FWUAwD81GloPBfoLk4NI6Jiz2xCxmY4nW4dizNb1pyPuXV6FSMfirSzfu3Bv3b7aUe-4PgOlhzZqnw3OMNGHVfYHjw4VNe1FFh8TC6QBNIywlQK8eQs1jrzdFU38q9TBTklfwilPsNdECKGyA0e7aWc"
-            alt="Sailing boat at Umiam Lake"
-            fill
-            className="object-cover scale-110"
-            priority
-          />
+          <HeroBgVideo />
           <div className="absolute inset-0 hero-gradient" />
         </div>
 
         <HeroReveal>
-          <h1 className="font-athletic text-[2.6rem] xs:text-5xl sm:text-7xl md:text-9xl font-extrabold uppercase italic leading-none mb-6">
+          <h1 className="font-athletic text-[2.6rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase italic leading-none mb-6">
             Mumbai{' '}
-            <span className="text-red-500 [text-shadow:0_0_60px_rgba(239,68,68,0.5)]">
+            <span className="text-meridian-accent [text-shadow:0_0_60px_rgba(0,116,228,0.5)]">
               Meridians
             </span>
           </h1>
-          <p className="text-sm sm:text-lg md:text-2xl font-light tracking-[0.1em] sm:tracking-[0.2em] uppercase text-white/80 mb-14">
-            Riding the Winds of Umiam
-          </p>
+          {/* Partner logos — replaces subtitle */}
+          <div className="mb-6">
+            <p className="text-white/35 uppercase tracking-[0.25em] text-[10px] font-athletic mb-3">
+              Official Associations &amp; Partners
+            </p>
+            <div className="flex items-center justify-center gap-8 md:gap-12 flex-wrap">
+              {[
+                { src: '/logos/World_Sailing_logo_local.svg', alt: 'World Sailing', h: 'h-10' },
+                { src: '/logos/YAILOGO-removebg-preview.png', alt: 'YAI', h: 'h-12' },
+                { src: '/logos/isl.png', alt: 'Indian Sailing League', h: 'h-10' },
+                { src: '/logos/yam-removebg-preview.png', alt: 'YAM', h: 'h-10' },
+              ].map((logo) => (
+                <Image
+                  key={logo.alt}
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={160}
+                  height={56}
+                  className={`${logo.h} w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300`}
+                />
+              ))}
+            </div>
+          </div>
 
           {/* Countdown */}
           <div className="bg-meridian-navy/50 backdrop-blur-xl border border-meridian-accent/25 px-6 py-8 inline-block rounded-2xl shadow-2xl shadow-black/40 w-full max-w-xl">
@@ -50,7 +65,7 @@ export default function HomePage() {
           </div>
 
           {/* Hero CTAs */}
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/events#calendar"
               className="bg-meridian-accent text-white px-8 py-3.5 rounded-theme font-athletic font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-meridian-navy transition-all shadow-lg shadow-meridian-accent/30"
@@ -66,32 +81,31 @@ export default function HomePage() {
           </div>
         </HeroReveal>
 
-      </section>
-
-      {/* ── Stats Bar ───────────────────────────────────────────── */}
-      <div className="bg-meridian-accent/10 border-y border-meridian-accent/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center" data-gsap="stagger">
-            {[
-              { stat: '13', value: '13', label: 'ISL Teams' },
-              { stat: '130+', value: '130+', label: 'Elite Sailors' },
-              { stat: '100+', value: '100+', label: 'Certified Juniors' },
-              { stat: '4', value: '4', label: 'Boat Classes' },
-            ].map((item) => (
-              <div key={item.label}>
-                <p
-                  className="font-athletic text-3xl font-bold text-meridian-accent"
-                  data-gsap="counter"
-                  data-value={item.value}
-                >
-                  {item.stat}
-                </p>
-                <p className="text-xs uppercase tracking-widest text-white/50 mt-1">{item.label}</p>
-              </div>
-            ))}
+        {/* ── Stats Bar ─────────────────────────────────────────── */}
+        <div className="absolute bottom-0 left-0 right-0 z-10" data-gsap="stats-reveal">
+          <div className="max-w-4xl mx-auto px-3 py-5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { stat: '0', value: '13', label: 'ISL Teams' },
+                { stat: '0', value: '130+', label: 'Elite Sailors' },
+                { stat: '0', value: '100+', label: 'Certified Juniors' },
+                { stat: '0', value: '6+', label: 'Countries' },
+              ].map((item) => (
+                <div key={item.label}>
+                  <p
+                    className="font-athletic text-3xl font-bold text-meridian-accent"
+                    data-gsap="counter-reveal"
+                    data-value={item.value}
+                  >
+                    {item.stat}
+                  </p>
+                  <p className="text-xs uppercase tracking-widest text-white/50 mt-1">{item.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* ── About ───────────────────────────────────────────────── */}
       <section className="py-28 bg-white text-meridian-navy" id="about">
