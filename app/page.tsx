@@ -159,6 +159,48 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Our Athletes ────────────────────────────────────────── */}
+      <section className="py-28 bg-[#000d1f]" id="athletes">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-gsap="fade-up">
+            <p className="section-label">The Squad</p>
+            <h2 className="font-athletic text-4xl md:text-5xl font-bold uppercase">
+              Meet the <span className="text-meridian-accent">Athletes</span>
+            </h2>
+            <p className="text-white/40 tracking-widest uppercase mt-3 text-sm font-semibold">
+              Mumbai Meridians 2026 Roster
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8" data-gsap="stagger">
+            {[
+              { src: '/media/progya.webp', name: 'Progya Das', role: 'Sailor' },
+              { src: '/media/samanyu-konda.webp', name: 'Samanyu Konda', role: 'Sailor' },
+              { src: '/media/sofia.webp', name: 'Sofiia Magkaeva', role: 'Sailor' },
+              { src: '/media/vivek-singh.webp', name: 'Vivek Singh Shekhawat', role: 'Sailor' },
+              { src: '/media/vritika-san.webp', name: 'Vritika Sandeep Mhatre', role: 'Sailor' },
+              { src: '/media/vikas-kapila.webp', name: 'Vikas Kapila', role: 'Coach' },
+              { src: '/media/mohit-mhatre.webp', name: 'Mohit Mhatre', role: 'Sailor' },
+              { src: '/media/naavya-kaku.webp', name: 'Naavya Kaku', role: 'Sailor' },
+            ].map((athlete) => (
+              <div key={athlete.name} className="group text-center" data-gsap="scale-in">
+                <div className="relative overflow-hidden rounded-2xl mb-4 aspect-square bg-white/5">
+                  <Image
+                    src={athlete.src}
+                    alt={athlete.name}
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <p className="font-athletic font-bold text-white uppercase tracking-wide text-sm">{athlete.name}</p>
+                <p className="text-meridian-accent text-xs uppercase tracking-widest mt-1">{athlete.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Featured Event ──────────────────────────────────────── */}
       <section className="py-28 bg-meridian-navy" id="events">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -177,7 +219,7 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row">
               <div className="md:w-[38%] relative min-h-[280px]">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgrXUdhjBYkkc84nFcod4hvObssM-BDbehIL6bt-Mo5jkCEkFV8crOTb7I1-QdRV15yqNUbn_7pgG2xn1yS8sHlMvCXjD9cy_AJWRNW89aFZ-pjmySiQ-Fv2rPFD9tYpfUymYy8F7HubwTtmXKTrG11YXoFc7o_Kfl26vJZ3-DXqwswXWHf0h5HeTx50Zoq4ks4B5-MNkYhfbE4EexXYWJ7tgLFdrkQ1kWvp-rvxlP8v62Rf65uLakIzxmdcOUw9gWGS32sssgb7ed"
+                  src="/media/isl-2026-poster.webp"
                   alt="Indian Sailing League 2026"
                   fill
                   className="object-cover"

@@ -10,33 +10,54 @@ export const metadata: Metadata = {
 
 const teamMembers = [
   {
-    name: 'Vikram Singh',
-    role: 'Head Coach / Tactical Lead',
-    bio: 'Former Olympian with 20+ years of racing experience across the Mediterranean and Asian circuits.',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDyrVIUzEbGCNgumAj2IMXZ0SewS95cF_YFsnHN3I1WiGFcjGUetdZ2QnXVWxdR-AscKd8DNHI6GTc_AM2tbBFdlY02VATO6wAefzrL31X1YM_V7ZCeGTAJgYbT233Yw6qAZ2XhLI6QliQuUDmS1ACxGN-keOl-mPOnn7U-RopRPly-9cl8dGG_KnivnzGRDXySHG9MJwmL_lh5XNCr-4BhgqSHix7rtQnZKAelP-dJxSIwWxmW0uyd1nxgeL-qPe3503lhFR_e_s7s',
+    name: 'Sandeep Mhatre',
+    role: 'Captain',
+    img: null as string | null,
     borderColor: 'border-meridian-gold',
   },
   {
-    name: 'Ananya Rao',
-    role: 'Lead Helmsman',
-    bio: 'Two-time national champion known for her fearless starts and exceptional boat handling.',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCcTUhi16l1l5iPcsR55zmmWzlF1xTyh-SgA2NQ4SMi6J8hvZXwXFzrnCH66v_hV8QIosXOuYpa2nr2TP1Mshmz4ObQDdgeDL1R2WgMWcf2xoMa3Zzoi91cJrj7yyJG9U98YvzfH9va0S8ftAVp6FjM3qZvbFPzfPckAqVEjVxDJikRMLOsvxoypb2z7gwVXtkZ1tucR8La2qB2lsBBsAXyiEYevIQ1GdWGHhVwiT2zKDWvXy-Uf9Do99YnRLGF_6MhFBclhE9kY3z4',
-    borderColor: 'border-meridian-accent',
-  },
-  {
-    name: 'Rohan Mehta',
-    role: 'Main Trimmer',
-    bio: 'An engineering prodigy who brings data-driven precision to the sail trim of our J/70 squad.',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD5E4A49Jhb3W9eg3bieqkh_YpMlSumZBTqCRyC_7C0Wh_365bOauSg_MwYyf_UYO4BAKfvulUv1W6MiLu9ozRWUO3XoWhLA47h0wRxCxY5kX5-Cvhi29lyVqRJ97JqqaL783gjq5X9xEw7UNQkjWj3Zv9qposvxgNkfqlzomZrM3iUmC5zt08yIFuPxXnHD14GrHhhrLMlJJTFYSYUDRXctLSBEbtqXjJgByNqw62QCJpaUEYLaL5QqBSka8ucsyO6-fCdPwVJGfdH',
-    borderColor: 'border-meridian-accent',
-  },
-  {
-    name: 'Sarah Fernandes',
-    role: 'Fitness & Mental Coach',
-    bio: 'Ensuring our sailors are in peak physical and mental condition for grueling endurance regattas.',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDW-AJLxAAwFaHKn_Kk_cl0VX6SI8S9B2lme7Fa9jpmhEXFS-W3O-SfyAH7w9R66yfuImKQSfY7Dk8iyytDpvYtBdTM_OOGVXAfkj-MRPoCbAzE1dRaLYzSlZXQSlH05oWcNQ6HABDUVTSht9gqtGOZYp8vEjvSRwnrN8kXcAzpGjuAOHeTOQwoI3zZpMs9mg4xBVNLaOyXgAIBf0nxizF8i8lC1S5BYnnvTTgYq2Fl1pSZNOw11npx-p18n0bW-fRSjLRzoJD14xnc',
+    name: 'Vikas Kapila',
+    role: 'Coach',
+    img: '/media/vikas-kapila.webp',
     borderColor: 'border-meridian-gold',
   },
+  {
+    name: 'Shilpa Oberoi',
+    role: 'Manager',
+    img: null as string | null,
+    borderColor: 'border-meridian-accent',
+  },
+  {
+    name: 'Prashant Jadhav',
+    role: 'Manager',
+    img: null as string | null,
+    borderColor: 'border-meridian-accent',
+  },
+  {
+    name: 'Sagar ShivajiRao Jondhale',
+    role: 'Manager',
+    img: null as string | null,
+    borderColor: 'border-meridian-accent',
+  },
+]
+
+const sailors = [
+  { name: 'Progya Das', img: '/media/progya.webp' },
+  { name: 'Jhunusree Das', img: null as string | null },
+  { name: 'Arjun Marathe', img: null as string | null },
+  { name: 'Sofiia Magkaeva', img: '/media/sofia.webp' },
+  { name: 'Vivek Singh Shekhawat', img: '/media/vivek-singh.webp' },
+  { name: 'Vritika Sandeep Mhatre', img: '/media/vritika-san.webp' },
+  { name: 'Muhammad Asnawi Iqbal Bin Adam', img: null as string | null },
+  { name: 'Pallara Govardhan', img: null as string | null },
+  { name: 'Samanyu Konda', img: '/media/samanyu-konda.webp' },
+  { name: 'Miron Klimov', img: null as string | null },
+  { name: 'Aleksandra Deputova', img: null as string | null },
+  { name: 'Daniyar Nabiev', img: null as string | null },
+  { name: 'Aryan Karwar', img: null as string | null },
+  { name: 'Subbotina Alexandrian', img: null as string | null },
+  { name: 'Mohit Mhatre', img: '/media/mohit-mhatre.webp' },
+  { name: 'Naavya Kaku', img: '/media/naavya-kaku.webp' },
 ]
 
 const upcomingEvents = [
@@ -59,26 +80,26 @@ const upcomingEvents = [
 
 const galleryImages = [
   {
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSAmDbYpBJpjaCVPxkNzFclpeTmau1NhpoDZdXqWA4DMZXl3e5vhAfJE36a5tinAux88UxTsM-9uFv1YmJa_qe3Bdb9xY1YRp1JH4ypjtlTU8Wl2_yJjvaqnsMXZm_vhf0Uwo0YBHa-FGBMruBR3jtDyFINMq-JFj4Bjp6DJD58J3lZ-hWGEYRe41jjfUifzE6F9K4rDyJ5XKDv8vq2ivo79C26VszhG51F1DZmD9BHmjE34gO1DEBVJmN8y5gSCZrVTUu-b27bP4f',
-    alt: 'Sailing action',
-    caption: 'Sunset Sessions, Umiam Lake',
+    src: '/media/gallery-2.webp',
+    alt: 'Mumbai Meridians at Umiam, Shillong',
+    caption: 'ISL 2026 — Umiam Lake, Shillong',
     span: true,
   },
   {
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDTXhFnBd_m6bjJsKXBipThBPpK_ZFBGGzOrPJVJa2xmAvDbvD2R0l-PxHt7Gd64YFlOGaJNNCdCgKZjcOJX2TApEUmKmpbT5W6m8zgGu2ZX872yBJnAAUSrTywQzM4QnEBiX0EF3MZY0TNLCoWqZ1rJ_Ehlu5W52V29c1USo-YD3Ho_CCHTvyIu2yQAsuF0yXIoOFHwsQjaV5ZcJZn88C3Bfq-_yDPKM85gjw8qmkb7uTeRlstmpW5v61kfJO2Xyfk-mv3pUq1787X',
-    alt: 'Team strategy',
+    src: '/media/gallery-3.webp',
+    alt: 'Team together — ISL 2026',
   },
   {
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCco7HEX-nZB6QZlZb2WtV-XGQFU3dDcCd1bayF7E6DkqmJSaUjeXOv4WNxKGc7F28Ngrwc4-B5klAsxwGygSNKHnhXXNJkbr0MA8HLUi8A0gFcaKZD8je4RJPFQQv2sY5mAbBoLQb650jJd_duCL6pzgPr9kTOuH9upX6NsE_-XnMSgM5pFmFfdvwnM-4toN5W-GKGSgwG-HPKt-3J7a4gXofxGPISocuWRuMyvZ4bzYrd96F6mvdocYKQZpPFNMrNNPWLy9cv7o30',
-    alt: 'Boat maintenance',
+    src: '/media/india-sailing-medals.webp',
+    alt: 'India wins 8 medals — Singapore National Sailing',
   },
   {
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDv8zgCMiFCieV53O5-xBasCvZBK5ZFkaV2vuWEGT4ZiIFCrkyhmI4tCBcRbLsngL--zPGew0rXqbXS389iIPjxvoAuro22SJW-YBIfCdFxCGRkd-TBeF-SJMS5XyeEmU_EHuDjS33NZ6-ig7pTO1CLyz5YZ89WGtqSe4g81Wief9bPeYpMX799WZHexASDMZL-MYyyu7xKnzX-vTm86Q2asyGJIP8TGAnztCoJlwzKdbF2Km7ozo3E_e2KaNBc_Jl0-qAHfximGu_1',
-    alt: 'Award ceremony',
+    src: '/media/event-1.webp',
+    alt: 'Mumbai Meridians ISL 2026',
   },
   {
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDuwpPgw04hzgURpt1YZE9AOCcQQIDjEdeNPGQQuQGtDV3byIEVgnwtxQYIi02ZHHTMX95sz6pz2uzoELg_3W93q7LDYiDIh08IA9e8diIqjuEEgRKHJmLxTgSa8mZph-ChZpvuA7veWPfZ5x6OnAhDh0tiQDImEqYfhGwT7KVaiAnEO6M_UHV6_b3V5R-Qmg-2OfrNr6G4Qy0RmodM5t83yWatgXW817X_cyhIJFXzCo7TM8XDOk4-QVCJjOjgcvupubXT3Y9nhSwQ',
-    alt: 'Junior clinic',
+    src: '/media/event-2.webp',
+    alt: 'Mumbai Meridians at Shillong',
   },
 ]
 
@@ -160,26 +181,56 @@ export default function EventsPage() {
             <div className="text-center mb-16" data-gsap="fade-up">
               <h2 className="text-4xl font-extrabold mb-4">Meet the Team</h2>
               <p className="text-meridian-accent text-lg max-w-2xl mx-auto">
-                The strength of the meridian lies in our people. From world-class tactical coaches to our
-                champion sailors.
+                The official Mumbai Meridians squad for ISL 2026 — March 27–31, Umiam Lake, Shillong.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10" data-gsap="stagger">
+            {/* Leadership */}
+            <h3 className="text-xs font-bold tracking-[0.3em] uppercase text-meridian-accent mb-8">Leadership</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 mb-16" data-gsap="stagger">
               {teamMembers.map((member) => (
                 <div key={member.name} className="text-center group">
-                  <div className="mb-6 relative mx-auto w-48 h-48">
-                    <Image
-                      src={member.img}
-                      alt={member.name}
-                      fill
-                      className={`rounded-theme object-cover border-4 ${member.borderColor} group-hover:scale-105 transition-transform`}
-                    />
-                    <div className="absolute inset-0 rounded-theme bg-meridian-navy opacity-0 group-hover:opacity-10 transition-opacity" />
+                  <div className="mb-4 relative mx-auto w-28 h-28">
+                    {member.img ? (
+                      <Image
+                        src={member.img}
+                        alt={member.name}
+                        fill
+                        className={`rounded-full object-cover object-center border-4 ${member.borderColor} group-hover:scale-105 transition-transform`}
+                      />
+                    ) : (
+                      <div className={`w-full h-full rounded-full border-4 ${member.borderColor} bg-white/5 flex items-center justify-center`}>
+                        <span className="text-2xl font-bold text-white/40">{member.name.charAt(0)}</span>
+                      </div>
+                    )}
                   </div>
-                  <h4 className="text-xl font-bold">{member.name}</h4>
-                  <p className="text-meridian-gold font-medium text-sm mb-3">{member.role}</p>
-                  <p className="text-gray-400 text-sm px-4">{member.bio}</p>
+                  <h4 className="text-sm font-bold">{member.name}</h4>
+                  <p className="text-meridian-gold font-medium text-xs mt-1">{member.role}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Sailors Roster */}
+            <h3 className="text-xs font-bold tracking-[0.3em] uppercase text-meridian-accent mb-8">Sailors — ISL 2026 Roster</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6" data-gsap="stagger">
+              {sailors.map((sailor) => (
+                <div key={sailor.name} className="text-center group">
+                  <div className="mb-3 relative mx-auto w-20 h-20">
+                    {sailor.img ? (
+                      <Image
+                        src={sailor.img}
+                        alt={sailor.name}
+                        fill
+                        className="rounded-full object-cover object-center border-2 border-meridian-accent/40 group-hover:border-meridian-accent group-hover:scale-105 transition-all"
+                      />
+                    ) : (
+                      <div className="w-full h-full rounded-full border-2 border-white/10 bg-white/5 flex items-center justify-center">
+                        <span className="text-lg font-bold text-white/30">{sailor.name.charAt(0)}</span>
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-xs font-semibold text-white/80 leading-tight">{sailor.name}</p>
+                  <p className="text-[10px] text-meridian-accent/60 uppercase tracking-wider mt-0.5">Sailor</p>
                 </div>
               ))}
             </div>
