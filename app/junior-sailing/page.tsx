@@ -260,12 +260,12 @@ export default function JuniorSailingPage() {
             Registration for the Monsoon &amp; Winter seasons is now open. Secure your spot in the squad.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <a
-              href="#programs"
+            <Link
+              href="/contact"
               className="bg-sea-blue text-meridian-navy px-12 py-5 font-black uppercase tracking-widest hover:bg-white transition-all duration-300 rounded-custom shadow-lg shadow-sea-blue/20"
             >
               Register Now
-            </a>
+            </Link>
             <a
               href="#"
               className="border-2 border-slate-700 px-12 py-5 font-black uppercase tracking-widest hover:border-white hover:text-white transition-all duration-300 rounded-custom"

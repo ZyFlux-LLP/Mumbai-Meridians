@@ -33,6 +33,12 @@ export default function HeroReveal({ children }: { children: React.ReactNode }) 
       })
     }
 
+    // If loader:done already fired before this effect ran, trigger immediately
+    if ((window as any).__loaderDone) {
+      handleReveal()
+      return
+    }
+
     window.addEventListener('loader:done', handleReveal)
     return () => window.removeEventListener('loader:done', handleReveal)
   }, [])

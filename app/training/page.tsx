@@ -217,57 +217,6 @@ export default function TrainingPage() {
           </div>
         </section>
 
-        {/* Facilities */}
-        <section className="py-24 bg-sea-blue text-meridian-navy">
-          <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="md:w-1/2" data-gsap="fade-left">
-                <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2">Environment</h2>
-                <h3 className="text-4xl font-black uppercase italic mb-6 font-athletic">Our Facilities</h3>
-                <p className="text-lg font-medium leading-relaxed mb-8">
-                  Operating out of the premier sailing hubs in Mumbai, our training center offers direct
-                  access to diverse tidal conditions. We maintain a rigorous maintenance schedule to ensure
-                  every boat in our fleet is race-ready at all times.
-                </p>
-                <div className="grid grid-cols-2 gap-6">
-                  {facilities.map((f) => (
-                    <div key={f.label} className="border-l-4 border-meridian-navy pl-4">
-                      <p className="text-2xl font-black italic">{f.stat}</p>
-                      <p className="text-xs uppercase font-bold">{f.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="md:w-1/2 grid grid-cols-2 gap-4" data-gsap="fade-right">
-                <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaaiZ3cPIKgQZPvKjCNTlNmUJ-D_uVUivekZiKRmGpxszQz0y2KN9Gqm8nZ92foY-ZJOVy7OFHGEDYOw-j0ByEXkgbOgXa_0EulKfj-WPp--I5K0U8rOCsHJI4rVZwlHAhIhFhdYmT1Z2CLmcUtTTFfKO52FiBqdVJmGpkrwnGpMgNZ_c0OhtXgUX15rorYBtzABLr4OaHliXJgErkYf-IjgwdIv3DM-L0U4_gAaTXG4x6EgpI4F3g1O7Bz-1KpaIhe1Zo2ILtt6Jo"
-                  alt="Maintenance Bay"
-                  width={400}
-                  height={500}
-                  className="w-full h-full object-cover rounded-custom shadow-xl"
-                />
-                <div className="flex flex-col gap-4">
-                  <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtAvMlqSm_gtppIPWOSDOca9J6PcUZ0G1xf0MObPWf0tCEAtHrNoIwckRTyXr3IagRjbO7yxnnIflYkFp9uAwBs_vpdicqjJLxK9cB5Brd0p6kJz9Os0_fU595zXJysozFF9UFH0lO5e571e9vPrTT1gVekyXZ4g4naOrUH1Zctsjuo-cBNBAzHgrZYJw8vDL6Ywpne-fsYtyVukRhojcT3-mXa5mo_cekyoprwYC7NKSoz05U1__tVuAzRAT7ZaLMfMKa1vJpFKXP"
-                    alt="Tidal Simulator"
-                    width={400}
-                    height={240}
-                    className="w-full h-full object-cover rounded-custom shadow-xl"
-                  />
-                  <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpDzuD7b2QqFFcvIxhhDgqhmDJ5NUaoZrNXCh-fkEbIAlfuxl82PWBGJnnWrsLCFlzHTSxfMlMBy5j5IxtW08JqbgEJPI09K82TXmrUWb5O4flQfwPn18s3wG5Ap6VwDPe895X27tWuVsrbibDi_Noe8F1ZHJ1WOoVoNypJE5b5L2ETaAn8kBaqDVCIvAHszTz6oOXC62xAAzO7dOnSMo1TNKThLw7g9AUg2pkDoE66snah8qZegZIa1_M5g5K_zzEtue8-pJmYWTD"
-                    alt="Equipment Room"
-                    width={400}
-                    height={240}
-                    className="w-full h-full object-cover rounded-custom shadow-xl"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA Banner */}
         <section className="py-20 bg-meridian-navy border-y border-sea-blue/20">
           <div className="container mx-auto px-6 text-center">
@@ -282,7 +231,7 @@ export default function TrainingPage() {
                 Download Fleet Guide
               </a>
               <a
-                href="/junior-sailing#programs"
+                href="/contact"
                 className="border-2 border-sea-blue text-sea-blue px-10 py-4 font-black uppercase text-sm tracking-widest hover:bg-sea-blue hover:text-meridian-navy transition-all rounded-custom"
               >
                 Book Trial Session

@@ -4,6 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
+import gsap from 'gsap'
+
+let navHasAnimated = false
 
 const programsLinks = [
   { href: '/junior-sailing', label: 'Junior Sailing', desc: 'Ages 6–18 sailing academy' },
@@ -99,11 +102,81 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobilePrograms, setMobilePrograms] = useState(false)
   const [mobileEvents, setMobileEvents] = useState(false)
+  const navRef = useRef<HTMLDivElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const programsMenuRef = useRef<HTMLDivElement>(null)
+  const eventsMenuRef = useRef<HTMLDivElement>(null)
   const isActiveSection = (paths: string[]) =>
     paths.some((p) => (p === '/' ? pathname === '/' : pathname.startsWith(p)))
 
+  useEffect(() => {
+    if (!navRef.current) return
+
+    // Already animated in this JS session, or loader was skipped — show immediately
+    if (navHasAnimated || (window as any).__loaderDone) {
+      gsap.set(navRef.current, { opacity: 1, y: 0 })
+      navHasAnimated = true
+      return
+    }
+
+    gsap.set(navRef.current, { opacity: 0, y: -24 })
+
+    function handleReveal() {
+      navHasAnimated = true
+      gsap.to(navRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: 0.1,
+      })
+    }
+
+    // If loader:done already fired before this effect ran, trigger immediately
+    if ((window as any).__loaderDone) {
+      handleReveal()
+      return
+    }
+
+    window.addEventListener('loader:done', handleReveal)
+    return () => window.removeEventListener('loader:done', handleReveal)
+  }, [])
+
+  useEffect(() => {
+    if (!mobileMenuRef.current) return
+    if (!mobileOpen) {
+      setMobilePrograms(false)
+      setMobileEvents(false)
+    }
+    gsap.to(mobileMenuRef.current, {
+      opacity: mobileOpen ? 1 : 0,
+      y: mobileOpen ? 0 : -8,
+      pointerEvents: mobileOpen ? 'auto' : 'none',
+      duration: mobileOpen ? 0.3 : 0.2,
+      ease: mobileOpen ? 'power2.out' : 'power2.in',
+    })
+  }, [mobileOpen])
+
+  useEffect(() => {
+    if (!programsMenuRef.current) return
+    if (mobilePrograms) {
+      gsap.to(programsMenuRef.current, { height: 'auto', opacity: 1, duration: 0.25, ease: 'power2.out' })
+    } else {
+      gsap.to(programsMenuRef.current, { height: 0, opacity: 0, duration: 0.2, ease: 'power2.in' })
+    }
+  }, [mobilePrograms])
+
+  useEffect(() => {
+    if (!eventsMenuRef.current) return
+    if (mobileEvents) {
+      gsap.to(eventsMenuRef.current, { height: 'auto', opacity: 1, duration: 0.25, ease: 'power2.out' })
+    } else {
+      gsap.to(eventsMenuRef.current, { height: 0, opacity: 0, duration: 0.2, ease: 'power2.in' })
+    }
+  }, [mobileEvents])
+
   return (
-    <div className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4">
+    <div ref={navRef} className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4">
       {/* Floating pill nav */}
       <nav className="w-full max-w-4xl">
         <div
@@ -115,12 +188,12 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center pl-1">
             <Image
-              src="/MM_Logo.svg"
+              src="/MM_Logo.png"
               alt="Mumbai Meridians Logo"
-              width={160}
-              height={60}
-              className="h-14 object-contain"
-              style={{ width: 'auto' }}
+              width={48}
+              height={48}
+              className="h-10 w-10 md:h-12 md:w-12 object-contain"
+              style={{ mixBlendMode: 'screen' }}
               priority
             />
           </Link>
@@ -149,12 +222,23 @@ export default function Navigation() {
               items={eventsLinks}
               isActive={isActiveSection(['/events'])}
             />
+
+            <Link
+              href="/contact"
+              className={`font-athletic uppercase tracking-wider text-sm px-3 py-2 rounded-full transition-colors ${
+                pathname === '/contact'
+                  ? 'text-meridian-accent bg-meridian-accent/15'
+                  : 'text-white/80 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              Contact
+            </Link>
           </div>
 
           {/* Join CTA + mobile burger */}
           <div className="flex items-center gap-2 pr-1">
             <Link
-              href="/junior-sailing#programs"
+              href="/contact"
               className="hidden md:inline-flex bg-meridian-accent text-white px-5 py-2 rounded-full font-athletic font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-meridian-navy transition-all shadow-md shadow-meridian-accent/30"
             >
               Join Us
@@ -178,8 +262,11 @@ export default function Navigation() {
         </div>
 
         {/* Mobile dropdown — floats below the pill */}
-        {mobileOpen && (
-          <div className="mt-2 rounded-2xl bg-meridian-navy/80 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 overflow-hidden">
+        <div
+          ref={mobileMenuRef}
+          style={{ opacity: 0, pointerEvents: 'none' }}
+          className="mt-2 rounded-2xl bg-meridian-navy/80 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 overflow-hidden"
+        >
             <div className="px-3 py-3 space-y-1">
               <Link
                 href="/"
@@ -209,20 +296,18 @@ export default function Navigation() {
                     <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
                   </svg>
                 </button>
-                {mobilePrograms && (
-                  <div className="mt-1 ml-4 border-l-2 border-meridian-accent/30 pl-3 space-y-1">
-                    {programsLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="block text-gray-300 hover:text-meridian-accent text-sm py-2 px-2 rounded-full transition-colors font-body"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                <div ref={programsMenuRef} style={{ height: 0, overflow: 'hidden', opacity: 0 }} className="mt-1 ml-4 border-l-2 border-meridian-accent/30 pl-3 space-y-1">
+                  {programsLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block text-gray-300 hover:text-meridian-accent text-sm py-2 px-2 rounded-full transition-colors font-body"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
 
               {/* Events accordion */}
@@ -243,25 +328,33 @@ export default function Navigation() {
                     <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
                   </svg>
                 </button>
-                {mobileEvents && (
-                  <div className="mt-1 ml-4 border-l-2 border-meridian-accent/30 pl-3 space-y-1">
-                    {eventsLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="block text-gray-300 hover:text-meridian-accent text-sm py-2 px-2 rounded-full transition-colors font-body"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                <div ref={eventsMenuRef} style={{ height: 0, overflow: 'hidden', opacity: 0 }} className="mt-1 ml-4 border-l-2 border-meridian-accent/30 pl-3 space-y-1">
+                  {eventsLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block text-gray-300 hover:text-meridian-accent text-sm py-2 px-2 rounded-full transition-colors font-body"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
+
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className={`block font-athletic uppercase tracking-wider text-sm px-4 py-2.5 rounded-full transition-colors ${
+                  pathname === '/contact' ? 'text-meridian-accent bg-meridian-accent/15' : 'text-white hover:text-meridian-accent hover:bg-white/5'
+                }`}
+              >
+                Contact
+              </Link>
 
               <div className="pt-1 pb-1">
                 <Link
-                  href="/junior-sailing#programs"
+                  href="/contact"
                   onClick={() => setMobileOpen(false)}
                   className="block bg-meridian-accent text-white px-4 py-3 rounded-full font-athletic font-bold text-center uppercase tracking-wider text-sm hover:bg-white hover:text-meridian-navy transition-all"
                 >
@@ -269,8 +362,7 @@ export default function Navigation() {
                 </Link>
               </div>
             </div>
-          </div>
-        )}
+        </div>
       </nav>
     </div>
   )

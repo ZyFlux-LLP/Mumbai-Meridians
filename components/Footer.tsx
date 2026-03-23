@@ -12,6 +12,11 @@ const footerLinks = {
     { label: 'Meet the Team', href: '/events#team' },
     { label: 'Media Gallery', href: '/events#gallery' },
   ],
+  'Connect': [
+    { label: 'Contact Us', href: '/contact' },
+    { label: 'Sponsorship', href: '/contact' },
+    { label: 'Join the Team', href: '/contact' },
+  ],
 }
 
 const socials = [
@@ -56,12 +61,12 @@ export default function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="inline-flex items-center mb-4">
               <Image
-                src="/MM_Logo.svg"
+                src="/MM_Logo.png"
                 alt="Mumbai Meridians Logo"
-                width={160}
-                height={60}
-                className="h-20 object-contain"
-                style={{ width: 'auto' }}
+                width={80}
+                height={80}
+                className="h-20 w-20 object-contain"
+                style={{ mixBlendMode: 'screen' }}
               />
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-6">
@@ -93,7 +98,7 @@ export default function Footer() {
               </h5>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link.href}>
+                  <li key={link.label}>
                     <Link
                       href={link.href}
                       className="text-gray-500 hover:text-white text-sm transition-colors"

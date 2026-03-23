@@ -12,6 +12,15 @@ export default function Loader() {
   const [done, setDone] = useState(false)
 
   useEffect(() => {
+    // Skip loader if already played this session
+    if (sessionStorage.getItem('mm_loader_played')) {
+      document.body.style.overflow = ''
+      ;(window as any).__loaderDone = true
+      window.dispatchEvent(new CustomEvent('loader:done'))
+      setDone(true)
+      return
+    }
+
     document.body.style.overflow = 'hidden'
 
     const canvas = canvasRef.current
@@ -116,6 +125,7 @@ export default function Loader() {
         cancelAnimationFrame(rafId)
         window.removeEventListener('resize', resize)
         document.body.style.overflow = ''
+        sessionStorage.setItem('mm_loader_played', '1')
         ;(window as any).__loaderDone = true
         window.dispatchEvent(new CustomEvent('loader:done'))
         setDone(true)
@@ -144,12 +154,12 @@ export default function Loader() {
         {/* Logo above text */}
         <div className="flex justify-center mb-6">
           <Image
-            src="/MM_Logo.svg"
+            src="/MM_Logo.png"
             alt="Mumbai Meridians"
-            width={120}
-            height={120}
-            className="h-32 object-contain"
-            style={{ width: 'auto' }}
+            width={128}
+            height={128}
+            className="h-32 w-32 object-contain"
+            style={{ mixBlendMode: 'screen' }}
             priority
           />
         </div>

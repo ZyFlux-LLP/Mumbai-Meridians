@@ -142,7 +142,7 @@ export default function HomePage() {
             <div className="lg:w-1/2 relative mt-8 lg:mt-0" data-gsap="fade-right">
               <div className="relative z-10" data-gsap="scale-in">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcVrcji0hmBa1Opahc0TVcKcCYjHtaU3HYcHR8ZOIoDcNqWx48kpfaiD6YWdYku05RqJfyoTerzSvFzj6_WKt-D9vl-TM2IXFamVYEVRrCXY2jr8603oJCrkErDERBnY5ps0KM5H7GX1NXTDI0WoHl8VAG3ZvcRtf7x06ouMHNeKl89GHfNHdYQp-hQFBrfsJde4JpcLknpkJh5Ke8mWfO1XFuE9I-9ULAjpfrZ_di7cIw76Z0aHYeyVMgo81VhEVHumQ_GV5h_qxw"
+                  src="/cover.jpg"
                   alt="High performance sailing action"
                   width={640}
                   height={480}
@@ -217,12 +217,12 @@ export default function HomePage() {
             data-gsap="scale-in"
           >
             <div className="flex flex-col md:flex-row">
-              <div className="md:w-[38%] relative min-h-[280px]">
+              <div className="md:w-[38%] relative aspect-[3/4] md:aspect-auto md:min-h-[380px]">
                 <Image
                   src="/media/isl-2026-poster.webp"
                   alt="Indian Sailing League 2026"
                   fill
-                  className="object-cover"
+                  className="object-contain md:object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#000d1f]/60" />
               </div>
