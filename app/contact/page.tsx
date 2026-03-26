@@ -1,8 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+
+const SERVICE_ID  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!
+const PUBLIC_KEY  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
 
 const subjects = [
   'General Inquiry',
@@ -38,42 +43,24 @@ const contactInfo = [
 ]
 
 export default function ContactPage() {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: subjects[0],
-    message: '',
-  })
+  const formRef = useRef<HTMLFormElement>(null)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!formRef.current) return
+
     setStatus('loading')
     setErrorMsg('')
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-      const data = await res.json()
-
-      if (!res.ok) {
-        setErrorMsg(data.error || 'Something went wrong.')
-        setStatus('error')
-      } else {
-        setStatus('success')
-        setForm({ name: '', email: '', phone: '', subject: subjects[0], message: '' })
-      }
-    } catch {
-      setErrorMsg('Network error. Please try again.')
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      setStatus('success')
+      formRef.current.reset()
+    } catch (err: any) {
+      console.error('[emailjs]', err)
+      setErrorMsg('Failed to send. Please try again or email us directly.')
       setStatus('error')
     }
   }
@@ -121,7 +108,6 @@ export default function ContactPage() {
               </div>
             ))}
 
-            {/* Decorative quote */}
             <div className="border-l-4 border-meridian-accent/40 pl-5 mt-2">
               <p className="text-gray-400 italic text-sm leading-relaxed">
                 "The wind and the waves are always on the side of the ablest navigator."
@@ -133,7 +119,7 @@ export default function ContactPage() {
           </div>
 
           {/* Right — form */}
-          <div className="lg:col-span-3" data-gsap="fade-right">
+          <div className="lg:col-span-3">
             {status === 'success' ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-20 bg-white/5 border border-meridian-accent/20 rounded-3xl px-8">
                 <div className="w-16 h-16 rounded-full bg-meridian-accent/20 flex items-center justify-center mb-6">
@@ -154,6 +140,7 @@ export default function ContactPage() {
               </div>
             ) : (
               <form
+                ref={formRef}
                 onSubmit={handleSubmit}
                 className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-10 space-y-6"
               >
@@ -166,9 +153,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
+                      name="from_name"
                       required
                       placeholder="Your name"
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-meridian-accent/60 focus:bg-meridian-accent/5 transition-all text-sm"
@@ -180,9 +165,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
+                      name="from_email"
                       required
                       placeholder="your@email.com"
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-meridian-accent/60 focus:bg-meridian-accent/5 transition-all text-sm"
@@ -198,8 +181,6 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
                       placeholder="+91 XXXXX XXXXX"
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-meridian-accent/60 focus:bg-meridian-accent/5 transition-all text-sm"
                     />
@@ -210,8 +191,7 @@ export default function ContactPage() {
                     </label>
                     <select
                       name="subject"
-                      value={form.subject}
-                      onChange={handleChange}
+                      defaultValue={subjects[0]}
                       className="w-full bg-[#001229] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-meridian-accent/60 transition-all text-sm appearance-none cursor-pointer"
                     >
                       {subjects.map((s) => (
@@ -227,8 +207,6 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     name="message"
-                    value={form.message}
-                    onChange={handleChange}
                     required
                     rows={5}
                     placeholder="Tell us how we can help..."
