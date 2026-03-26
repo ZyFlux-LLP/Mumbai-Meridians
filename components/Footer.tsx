@@ -8,13 +8,11 @@ const footerLinks = {
     { label: 'Our Fleet', href: '/training#fleet' },
   ],
   'Events & Media': [
-    { label: 'Race Calendar', href: '/events#calendar' },
     { label: 'Meet the Team', href: '/events#team' },
-    { label: 'Media Gallery', href: '/events#gallery' },
+    { label: 'Media Gallery', href: '/media' },
   ],
   'Connect': [
     { label: 'Contact Us', href: '/contact' },
-    { label: 'Sponsorship', href: '/contact' },
     { label: 'Join the Team', href: '/contact' },
   ],
 }

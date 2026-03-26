@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   title: 'Mumbai Meridians | Riding the Winds of Umiam',
   description:
     "Mumbai Meridians — India's premier sailing franchise dedicated to elevating Indian sailing to the global stage.",
+  icons: {
+    icon: '/MM_Logo.png',
+    apple: '/MM_Logo.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
