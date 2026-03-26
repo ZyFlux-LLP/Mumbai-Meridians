@@ -250,7 +250,9 @@ export default function TrainingPage() {
           <div className="flex space-x-6 text-xs uppercase tracking-[0.2em]">
             <a href="#" className="hover:text-sea-blue transition-colors">Privacy</a>
             <a href="#" className="hover:text-sea-blue transition-colors">Safety</a>
-            <a href="#" className="hover:text-sea-blue transition-colors">Instagram</a>
+            <a href="https://www.instagram.com/mumbai.meridians" target="_blank" rel="noopener noreferrer" className="hover:text-sea-blue transition-colors">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61580698816305" target="_blank" rel="noopener noreferrer" className="hover:text-sea-blue transition-colors">Facebook</a>
+            <a href="https://www.threads.net/@mumbai.meridians" target="_blank" rel="noopener noreferrer" className="hover:text-sea-blue transition-colors">Threads</a>
           </div>
         </div>
       </footer>

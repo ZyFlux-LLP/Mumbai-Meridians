@@ -155,8 +155,9 @@ export default function EventsPage() {
             <p className="text-sm">Navigating Excellence, Building Community.</p>
           </div>
           <div className="flex justify-center space-x-6 mb-8">
-            <a href="#" className="hover:text-meridian-gold transition">Instagram</a>
-            <a href="#" className="hover:text-meridian-gold transition">YouTube</a>
+            <a href="https://www.instagram.com/mumbai.meridians" target="_blank" rel="noopener noreferrer" className="hover:text-meridian-gold transition">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61580698816305" target="_blank" rel="noopener noreferrer" className="hover:text-meridian-gold transition">Facebook</a>
+            <a href="https://www.threads.net/@mumbai.meridians" target="_blank" rel="noopener noreferrer" className="hover:text-meridian-gold transition">Threads</a>
             <Link href="/" className="hover:text-meridian-gold transition">Home</Link>
           </div>
           <p className="text-xs text-gray-600">© 2025 Mumbai Meridians Sailing Club. All rights reserved.</p>
