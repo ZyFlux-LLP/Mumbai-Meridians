@@ -4,6 +4,10 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 
+// Module-level flag — resets on every real page load/reload,
+// but persists across client-side Next.js navigations.
+let loaderHasPlayed = false
+
 export default function Loader() {
   const overlayRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -12,8 +16,8 @@ export default function Loader() {
   const [done, setDone] = useState(false)
 
   useEffect(() => {
-    // Skip loader if already played this session
-    if (sessionStorage.getItem('mm_loader_played')) {
+    // Skip loader if already played during this JS session (client-side nav)
+    if (loaderHasPlayed) {
       document.body.style.overflow = ''
       ;(window as any).__loaderDone = true
       window.dispatchEvent(new CustomEvent('loader:done'))
@@ -125,7 +129,7 @@ export default function Loader() {
         cancelAnimationFrame(rafId)
         window.removeEventListener('resize', resize)
         document.body.style.overflow = ''
-        sessionStorage.setItem('mm_loader_played', '1')
+        loaderHasPlayed = true
         ;(window as any).__loaderDone = true
         window.dispatchEvent(new CustomEvent('loader:done'))
         setDone(true)

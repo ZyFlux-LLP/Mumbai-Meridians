@@ -15,9 +15,8 @@ const programsLinks = [
 ]
 
 const eventsLinks = [
-  { href: '/events#calendar', label: 'Race Calendar', desc: 'Upcoming regattas & camps' },
   { href: '/events#team', label: 'Meet the Team', desc: 'Coaches & champion sailors' },
-  { href: '/events#gallery', label: 'Media Gallery', desc: 'Photos & videos from the water' },
+  { href: '/media', label: 'Media Gallery', desc: 'Photos & videos from the water' },
 ]
 
 function DropdownMenu({
@@ -218,7 +217,7 @@ export default function Navigation() {
             />
 
             <DropdownMenu
-              label="Events & Media"
+              label="Team & Media"
               items={eventsLinks}
               isActive={isActiveSection(['/events'])}
             />
@@ -320,7 +319,7 @@ export default function Navigation() {
                       : 'text-white hover:bg-white/5'
                   }`}
                 >
-                  Events & Media
+                  Team & Media
                   <svg
                     className={`w-3.5 h-3.5 transition-transform ${mobileEvents ? 'rotate-180' : ''}`}
                     fill="none" stroke="currentColor" viewBox="0 0 24 24"

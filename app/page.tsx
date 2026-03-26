@@ -12,7 +12,7 @@ export default function HomePage() {
       <Navigation />
 
       {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden w-full pb-24">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden w-full pb-32">
         <div className="absolute inset-0 z-0" data-gsap="parallax">
           <HeroBgVideo />
           <div className="absolute inset-0 hero-gradient" />
@@ -25,30 +25,6 @@ export default function HomePage() {
               Meridians
             </span>
           </h1>
-          {/* Partner logos — replaces subtitle */}
-          <div className="mb-6">
-            <p className="text-white/35 uppercase tracking-[0.25em] text-[10px] font-athletic mb-3">
-              Official Associations &amp; Partners
-            </p>
-            <div className="flex items-center justify-center gap-8 md:gap-12 flex-wrap">
-              {[
-                { src: '/logos/World_Sailing_logo_local.svg', alt: 'World Sailing', h: 'h-10' },
-                { src: '/logos/YAILOGO-removebg-preview.png', alt: 'YAI', h: 'h-12' },
-                { src: '/logos/isl.png', alt: 'Indian Sailing League', h: 'h-10' },
-                { src: '/logos/yam-removebg-preview.png', alt: 'YAM', h: 'h-10' },
-              ].map((logo) => (
-                <Image
-                  key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={160}
-                  height={56}
-                  className={`${logo.h} w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300`}
-                />
-              ))}
-            </div>
-          </div>
-
           {/* Countdown */}
           <div className="bg-meridian-navy/50 backdrop-blur-xl border border-meridian-accent/25 px-6 py-8 inline-block rounded-2xl shadow-2xl shadow-black/40 w-full max-w-xl">
             <p className="font-athletic uppercase tracking-[0.25em] text-meridian-accent text-xs mb-6">
@@ -61,6 +37,24 @@ export default function HomePage() {
                 <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
               </svg>
               March 27–31, 2026 · Umiam Lake, Shillong
+            </div>
+            <div className="mt-5 pt-5 border-t border-white/10 grid grid-cols-3 gap-4 text-center">
+              {[
+                { value: '14', label: 'Elite Teams' },
+                { value: '182', label: 'Participants' },
+                { value: '08', label: 'Countries' },
+              ].map((s) => (
+                <div key={s.label}>
+                  <p
+                    className="font-athletic text-2xl font-bold text-meridian-accent"
+                    data-gsap="counter-reveal"
+                    data-value={s.value}
+                  >
+                    0
+                  </p>
+                  <p className="text-white/40 text-[10px] uppercase tracking-widest mt-0.5">{s.label}</p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -81,25 +75,41 @@ export default function HomePage() {
           </div>
         </HeroReveal>
 
-        {/* ── Stats Bar ─────────────────────────────────────────── */}
-        <div className="absolute bottom-0 left-0 right-0 z-10" data-gsap="stats-reveal">
-          <div className="max-w-4xl mx-auto px-3 py-5">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {/* ── Sponsors & Associations Marquee Bar ───────────────── */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 bg-white shadow-lg overflow-hidden" data-gsap="stats-reveal">
+          <p className="text-center text-[9px] uppercase tracking-[0.3em] text-gray-400 font-athletic pt-3 pb-1">
+            Official Associations &amp; Sponsors
+          </p>
+          <div className="relative overflow-hidden py-3">
+            {/* Fade edges */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent z-10" />
+            {/* Scrolling track — logos duplicated for seamless loop */}
+            <div className="flex animate-marquee w-max">
               {[
-                { stat: '0', value: '13', label: 'ISL Teams' },
-                { stat: '0', value: '130+', label: 'Elite Sailors' },
-                { stat: '0', value: '100+', label: 'Certified Juniors' },
-                { stat: '0', value: '6+', label: 'Countries' },
-              ].map((item) => (
-                <div key={item.label}>
-                  <p
-                    className="font-athletic text-3xl font-bold text-meridian-accent"
-                    data-gsap="counter-reveal"
-                    data-value={item.value}
-                  >
-                    {item.stat}
-                  </p>
-                  <p className="text-xs uppercase tracking-widest text-white/50 mt-1">{item.label}</p>
+                '/logos/World_Sailing_logo_local.svg',
+                '/logos/YAILOGO-removebg-preview.png',
+                '/logos/isl.png',
+                '/logos/yam-removebg-preview.png',
+                '/logos/RLSS_Sponsor.png',
+                '/logos/Sponsor_SPGP-removebg-preview.png',
+                '/logos/Sponsor_Institute-removebg-preview.png',
+                '/logos/World_Sailing_logo_local.svg',
+                '/logos/YAILOGO-removebg-preview.png',
+                '/logos/isl.png',
+                '/logos/yam-removebg-preview.png',
+                '/logos/RLSS_Sponsor.png',
+                '/logos/Sponsor_SPGP-removebg-preview.png',
+                '/logos/Sponsor_Institute-removebg-preview.png',
+              ].map((src, i) => (
+                <div key={i} className="flex items-center justify-center w-32 h-14 mx-6 shrink-0">
+                  <Image
+                    src={src}
+                    alt=""
+                    width={120}
+                    height={56}
+                    className="max-h-14 max-w-[120px] w-auto h-auto object-contain"
+                  />
                 </div>
               ))}
             </div>
@@ -172,15 +182,41 @@ export default function HomePage() {
             </p>
           </div>
 
+          {/* Leadership */}
+          <p className="text-xs font-bold tracking-[0.3em] uppercase text-meridian-accent mb-8" data-gsap="fade-up">Leadership</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 mb-16" data-gsap="stagger">
+            {[
+              { src: '/media/anita-mhatre.jpg', name: 'Anita', role: 'Captain' },
+              { src: '/media/mohit-mhatre.jpg', name: 'Mohit Mhatre', role: 'Lead Captain' },
+              { src: '/media/vritika-san.webp', name: 'Vritika Sandeep Mhatre', role: 'Junior Captain' },
+              { src: '/media/vikas-kapila.jpg', name: 'Vikas Kapila', role: 'Coach' },
+              { src: '/media/shilpa-oberoi.png', name: 'Shilpa Oberoi', role: 'Media Manager & Coach' },
+            ].map((member) => (
+              <div key={member.name} className="group text-center" data-gsap="scale-in">
+                <div className="relative overflow-hidden rounded-2xl mb-4 aspect-square bg-white/5 ring-2 ring-meridian-gold/40">
+                  <Image
+                    src={member.src}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <p className="font-athletic font-bold text-white uppercase tracking-wide text-sm">{member.name}</p>
+                <p className="text-meridian-gold text-xs uppercase tracking-widest mt-1">{member.role}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Sailors */}
+          <p className="text-xs font-bold tracking-[0.3em] uppercase text-meridian-accent mb-8" data-gsap="fade-up">Sailors</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8" data-gsap="stagger">
             {[
-              { src: '/media/progya.webp', name: 'Progya Das', role: 'Sailor' },
+              { src: '/media/progya-das.png', name: 'Progya Das', role: 'Sailor' },
+              { src: '/media/arjun-marathe.png', name: 'Arjun Marathe', role: 'Sailor' },
+              { src: '/media/sofia.jpg', name: 'Sofiia Magkaeva', role: 'Sailor' },
+              { src: '/media/vivek-singh.png', name: 'Vivek Singh Shekhawat', role: 'Sailor' },
               { src: '/media/samanyu-konda.webp', name: 'Samanyu Konda', role: 'Sailor' },
-              { src: '/media/sofia.webp', name: 'Sofiia Magkaeva', role: 'Sailor' },
-              { src: '/media/vivek-singh.webp', name: 'Vivek Singh Shekhawat', role: 'Sailor' },
-              { src: '/media/vritika-san.webp', name: 'Vritika Sandeep Mhatre', role: 'Sailor' },
-              { src: '/media/vikas-kapila.webp', name: 'Vikas Kapila', role: 'Coach' },
-              { src: '/media/mohit-mhatre.webp', name: 'Mohit Mhatre', role: 'Sailor' },
               { src: '/media/naavya-kaku.webp', name: 'Naavya Kaku', role: 'Sailor' },
             ].map((athlete) => (
               <div key={athlete.name} className="group text-center" data-gsap="scale-in">
@@ -217,12 +253,12 @@ export default function HomePage() {
             data-gsap="scale-in"
           >
             <div className="flex flex-col md:flex-row">
-              <div className="md:w-[38%] relative aspect-[3/4] md:aspect-auto md:min-h-[380px]">
+              <div className="md:w-[38%] relative aspect-[3/4] md:aspect-auto md:min-h-[380px] flex items-center justify-center bg-[#001020]">
                 <Image
-                  src="/media/isl-2026-poster.webp"
+                  src="/MM_Logo_1.png"
                   alt="Indian Sailing League 2026"
                   fill
-                  className="object-contain md:object-cover object-top"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#000d1f]/60" />
               </div>
@@ -244,11 +280,11 @@ export default function HomePage() {
                   'Jewel of the Northeast'. Umiam Lake provides a challenging and breathtaking arena for
                   the country's best sailors.
                 </p>
-                <div className="flex flex-wrap gap-8 border-t border-white/10 pt-8">
+                <div className="flex flex-wrap gap-8">
                   {[
-                    { stat: '13', label: 'Elite Teams' },
-                    { stat: '130+', label: 'Top Sailors' },
-                    { stat: '5 Days', label: 'of Racing' },
+                    { stat: '14', label: 'Elite Teams' },
+                    { stat: '182', label: 'Participants' },
+                    { stat: '08', label: 'Countries' },
                   ].map((s) => (
                     <div key={s.label}>
                       <p className="text-3xl font-athletic font-bold text-meridian-accent">{s.stat}</p>
