@@ -42,22 +42,41 @@ const contactInfo = [
   },
 ]
 
+const inputClass =
+  'w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-meridian-accent/60 focus:bg-meridian-accent/5 transition-all text-sm'
+
 export default function ContactPage() {
-  const formRef = useRef<HTMLFormElement>(null)
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const nameRef    = useRef<HTMLInputElement>(null)
+  const emailRef   = useRef<HTMLInputElement>(null)
+  const phoneRef   = useRef<HTMLInputElement>(null)
+  const subjectRef = useRef<HTMLSelectElement>(null)
+  const messageRef = useRef<HTMLTextAreaElement>(null)
+
+  const [status, setStatus]   = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!formRef.current) return
-
     setStatus('loading')
     setErrorMsg('')
 
+    const templateParams = {
+      from_name:    nameRef.current?.value    ?? '',
+      from_email:   emailRef.current?.value   ?? '',
+      phone:        phoneRef.current?.value   || 'Not provided',
+      subject:      subjectRef.current?.value ?? 'General Inquiry',
+      message:      messageRef.current?.value ?? '',
+    }
+
     try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
       setStatus('success')
-      formRef.current.reset()
+      // reset fields
+      nameRef.current!.value    = ''
+      emailRef.current!.value   = ''
+      phoneRef.current!.value   = ''
+      subjectRef.current!.value = subjects[0]
+      messageRef.current!.value = ''
     } catch (err: any) {
       console.error('[emailjs]', err)
       setErrorMsg('Failed to send. Please try again or email us directly.')
@@ -100,9 +119,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-athletic uppercase tracking-widest text-xs text-meridian-accent mb-1">
-                    {item.label}
-                  </p>
+                  <p className="font-athletic uppercase tracking-widest text-xs text-meridian-accent mb-1">{item.label}</p>
                   <p className="text-white text-sm leading-relaxed">{item.value}</p>
                 </div>
               </div>
@@ -112,9 +129,7 @@ export default function ContactPage() {
               <p className="text-gray-400 italic text-sm leading-relaxed">
                 "The wind and the waves are always on the side of the ablest navigator."
               </p>
-              <p className="text-meridian-accent text-xs font-athletic uppercase tracking-widest mt-2">
-                — Edward Gibbon
-              </p>
+              <p className="text-meridian-accent text-xs font-athletic uppercase tracking-widest mt-2">— Edward Gibbon</p>
             </div>
           </div>
 
@@ -128,9 +143,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-athletic text-3xl font-bold text-white mb-3">Message Sent!</h3>
-                <p className="text-gray-400 mb-8 max-w-sm">
-                  Thanks for reaching out. We'll get back to you as soon as possible.
-                </p>
+                <p className="text-gray-400 mb-8 max-w-sm">Thanks for reaching out. We'll get back to you as soon as possible.</p>
                 <button
                   onClick={() => setStatus('idle')}
                   className="font-athletic uppercase tracking-widest text-sm bg-meridian-accent text-white px-8 py-3 rounded-full hover:bg-white hover:text-meridian-navy transition-all"
@@ -140,7 +153,6 @@ export default function ContactPage() {
               </div>
             ) : (
               <form
-                ref={formRef}
                 onSubmit={handleSubmit}
                 className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-10 space-y-6"
               >
@@ -151,52 +163,29 @@ export default function ContactPage() {
                     <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">
                       Full Name <span className="text-meridian-accent">*</span>
                     </label>
-                    <input
-                      type="text"
-                      name="from_name"
-                      required
-                      placeholder="Your name"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-meridian-accent/60 focus:bg-meridian-accent/5 transition-all text-sm"
-                    />
+                    <input ref={nameRef} type="text" required placeholder="Your name" className={inputClass} />
                   </div>
                   <div>
                     <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">
                       Email <span className="text-meridian-accent">*</span>
                     </label>
-                    <input
-                      type="email"
-                      name="from_email"
-                      required
-                      placeholder="your@email.com"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-meridian-accent/60 focus:bg-meridian-accent/5 transition-all text-sm"
-                    />
+                    <input ref={emailRef} type="email" required placeholder="your@email.com" className={inputClass} />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="+91 XXXXX XXXXX"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-meridian-accent/60 focus:bg-meridian-accent/5 transition-all text-sm"
-                    />
+                    <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">Phone</label>
+                    <input ref={phoneRef} type="tel" placeholder="+91 XXXXX XXXXX" className={inputClass} />
                   </div>
                   <div>
-                    <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">
-                      Subject
-                    </label>
+                    <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">Subject</label>
                     <select
-                      name="subject"
+                      ref={subjectRef}
                       defaultValue={subjects[0]}
                       className="w-full bg-[#001229] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-meridian-accent/60 transition-all text-sm appearance-none cursor-pointer"
                     >
-                      {subjects.map((s) => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
+                      {subjects.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
                 </div>
@@ -205,18 +194,10 @@ export default function ContactPage() {
                   <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">
                     Message <span className="text-meridian-accent">*</span>
                   </label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={5}
-                    placeholder="Tell us how we can help..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-meridian-accent/60 focus:bg-meridian-accent/5 transition-all text-sm resize-none"
-                  />
+                  <textarea ref={messageRef} required rows={5} placeholder="Tell us how we can help..." className={`${inputClass} resize-none`} />
                 </div>
 
-                {status === 'error' && (
-                  <p className="text-red-400 text-sm">{errorMsg}</p>
-                )}
+                {status === 'error' && <p className="text-red-400 text-sm">{errorMsg}</p>}
 
                 <button
                   type="submit"
@@ -231,9 +212,7 @@ export default function ContactPage() {
                       </svg>
                       Sending...
                     </>
-                  ) : (
-                    'Send Message'
-                  )}
+                  ) : 'Send Message'}
                 </button>
               </form>
             )}
