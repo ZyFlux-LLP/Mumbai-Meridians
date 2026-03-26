@@ -1,65 +1,37 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-interface MediaItem {
-  id: string
-  name: string
-  type: 'photo' | 'video'
-  mimeType: string
-}
+const photos = Array.from({ length: 33 }, (_, i) => {
+  const n = String(i + 1).padStart(2, '0')
+  const ext = i === 31 ? 'webp' : i === 32 ? 'png' : 'jpg'
+  return `/gallery/img-${n}.${ext}`
+})
 
 export default function MediaGallery() {
-  const [photos, setPhotos]     = useState<MediaItem[]>([])
-  const [loading, setLoading]   = useState(true)
-  const [lightbox, setLightbox] = useState<MediaItem | null>(null)
-  const [error, setError]       = useState(false)
+  const [lightbox, setLightbox] = useState<number | null>(null)
 
-  useEffect(() => {
-    fetch('/api/gallery')
-      .then((r) => r.json())
-      .then((data) => {
-        if (Array.isArray(data)) setPhotos(data.filter((i) => i.type === 'photo'))
-        else setError(true)
-      })
-      .catch(() => setError(true))
-      .finally(() => setLoading(false))
-  }, [])
-
-  const proxy = (id: string) => `/api/gallery/${id}`
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null) }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [])
-
-  if (loading) return <LoadingSkeleton />
-
-  if (error || photos.length === 0) return (
-    <div className="max-w-7xl mx-auto px-4 py-20 text-center text-white/40">
-      <p className="text-lg">No photos yet. Check back soon.</p>
-    </div>
-  )
+  const prev = () => setLightbox((i) => (i != null && i > 0 ? i - 1 : i))
+  const next = () => setLightbox((i) => (i != null && i < photos.length - 1 ? i + 1 : i))
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p className="text-xs font-bold tracking-[0.3em] uppercase text-white/40 mb-6">
+    <div>
+      <p className="text-xs font-bold tracking-[0.3em] uppercase text-gray-400 mb-6">
         {photos.length} Photos
       </p>
 
       {/* Masonry grid */}
       <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
-        {photos.map((item) => (
+        {photos.map((src, i) => (
           <div
-            key={item.id}
+            key={src}
             className="break-inside-avoid relative group overflow-hidden rounded-xl cursor-pointer"
-            onClick={() => setLightbox(item)}
+            onClick={() => setLightbox(i)}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={proxy(item.id)}
-              alt={item.name}
+              src={src}
+              alt={`Mumbai Meridians photo ${i + 1}`}
               loading="lazy"
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
             />
@@ -73,7 +45,7 @@ export default function MediaGallery() {
       </div>
 
       {/* Lightbox */}
-      {lightbox && (
+      {lightbox !== null && (
         <div
           className="fixed inset-0 z-[300] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
           onClick={() => setLightbox(null)}
@@ -83,44 +55,28 @@ export default function MediaGallery() {
             onClick={() => setLightbox(null)}
           >✕</button>
 
-          {photos.indexOf(lightbox) > 0 && (
+          {lightbox > 0 && (
             <button
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl"
-              onClick={(e) => { e.stopPropagation(); setLightbox(photos[photos.indexOf(lightbox) - 1]) }}
+              onClick={(e) => { e.stopPropagation(); prev() }}
             >‹</button>
           )}
-          {photos.indexOf(lightbox) < photos.length - 1 && (
+          {lightbox < photos.length - 1 && (
             <button
               className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl"
-              onClick={(e) => { e.stopPropagation(); setLightbox(photos[photos.indexOf(lightbox) + 1]) }}
+              onClick={(e) => { e.stopPropagation(); next() }}
             >›</button>
           )}
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={proxy(lightbox.id)}
-            alt={lightbox.name}
+            src={photos[lightbox]}
+            alt={`Mumbai Meridians photo ${lightbox + 1}`}
             className="max-h-[90vh] max-w-[90vw] object-contain rounded-xl shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}
-    </div>
-  )
-}
-
-function LoadingSkeleton() {
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div
-            key={i}
-            className="break-inside-avoid rounded-xl bg-white/10 animate-pulse"
-            style={{ height: `${160 + (i % 3) * 60}px` }}
-          />
-        ))}
-      </div>
     </div>
   )
 }

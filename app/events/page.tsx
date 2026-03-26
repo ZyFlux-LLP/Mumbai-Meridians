@@ -50,13 +50,13 @@ const sailors = [
   { name: 'Vivek Singh Shekhawat', img: '/media/vivek-singh.png' },
   { name: 'Muhammad Asnawi Iqbal Bin Adam', img: null as string | null },
   { name: 'Pallara Govardhan', img: null as string | null },
-  { name: 'Samanyu Konda', img: '/media/samanyu-konda.webp' },
+  { name: 'Samanyu Konda', img: '/media/samanyu-konda.jpg' },
   { name: 'Miron Klimov', img: null as string | null },
   { name: 'Aleksandra Deputova', img: null as string | null },
   { name: 'Daniyar Nabiev', img: null as string | null },
   { name: 'Aryan Karwar', img: null as string | null },
   { name: 'Subbotina Alexandrian', img: null as string | null },
-  { name: 'Naavya Kaku', img: '/media/naavya-kaku.webp' },
+  { name: 'Naavya Kaku', img: '/media/naavya-kaku.avif' },
 ]
 
 
