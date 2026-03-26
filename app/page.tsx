@@ -345,7 +345,7 @@ export default function HomePage() {
                 Nurturing the champions of tomorrow. Structured programs for ages 6–18.
               </p>
               <Link
-                href="/junior-sailing"
+                href="/contact"
                 className="w-full py-3 border border-meridian-accent/60 text-meridian-accent font-athletic font-bold hover:bg-meridian-accent hover:text-white hover:border-meridian-accent transition-all uppercase tracking-widest text-xs rounded-theme"
               >
                 Enroll Now
@@ -367,7 +367,7 @@ export default function HomePage() {
                 Professional coaching for competitive sailors across all boat classes.
               </p>
               <Link
-                href="/training"
+                href="/junior-sailing"
                 className="w-full py-3 bg-meridian-navy text-white font-athletic font-bold hover:bg-white hover:text-meridian-navy transition-all uppercase tracking-widest text-xs rounded-theme"
               >
                 View Courses
@@ -386,7 +386,7 @@ export default function HomePage() {
                 Operations, media, or technical support — join our shore team.
               </p>
               <Link
-                href="/events#team"
+                href="/contact"
                 className="w-full py-3 border border-meridian-accent/60 text-meridian-accent font-athletic font-bold hover:bg-meridian-accent hover:text-white hover:border-meridian-accent transition-all uppercase tracking-widest text-xs rounded-theme"
               >
                 Apply Now
