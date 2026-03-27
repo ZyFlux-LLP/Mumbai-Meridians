@@ -186,7 +186,7 @@ export default function HomePage() {
           <p className="text-xs font-bold tracking-[0.3em] uppercase text-meridian-accent mb-8" data-gsap="fade-up">Leadership</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 mb-16" data-gsap="stagger">
             {[
-              { src: '/media/anita-mhatre.jpg', name: 'Anita', role: 'Captain' },
+              { src: '/media/anita-mhatre.jpg', name: 'Anita Sandeep Mhatre', role: 'Captain' },
               { src: '/media/mohit-mhatre.jpg', name: 'Mohit Mhatre', role: 'Lead Captain' },
               { src: '/media/vritika-san.webp', name: 'Vritika Sandeep Mhatre', role: 'Junior Captain' },
               { src: '/media/vikas-kapila.jpg', name: 'Vikas Kapila', role: 'Coach' },

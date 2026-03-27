@@ -60,12 +60,27 @@ export default function ContactPage() {
     setStatus('loading')
     setErrorMsg('')
 
+    const name    = nameRef.current?.value    ?? ''
+    const email   = emailRef.current?.value   ?? ''
+    const phone   = phoneRef.current?.value   || 'Not provided'
+    const subject = subjectRef.current?.value ?? 'General Inquiry'
+    const message = messageRef.current?.value ?? ''
+
+    const formattedMessage = `New Contact Form Submission
+
+👤 Name: ${name}
+📧 Email: ${email}
+📱 Phone: ${phone}
+📋 Subject: ${subject}
+📝 Message: ${message}
+
+Please respond at your earliest convenience.`
+
     const templateParams = {
-      from_name:    nameRef.current?.value    ?? '',
-      from_email:   emailRef.current?.value   ?? '',
-      phone:        phoneRef.current?.value   || 'Not provided',
-      subject:      subjectRef.current?.value ?? 'General Inquiry',
-      message:      messageRef.current?.value ?? '',
+      from_name:  name,
+      from_email: email,
+      subject,
+      message:    formattedMessage,
     }
 
     try {
