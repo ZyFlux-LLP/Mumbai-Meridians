@@ -60,12 +60,14 @@ export default function HomePage() {
 
           {/* Hero CTAs */}
           <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/events#calendar"
+            <a
+              href="https://www.youtube.com/live/KwqNZTGhdEc?si=lHTozpR-ugaepxjh"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-meridian-accent text-white px-8 py-3.5 rounded-theme font-athletic font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-meridian-navy transition-all shadow-lg shadow-meridian-accent/30"
             >
-              View Events
-            </Link>
+              View Live
+            </a>
             <Link
               href="/junior-sailing"
               className="border-2 border-white/30 text-white px-8 py-3.5 rounded-theme font-athletic font-bold uppercase tracking-widest text-sm hover:border-white hover:bg-white/10 transition-all"
