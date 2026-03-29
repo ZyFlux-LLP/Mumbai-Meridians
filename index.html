@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mumbai Meridian - Sailing Team</title>
+    <title>Real Water Loader - Windsurfing Theme</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -16,161 +16,222 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4; /* Main page background */
-            overflow: hidden; /* Prevent scrolling while loading */
+            font-family: 'Montserrat', sans-serif;
+            background-color: #050a15; /* Deep night sky background */
+            color: #fff;
+            overflow: hidden;
         }
 
-        /* Loader Overlay Container */
-        #nautical-loader {
+        /* The Loader Container */
+        #water-loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle at center, #1e3a8a 0%, #0f172a 100%);
+            z-index: 9999;
+            background-color: #050a15;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
         }
 
-        /* Logo Styling */
-        .logo-container {
-            position: relative;
-            z-index: 10;
-            /* Adjust width as needed for your specific SVG */
-            width: 250px;
-            height: auto;
-            filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.5));
-        }
-
-        .logo-container img {
-            width: 100%;
-            height: auto;
-        }
-
-        /* Loading Text */
-        .loading-text {
-            margin-top: 40px;
-            color: #ffffff;
-            font-size: 1.2rem;
-            letter-spacing: 0.3em;
-            font-weight: 600;
-            text-transform: uppercase;
-            z-index: 10;
-            opacity: 0; /* Hidden initially for GSAP to reveal */
-        }
-
-        /* SVG Ocean Waves at the bottom */
-        .ocean {
+        /* Canvas for the realistic fluid */
+        #water-canvas {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 15vh;
-            min-height: 100px;
-            z-index: 5;
+            height: 100%;
+            z-index: 1;
         }
 
-        .parallax > use {
-            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
-        }
-        .parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
-        .parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
-        .parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
-        .parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
-
-        @keyframes move-forever {
-            0% { transform: translate3d(-90px, 0, 0); }
-            100% { transform: translate3d(85px, 0, 0); }
+        /* Text UI Container */
+        .ui-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            pointer-events: none; /* Lets clicks pass through if needed */
         }
 
-        /* Dummy Main Content */
+        .title-text {
+            font-size: 1.5rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .percentage {
+            font-size: 5rem;
+            font-weight: 800;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Main Content */
         #main-content {
+            position: relative;
+            z-index: 0;
             padding: 50px;
             text-align: center;
-            opacity: 0; /* Hidden until loader finishes */
+            opacity: 0;
+        }
+
+        #main-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div id="nautical-loader">
+    <div id="water-loader">
+        <canvas id="water-canvas"></canvas>
 
-        <div class="logo-container" id="team-logo">
-            <img src="MM_Logo.svg" alt="Mumbai Meridian Logo">
+        <div class="ui-container">
+            <div class="title-text" id="status-text">Catching the Wind</div>
+            <div class="percentage" id="percent-text">0%</div>
         </div>
-
-        <div class="loading-text" id="loading-text">Setting Sail...</div>
-
-        <svg class="ocean" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-            <defs>
-                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-            </defs>
-            <g class="parallax">
-                <use href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.05)" />
-                <use href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.1)" />
-                <use href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.15)" />
-                <use href="#gentle-wave" x="48" y="7" fill="rgba(255,255,255,0.2)" />
-            </g>
-        </svg>
     </div>
 
     <div id="main-content">
-        <h1>Welcome Aboard</h1>
-        <p>The Mumbai Meridian website has successfully loaded.</p>
+        <h1>Welcome to the Ocean</h1>
+        <p>The wind is howling and the water is perfect.</p>
     </div>
 
     <script>
-        // Wait for the DOM to load
-        document.addEventListener("DOMContentLoaded", (event) => {
+        document.addEventListener("DOMContentLoaded", () => {
 
-            // 1. Initial Entry Animation
-            gsap.from("#team-logo", {
-                duration: 1.5,
-                y: 50,
-                scale: 0.8,
+            // --- Canvas Setup ---
+            const canvas = document.getElementById('water-canvas');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            // --- Fluid & Physics Variables ---
+            // This object is what GSAP will animate
+            const loadState = { progress: 0 };
+            let time = 0;
+            const bubbles = [];
+
+            // Create some random bubbles for realism
+            for (let i = 0; i < 60; i++) {
+                bubbles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 4 + 1,
+                    speed: Math.random() * 3 + 1,
+                    wobble: Math.random() * Math.PI * 2
+                });
+            }
+
+            // --- The Rendering Loop ---
+            function drawWater() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Calculate where the surface of the water should be based on GSAP's progress
+                // progress goes 0 to 100. targetY goes from bottom (height) to top (0).
+                const targetY = height - (loadState.progress / 100) * height;
+
+                time += 0.05;
+
+                // 1. Draw Bubbles inside the water
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                bubbles.forEach(b => {
+                    // Only draw bubbles if they are below the water line
+                    if (b.y > targetY) {
+                        ctx.beginPath();
+                        ctx.arc(b.x + Math.sin(time + b.wobble) * 5, b.y, b.radius, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    // Move bubbles up
+                    b.y -= b.speed;
+                    // Reset bubble to the bottom if it hits the surface
+                    if (b.y < targetY) {
+                        b.y = height + 10;
+                        b.x = Math.random() * width;
+                    }
+                });
+
+                // 2. Draw Realistic Overlapping Waves
+                // We draw 3 layers of waves with slightly different colors and speeds for a 3D effect
+                const waveLayers = [
+                    { color: 'rgba(0, 105, 170, 0.6)', offset: 0, amplitude: 15, frequency: 0.01 },
+                    { color: 'rgba(0, 140, 200, 0.8)', offset: 2, amplitude: 20, frequency: 0.008 },
+                    { color: 'rgba(2, 60, 110, 1)',    offset: 4, amplitude: 10, frequency: 0.012 }
+                ];
+
+                waveLayers.forEach(layer => {
+                    ctx.beginPath();
+                    ctx.moveTo(0, height);
+
+                    // Draw the top curved edge of the water
+                    for (let x = 0; x <= width; x += 10) {
+                        // The sine wave math creates the rolling fluid look
+                        const y = targetY + Math.sin(x * layer.frequency + time + layer.offset) * layer.amplitude;
+                        ctx.lineTo(x, y);
+                    }
+
+                    ctx.lineTo(width, height);
+                    ctx.lineTo(0, height);
+                    ctx.fillStyle = layer.color;
+                    ctx.fill();
+                });
+
+                // Keep looping the canvas draw function
+                requestAnimationFrame(drawWater);
+            }
+
+            // Start the canvas rendering
+            drawWater();
+
+            // --- GSAP Animation Sequence ---
+            const tl = gsap.timeline();
+            const percentText = document.getElementById("percent-text");
+            const statusText = document.getElementById("status-text");
+
+            // Animate the loadState object from 0 to 100 over 4 seconds
+            tl.to(loadState, {
+                progress: 100,
+                duration: 4.5,
+                ease: "power2.inOut",
+                onUpdate: () => {
+                    // Update the text on screen as the number goes up
+                    percentText.innerText = Math.round(loadState.progress) + "%";
+
+                    // Change the text dynamically as water rises
+                    if (loadState.progress > 40 && loadState.progress < 80) {
+                        statusText.innerText = "Rigging the sail...";
+                    } else if (loadState.progress >= 80) {
+                        statusText.innerText = "Ready for launch.";
+                    }
+                }
+            })
+            // Exit Animation once water hits the top
+            .to("#water-loader", {
                 opacity: 0,
-                ease: "back.out(1.5)"
-            });
-
-            gsap.to("#loading-text", {
-                duration: 1,
-                opacity: 1,
-                delay: 0.5,
-                ease: "power2.inOut"
-            });
-
-            // 2. Continuous "Sailing" (Bobbing & Rocking) Animation
-            // We use an infinite yoyo to make the boat/logo rock on the waves
-            let sailingAnim = gsap.to("#team-logo", {
-                y: "-=15", // move up 15px
-                rotation: 3, // slight tilt
-                duration: 2,
-                ease: "sine.inOut",
-                yoyo: true,
-                repeat: -1 // infinite loop
-            });
-
-            // 3. Loader Exit Animation (Simulating page load complete)
-            // Change the 'delay' to however long you want the loader to show
-            gsap.to("#nautical-loader", {
-                duration: 1.2,
-                y: "-100%", // Slide the whole loader up and out
-                ease: "power3.inOut",
-                delay: 4, // Shows loader for 4 seconds before exiting
+                duration: 1.5,
+                ease: "power2.inOut",
+                delay: 0.5, // Hold for half a second when full
                 onComplete: () => {
-                    // Stop the infinite animation to save performance
-                    sailingAnim.kill();
-                    // Restore scrolling
+                    document.getElementById("water-loader").style.display = "none";
                     document.body.style.overflow = "auto";
 
-                    // Fade in the main content
+                    // Reveal Main Content
                     gsap.to("#main-content", {
                         opacity: 1,
-                        duration: 1
+                        y: -30,
+                        duration: 1.5,
+                        ease: "power3.out"
                     });
                 }
             });

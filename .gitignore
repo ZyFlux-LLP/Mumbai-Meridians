@@ -30,3 +30,26 @@ Thumbs.db
 
 # local claude settings
 .claude/
+
+# build artifacts
+tsconfig.tsbuildinfo
+
+# root-level media duplicates (originals live in public/)
+/cover.jpg
+/hero-bg.webm
+/logos/
+
+# working/source files not needed in repo
+/players/
+Media Library/
+Photos/
+yt-dlp
+
+# sensitive / non-code files
+*.pdf
+
+# stray root-level images
+/*.jpg
+/*.jpeg
+/*.jpeg
+/*.png
