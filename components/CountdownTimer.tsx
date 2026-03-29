@@ -31,7 +31,7 @@ export default function CountdownTimer() {
   if (finished) {
     return (
       <p className="text-2xl font-athletic font-bold text-meridian-accent uppercase tracking-widest">
-        Regatta In Progress
+        Day 3 — Race Day Live
       </p>
     )
   }
