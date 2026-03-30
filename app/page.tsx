@@ -61,7 +61,7 @@ export default function HomePage() {
           {/* Hero CTAs */}
           <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://www.youtube.com/watch?app=desktop&v=kgOzAUL9Y8M"
+              href="https://www.youtube.com/live/XmGteoHLPm8"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-meridian-accent text-white px-8 py-3.5 rounded-theme font-athletic font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-meridian-navy transition-all shadow-lg shadow-meridian-accent/30"
