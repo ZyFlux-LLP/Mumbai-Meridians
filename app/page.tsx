@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
@@ -5,6 +6,28 @@ import HeroReveal from '@/components/HeroReveal'
 import HeroBgVideo from '@/components/HeroBgVideo'
 import Footer from '@/components/Footer'
 import CountdownTimer from '@/components/CountdownTimer'
+
+export const metadata: Metadata = {
+  title: 'Mumbai Meridians | Indian Sailing Franchise | ISL 2026',
+  description:
+    "Mumbai Meridians — India's premier sailing franchise dedicated to elevating Indian sailing to the global stage. Competing in ISL 2026 at Umiam Lake, Shillong.",
+  alternates: {
+    canonical: 'https://www.mumbaimeridians.com/',
+  },
+  openGraph: {
+    title: 'Mumbai Meridians | Indian Sailing Franchise',
+    description: "India's premier sailing franchise competing in ISL 2026 at Umiam Lake, Shillong.",
+    url: 'https://www.mumbaimeridians.com/',
+    images: [
+      {
+        url: 'https://www.mumbaimeridians.com/cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Mumbai Meridians — Indian Sailing Franchise ISL 2026',
+      },
+    ],
+  },
+}
 
 export default function HomePage() {
   return (
@@ -89,25 +112,26 @@ export default function HomePage() {
             {/* Scrolling track — logos duplicated for seamless loop */}
             <div className="flex animate-marquee w-max">
               {[
-                '/logos/World_Sailing_logo_local.svg',
-                '/logos/YAILOGO-removebg-preview.png',
-                '/logos/isl.png',
-                '/logos/yam-removebg-preview.png',
-                '/logos/RLSS_Sponsor.png',
-                '/logos/Sponsor_SPGP-removebg-preview.png',
-                '/logos/Sponsor_Institute-removebg-preview.png',
-                '/logos/World_Sailing_logo_local.svg',
-                '/logos/YAILOGO-removebg-preview.png',
-                '/logos/isl.png',
-                '/logos/yam-removebg-preview.png',
-                '/logos/RLSS_Sponsor.png',
-                '/logos/Sponsor_SPGP-removebg-preview.png',
-                '/logos/Sponsor_Institute-removebg-preview.png',
-              ].map((src, i) => (
+                { src: '/logos/World_Sailing_logo_local.svg', alt: 'World Sailing Logo' },
+                { src: '/logos/YAILOGO-removebg-preview.webp', alt: 'Yachting Association of India Logo' },
+                { src: '/logos/isl.webp', alt: 'Indian Sailing League Logo' },
+                { src: '/logos/yam-removebg-preview.webp', alt: 'YAM Logo' },
+                { src: '/logos/RLSS_Sponsor.webp', alt: 'RLSS Sponsor Logo' },
+                { src: '/logos/Sponsor_SPGP-removebg-preview.webp', alt: 'SPGP Sponsor Logo' },
+                { src: '/logos/Sponsor_Institute-removebg-preview.webp', alt: 'Institute Sponsor Logo' },
+                // Duplicates for seamless marquee loop — decorative, empty alt intentional
+                { src: '/logos/World_Sailing_logo_local.svg', alt: '' },
+                { src: '/logos/YAILOGO-removebg-preview.webp', alt: '' },
+                { src: '/logos/isl.webp', alt: '' },
+                { src: '/logos/yam-removebg-preview.webp', alt: '' },
+                { src: '/logos/RLSS_Sponsor.webp', alt: '' },
+                { src: '/logos/Sponsor_SPGP-removebg-preview.webp', alt: '' },
+                { src: '/logos/Sponsor_Institute-removebg-preview.webp', alt: '' },
+              ].map(({ src, alt }, i) => (
                 <div key={i} className="flex items-center justify-center w-32 h-14 mx-6 shrink-0">
                   <Image
                     src={src}
-                    alt=""
+                    alt={alt}
                     width={120}
                     height={56}
                     className="max-h-14 max-w-[120px] w-auto h-auto object-contain"
@@ -154,7 +178,7 @@ export default function HomePage() {
             <div className="lg:w-1/2 relative mt-8 lg:mt-0" data-gsap="fade-right">
               <div className="relative z-10" data-gsap="scale-in">
                 <Image
-                  src="/cover.jpg"
+                  src="/cover.webp"
                   alt="High performance sailing action"
                   width={640}
                   height={480}
@@ -188,11 +212,11 @@ export default function HomePage() {
           <p className="text-xs font-bold tracking-[0.3em] uppercase text-meridian-accent mb-8" data-gsap="fade-up">Leadership</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 mb-16" data-gsap="stagger">
             {[
-              { src: '/media/anita-mhatre.jpg', name: 'Anita Sandeep Mhatre', role: 'Captain' },
-              { src: '/media/mohit-mhatre.jpg', name: 'Mohit Mhatre', role: 'Lead Captain' },
+              { src: '/media/anita-mhatre.webp', name: 'Anita Sandeep Mhatre', role: 'Captain' },
+              { src: '/media/mohit-mhatre.webp', name: 'Mohit Mhatre', role: 'Lead Captain' },
               { src: '/media/vritika-san.webp', name: 'Vritika Sandeep Mhatre', role: 'Junior Captain' },
-              { src: '/media/vikas-kapila.jpg', name: 'Vikas Kapila', role: 'Coach' },
-              { src: '/media/shilpa-oberoi.png', name: 'Shilpa Oberoi', role: 'Media Manager & Coach' },
+              { src: '/media/vikas-kapila.webp', name: 'Vikas Kapila', role: 'Coach' },
+              { src: '/media/shilpa-oberoi.webp', name: 'Shilpa Oberoi', role: 'Media Manager & Coach' },
             ].map((member) => (
               <div key={member.name} className="group text-center" data-gsap="scale-in">
                 <div className="relative overflow-hidden rounded-2xl mb-4 aspect-square bg-white/5 ring-2 ring-meridian-gold/40">
@@ -214,10 +238,10 @@ export default function HomePage() {
           <p className="text-xs font-bold tracking-[0.3em] uppercase text-meridian-accent mb-8" data-gsap="fade-up">Sailors</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8" data-gsap="stagger">
             {[
-              { src: '/media/progya-das.png', name: 'Progya Das', role: 'Sailor' },
-              { src: '/media/arjun-marathe.png', name: 'Arjun Marathe', role: 'Sailor' },
-              { src: '/media/sofia.jpg', name: 'Sofiia Magkaeva', role: 'Sailor' },
-              { src: '/media/vivek-singh.png', name: 'Vivek Singh Shekhawat', role: 'Sailor' },
+              { src: '/media/progya-das.webp', name: 'Progya Das', role: 'Sailor' },
+              { src: '/media/arjun-marathe.webp', name: 'Arjun Marathe', role: 'Sailor' },
+              { src: '/media/sofia.webp', name: 'Sofiia Magkaeva', role: 'Sailor' },
+              { src: '/media/vivek-singh.webp', name: 'Vivek Singh Shekhawat', role: 'Sailor' },
               { src: '/media/samanyu-konda.webp', name: 'Samanyu Konda', role: 'Sailor' },
               { src: '/media/naavya-kaku.webp', name: 'Naavya Kaku', role: 'Sailor' },
             ].map((athlete) => (
@@ -257,7 +281,7 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row">
               <div className="md:w-[38%] relative aspect-[3/4] md:aspect-auto md:min-h-[380px] flex items-center justify-center bg-[#001020]">
                 <Image
-                  src="/MM_Logo_1.png"
+                  src="/MM_Logo_1.webp"
                   alt="Indian Sailing League 2026"
                   fill
                   className="object-cover"

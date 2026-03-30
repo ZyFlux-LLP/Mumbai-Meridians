@@ -52,7 +52,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="inline-flex items-center mb-4">
               <Image
-                src="/MM_Logo.png"
+                src="/MM_Logo.webp"
                 alt="Mumbai Meridians Logo"
                 width={80}
                 height={80}

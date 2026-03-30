@@ -4,8 +4,24 @@ import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 
 export const metadata: Metadata = {
-  title: 'Training & Fleet | Mumbai Meridians',
-  description: 'Advanced training methodologies and a world-class fleet for competitive sailors.',
+  title: 'Sailing Training Programs & Fleet | Mumbai Meridians',
+  description: 'Advanced sailing training methodologies and a world-class fleet for competitive sailors. Mumbai Meridians ISL 2026.',
+  alternates: {
+    canonical: 'https://www.mumbaimeridians.com/training',
+  },
+  openGraph: {
+    title: 'Sailing Training Programs & Fleet | Mumbai Meridians',
+    description: 'Advanced sailing training methodologies and a world-class fleet for competitive sailors.',
+    url: 'https://www.mumbaimeridians.com/training',
+    images: [
+      {
+        url: 'https://www.mumbaimeridians.com/cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Mumbai Meridians Sailing Training Programs',
+      },
+    ],
+  },
 }
 
 const trainingPrograms = [

@@ -1,104 +1,32 @@
-'use client'
-
-import { useRef, useState } from 'react'
-import emailjs from '@emailjs/browser'
+import type { Metadata } from 'next'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import ContactForm from '@/components/ContactForm'
 
-const SERVICE_ID  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!
-const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!
-const PUBLIC_KEY  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-
-const subjects = [
-  'General Inquiry',
-  'Join the Team',
-  'Sponsorship & Partnerships',
-  'Media & Press',
-  'Junior Sailing Programs',
-  'Other',
-]
-
-const contactInfo = [
-  {
-    label: 'Email',
-    value: 'captain.mumbai.meridians@gmail.com',
-    icon: (
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22 6l-10 7L2 6" />
-    ),
+export const metadata: Metadata = {
+  title: 'Contact Mumbai Meridians | Sailing Inquiries & Partnerships',
+  description:
+    'Get in touch with Mumbai Meridians for junior sailing programs, sponsorship, or general inquiries. Based in Mumbai, Maharashtra.',
+  alternates: {
+    canonical: 'https://www.mumbaimeridians.com/contact',
   },
-  {
-    label: 'Location',
-    value: 'Mumbai, Maharashtra, India',
-    icon: (
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-    ),
+  openGraph: {
+    title: 'Contact Mumbai Meridians | Sailing Inquiries & Partnerships',
+    description:
+      'Get in touch with Mumbai Meridians for junior sailing programs, sponsorship, or general inquiries. Based in Mumbai, Maharashtra.',
+    url: 'https://www.mumbaimeridians.com/contact',
+    images: [
+      {
+        url: 'https://www.mumbaimeridians.com/cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Contact Mumbai Meridians',
+      },
+    ],
   },
-  {
-    label: 'ISL Season',
-    value: 'March 27–31, 2026 · Umiam Lake, Shillong',
-    icon: (
-      <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" />
-    ),
-  },
-]
-
-const inputClass =
-  'w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-meridian-accent/60 focus:bg-meridian-accent/5 transition-all text-sm'
+}
 
 export default function ContactPage() {
-  const nameRef    = useRef<HTMLInputElement>(null)
-  const emailRef   = useRef<HTMLInputElement>(null)
-  const phoneRef   = useRef<HTMLInputElement>(null)
-  const subjectRef = useRef<HTMLSelectElement>(null)
-  const messageRef = useRef<HTMLTextAreaElement>(null)
-
-  const [status, setStatus]   = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [errorMsg, setErrorMsg] = useState('')
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setStatus('loading')
-    setErrorMsg('')
-
-    const name    = nameRef.current?.value    ?? ''
-    const email   = emailRef.current?.value   ?? ''
-    const phone   = phoneRef.current?.value   || 'Not provided'
-    const subject = subjectRef.current?.value ?? 'General Inquiry'
-    const message = messageRef.current?.value ?? ''
-
-    const formattedMessage = `New Contact Form Submission
-
-👤 Name: ${name}
-📧 Email: ${email}
-📱 Phone: ${phone}
-📋 Subject: ${subject}
-📝 Message: ${message}
-
-Please respond at your earliest convenience.`
-
-    const templateParams = {
-      from_name:  name,
-      from_email: email,
-      subject,
-      message:    formattedMessage,
-    }
-
-    try {
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
-      setStatus('success')
-      // reset fields
-      nameRef.current!.value    = ''
-      emailRef.current!.value   = ''
-      phoneRef.current!.value   = ''
-      subjectRef.current!.value = subjects[0]
-      messageRef.current!.value = ''
-    } catch (err: any) {
-      console.error('[emailjs]', err)
-      setErrorMsg('Failed to send. Please try again or email us directly.')
-      setStatus('error')
-    }
-  }
-
   return (
     <div className="bg-meridian-navy text-gray-100 min-h-screen">
       <Navigation />
@@ -119,120 +47,7 @@ Please respond at your earliest convenience.`
 
       {/* Main content */}
       <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
-
-          {/* Left — info cards */}
-          <div className="lg:col-span-2 flex flex-col gap-6" data-gsap="stagger">
-            {contactInfo.map((item) => (
-              <div
-                key={item.label}
-                className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-meridian-accent/30 transition-colors"
-              >
-                <div className="w-10 h-10 rounded-xl bg-meridian-accent/15 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-meridian-accent" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    {item.icon}
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-athletic uppercase tracking-widest text-xs text-meridian-accent mb-1">{item.label}</p>
-                  <p className="text-white text-sm leading-relaxed">{item.value}</p>
-                </div>
-              </div>
-            ))}
-
-            <div className="border-l-4 border-meridian-accent/40 pl-5 mt-2">
-              <p className="text-gray-400 italic text-sm leading-relaxed">
-                "The wind and the waves are always on the side of the ablest navigator."
-              </p>
-              <p className="text-meridian-accent text-xs font-athletic uppercase tracking-widest mt-2">— Edward Gibbon</p>
-            </div>
-          </div>
-
-          {/* Right — form */}
-          <div className="lg:col-span-3">
-            {status === 'success' ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-20 bg-white/5 border border-meridian-accent/20 rounded-3xl px-8">
-                <div className="w-16 h-16 rounded-full bg-meridian-accent/20 flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-meridian-accent" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path d="M20 6L9 17l-5-5" />
-                  </svg>
-                </div>
-                <h3 className="font-athletic text-3xl font-bold text-white mb-3">Message Sent!</h3>
-                <p className="text-gray-400 mb-8 max-w-sm">Thanks for reaching out. We'll get back to you as soon as possible.</p>
-                <button
-                  onClick={() => setStatus('idle')}
-                  className="font-athletic uppercase tracking-widest text-sm bg-meridian-accent text-white px-8 py-3 rounded-full hover:bg-white hover:text-meridian-navy transition-all"
-                >
-                  Send Another
-                </button>
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-10 space-y-6"
-              >
-                <h2 className="font-athletic text-2xl font-bold text-white mb-2">Send a Message</h2>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">
-                      Full Name <span className="text-meridian-accent">*</span>
-                    </label>
-                    <input ref={nameRef} type="text" required placeholder="Your name" className={inputClass} />
-                  </div>
-                  <div>
-                    <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">
-                      Email <span className="text-meridian-accent">*</span>
-                    </label>
-                    <input ref={emailRef} type="email" required placeholder="your@email.com" className={inputClass} />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">Phone</label>
-                    <input ref={phoneRef} type="tel" placeholder="+91 XXXXX XXXXX" className={inputClass} />
-                  </div>
-                  <div>
-                    <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">Subject</label>
-                    <select
-                      ref={subjectRef}
-                      defaultValue={subjects[0]}
-                      className="w-full bg-[#001229] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-meridian-accent/60 transition-all text-sm appearance-none cursor-pointer"
-                    >
-                      {subjects.map((s) => <option key={s} value={s}>{s}</option>)}
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block font-athletic uppercase tracking-widest text-xs text-gray-400 mb-2">
-                    Message <span className="text-meridian-accent">*</span>
-                  </label>
-                  <textarea ref={messageRef} required rows={5} placeholder="Tell us how we can help..." className={`${inputClass} resize-none`} />
-                </div>
-
-                {status === 'error' && <p className="text-red-400 text-sm">{errorMsg}</p>}
-
-                <button
-                  type="submit"
-                  disabled={status === 'loading'}
-                  className="w-full bg-meridian-accent text-white font-athletic uppercase tracking-widest text-sm py-4 rounded-xl hover:bg-white hover:text-meridian-navy transition-all shadow-lg shadow-meridian-accent/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                >
-                  {status === 'loading' ? (
-                    <>
-                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
-                      </svg>
-                      Sending...
-                    </>
-                  ) : 'Send Message'}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
+        <ContactForm />
       </section>
 
       <Footer />

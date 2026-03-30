@@ -187,7 +187,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center pl-1">
             <Image
-              src="/MM_Logo.png"
+              src="/MM_Logo.webp"
               alt="Mumbai Meridians Logo"
               width={48}
               height={48}

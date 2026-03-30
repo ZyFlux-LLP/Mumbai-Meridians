@@ -5,21 +5,37 @@ import Navigation from '@/components/Navigation'
 import DriveGallery from '@/components/DriveGallery'
 
 export const metadata: Metadata = {
-  title: 'Events & Team | Mumbai Meridians',
-  description: 'Race calendar, upcoming events, and meet the Mumbai Meridians sailing team.',
+  title: 'ISL 2026 Events & Race Calendar | Mumbai Meridians',
+  description: 'ISL 2026 race calendar, upcoming sailing events, and meet the Mumbai Meridians team. Umiam Lake, Shillong, March 2026.',
+  alternates: {
+    canonical: 'https://www.mumbaimeridians.com/events',
+  },
+  openGraph: {
+    title: 'ISL 2026 Events & Race Calendar | Mumbai Meridians',
+    description: 'ISL 2026 race calendar, upcoming sailing events, and meet the Mumbai Meridians team.',
+    url: 'https://www.mumbaimeridians.com/events',
+    images: [
+      {
+        url: 'https://www.mumbaimeridians.com/cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Mumbai Meridians ISL 2026 Events and Race Calendar',
+      },
+    ],
+  },
 }
 
 const teamMembers = [
   {
     name: 'Anita',
     role: 'Captain',
-    img: '/media/anita-mhatre.jpg' as string | null,
+    img: '/media/anita-mhatre.webp' as string | null,
     borderColor: 'border-meridian-gold',
   },
   {
     name: 'Mohit Mhatre',
     role: 'Lead Captain',
-    img: '/media/mohit-mhatre.jpg' as string | null,
+    img: '/media/mohit-mhatre.webp' as string | null,
     borderColor: 'border-meridian-gold',
   },
   {
@@ -31,32 +47,32 @@ const teamMembers = [
   {
     name: 'Vikas Kapila',
     role: 'Coach',
-    img: '/media/vikas-kapila.jpg' as string | null,
+    img: '/media/vikas-kapila.webp' as string | null,
     borderColor: 'border-meridian-gold',
   },
   {
     name: 'Shilpa Oberoi',
     role: 'Media Manager & Coach',
-    img: '/media/shilpa-oberoi.png' as string | null,
+    img: '/media/shilpa-oberoi.webp' as string | null,
     borderColor: 'border-meridian-accent',
   },
 ]
 
 const sailors = [
-  { name: 'Progya Das', img: '/media/progya-das.png' },
+  { name: 'Progya Das', img: '/media/progya-das.webp' },
   { name: 'Jhunusree Das', img: null as string | null },
-  { name: 'Arjun Marathe', img: '/media/arjun-marathe.png' },
-  { name: 'Sofiia Magkaeva', img: '/media/sofia.jpg' },
-  { name: 'Vivek Singh Shekhawat', img: '/media/vivek-singh.png' },
+  { name: 'Arjun Marathe', img: '/media/arjun-marathe.webp' },
+  { name: 'Sofiia Magkaeva', img: '/media/sofia.webp' },
+  { name: 'Vivek Singh Shekhawat', img: '/media/vivek-singh.webp' },
   { name: 'Muhammad Asnawi Iqbal Bin Adam', img: null as string | null },
   { name: 'Pallara Govardhan', img: null as string | null },
-  { name: 'Samanyu Konda', img: '/media/samanyu-konda.jpg' },
+  { name: 'Samanyu Konda', img: '/media/samanyu-konda.webp' },
   { name: 'Miron Klimov', img: null as string | null },
   { name: 'Aleksandra Deputova', img: null as string | null },
   { name: 'Daniyar Nabiev', img: null as string | null },
   { name: 'Aryan Karwar', img: null as string | null },
   { name: 'Subbotina Alexandrian', img: null as string | null },
-  { name: 'Naavya Kaku', img: '/media/naavya-kaku.avif' },
+  { name: 'Naavya Kaku', img: '/media/naavya-kaku.webp' },
 ]
 
 

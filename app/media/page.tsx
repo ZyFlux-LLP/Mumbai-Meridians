@@ -5,7 +5,23 @@ import MediaGallery from '@/components/MediaGallery'
 
 export const metadata: Metadata = {
   title: 'Media Gallery | Mumbai Meridians',
-  description: 'Photos and videos from Mumbai Meridians — ISL 2026 and beyond.',
+  description: 'Photos and videos from Mumbai Meridians sailing at ISL 2026, Umiam Lake, Shillong. Racing, training, and team moments.',
+  alternates: {
+    canonical: 'https://www.mumbaimeridians.com/media',
+  },
+  openGraph: {
+    title: 'Media Gallery | Mumbai Meridians',
+    description: 'Photos and videos from Mumbai Meridians sailing at ISL 2026, Umiam Lake, Shillong.',
+    url: 'https://www.mumbaimeridians.com/media',
+    images: [
+      {
+        url: 'https://www.mumbaimeridians.com/cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Mumbai Meridians Media Gallery ISL 2026',
+      },
+    ],
+  },
 }
 
 export default function MediaPage() {

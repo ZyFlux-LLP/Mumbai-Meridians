@@ -6,6 +6,22 @@ import Navigation from '@/components/Navigation'
 export const metadata: Metadata = {
   title: 'Junior Sailing | Mumbai Meridians',
   description: 'Nurturing the next generation of Indian mariners through structured junior sailing programs.',
+  alternates: {
+    canonical: 'https://www.mumbaimeridians.com/junior-sailing',
+  },
+  openGraph: {
+    title: 'Junior Sailing | Mumbai Meridians',
+    description: 'Nurturing the next generation of Indian mariners through structured junior sailing programs.',
+    url: 'https://www.mumbaimeridians.com/junior-sailing',
+    images: [
+      {
+        url: 'https://www.mumbaimeridians.com/cover.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Mumbai Meridians Junior Sailing Programs',
+      },
+    ],
+  },
 }
 
 export default function JuniorSailingPage() {

@@ -3,12 +3,12 @@
 import Link from 'next/link'
 
 const PREVIEW_SRCS = [
-  '/gallery/img-01.jpg',
-  '/gallery/img-05.jpg',
-  '/gallery/img-10.jpg',
-  '/gallery/img-19.jpg',
-  '/gallery/img-22.jpg',
-  '/gallery/img-29.jpg',
+  '/gallery/img-01.webp',
+  '/gallery/img-05.webp',
+  '/gallery/img-10.webp',
+  '/gallery/img-19.webp',
+  '/gallery/img-22.webp',
+  '/gallery/img-29.webp',
 ]
 
 const TOTAL = 33

@@ -158,7 +158,7 @@ export default function Loader() {
         {/* Logo above text */}
         <div className="flex justify-center mb-6">
           <Image
-            src="/MM_Logo.png"
+            src="/MM_Logo.webp"
             alt="Mumbai Meridians"
             width={128}
             height={128}

@@ -2,10 +2,45 @@
 
 import { useState } from 'react'
 
+const photoAltTexts = [
+  'Mumbai Meridians sailors racing at Umiam Lake ISL 2026 Shillong',
+  'Mumbai Meridians team on the water during ISL 2026 regatta',
+  'Mumbai Meridians sailing competition at Umiam Lake Meghalaya',
+  'Mumbai Meridians crew preparing boats before ISL 2026 race',
+  'Mumbai Meridians athlete in action during ISL 2026 sailing event',
+  'Mumbai Meridians racing at the Indian Sailing League 2026',
+  'Mumbai Meridians sailors competing at Umiam Lake Shillong',
+  'Mumbai Meridians team at ISL 2026 race day Umiam Lake',
+  'Mumbai Meridians sailing franchise ISL 2026 team photo',
+  'Mumbai Meridians crew rigging sails at Umiam Lake',
+  'Mumbai Meridians racing action shot ISL 2026 Shillong',
+  'Mumbai Meridians sailors on the water Indian Sailing League',
+  'Mumbai Meridians ISL 2026 event coverage Umiam Lake',
+  'Mumbai Meridians team briefing before ISL 2026 race',
+  'Mumbai Meridians sailing at speed during ISL 2026 regatta',
+  'Mumbai Meridians athletes competing in Indian Sailing League 2026',
+  'Mumbai Meridians boat racing on Umiam Lake Meghalaya',
+  'Mumbai Meridians ISL 2026 race start line Shillong',
+  'Mumbai Meridians sailors in training session Umiam Lake',
+  'Mumbai Meridians racing team ISL 2026 sailing event',
+  'Mumbai Meridians competitive sailing Indian Sailing League',
+  'Mumbai Meridians team on the race course ISL 2026',
+  'Mumbai Meridians sailors at ISL 2026 championship Shillong',
+  'Mumbai Meridians racing moment Umiam Lake ISL 2026',
+  'Mumbai Meridians sailing crew at Indian Sailing League',
+  'Mumbai Meridians race day coverage ISL 2026 Meghalaya',
+  'Mumbai Meridians athletes sailing at Umiam Lake',
+  'Mumbai Meridians team competing in ISL 2026 regatta',
+  'Mumbai Meridians boat on water Indian Sailing League 2026',
+  'Mumbai Meridians ISL 2026 sailing event highlights',
+  'Mumbai Meridians racing squad at Umiam Lake Shillong',
+  'Mumbai Meridians ISL 2026 sailing action Umiam Lake',
+  'Mumbai Meridians team ISL 2026 Indian Sailing League',
+]
+
 const photos = Array.from({ length: 33 }, (_, i) => {
   const n = String(i + 1).padStart(2, '0')
-  const ext = i === 31 ? 'webp' : i === 32 ? 'png' : 'jpg'
-  return `/gallery/img-${n}.${ext}`
+  return `/gallery/img-${n}.webp`
 })
 
 export default function MediaGallery() {
@@ -31,7 +66,7 @@ export default function MediaGallery() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={src}
-              alt={`Mumbai Meridians photo ${i + 1}`}
+              alt={photoAltTexts[i]}
               loading="lazy"
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
             />
