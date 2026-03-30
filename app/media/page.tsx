@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import MediaGallery from '@/components/MediaGallery'
+
+const MediaGallery = dynamic(() => import('@/components/MediaGallery'))
 
 export const metadata: Metadata = {
   title: 'Media Gallery | Mumbai Meridians',

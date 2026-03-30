@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter, Oswald, Montserrat } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
-import Loader from '@/components/Loader'
-import GSAPAnimations from '@/components/GSAPAnimations'
+import dynamic from 'next/dynamic'
+
+const Loader = dynamic(() => import('@/components/Loader'))
+const GSAPAnimations = dynamic(() => import('@/components/GSAPAnimations'))
 
 const inter = Inter({
   subsets: ['latin'],
@@ -87,16 +90,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
-        {/* Google Tag Manager */}
-        <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WNNLMNKW');` }} />
-        {/* End Google Tag Manager */}
       </head>
       <body className={`${inter.variable} ${oswald.variable} ${montserrat.variable} font-body antialiased`}>
-        {/* Google Tag Manager (noscript) */}
+        {/* Google Tag Manager (noscript fallback) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WNNLMNKW"
@@ -105,10 +101,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
         <Loader />
         <GSAPAnimations />
         {children}
+        {/* Google Tag Manager — deferred until after page is interactive */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNNLMNKW');`,
+          }}
+        />
       </body>
     </html>
   )

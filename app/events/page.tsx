@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
-import DriveGallery from '@/components/DriveGallery'
+
+const DriveGallery = dynamic(() => import('@/components/DriveGallery'))
 
 export const metadata: Metadata = {
   title: 'ISL 2026 Events & Race Calendar | Mumbai Meridians',

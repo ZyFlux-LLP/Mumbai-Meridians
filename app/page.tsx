@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
-import HeroReveal from '@/components/HeroReveal'
-import HeroBgVideo from '@/components/HeroBgVideo'
 import Footer from '@/components/Footer'
-import CountdownTimer from '@/components/CountdownTimer'
+
+const HeroBgVideo = dynamic(() => import('@/components/HeroBgVideo'))
+const HeroReveal = dynamic(() => import('@/components/HeroReveal'))
+const CountdownTimer = dynamic(() => import('@/components/CountdownTimer'))
 
 export const metadata: Metadata = {
   title: 'Mumbai Meridians | Indian Sailing Franchise | ISL 2026',
