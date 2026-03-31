@@ -31,7 +31,7 @@ export default function CountdownTimer() {
   if (finished) {
     return (
       <p className="text-2xl font-athletic font-bold text-meridian-accent uppercase tracking-widest">
-        Day 4 — Race Day Live
+        Day 5 — Race Day Live
       </p>
     )
   }
