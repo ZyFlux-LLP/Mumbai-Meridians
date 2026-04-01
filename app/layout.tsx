@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   description:
     "Mumbai Meridians — India's premier sailing franchise dedicated to elevating Indian sailing to the global stage. Competing in ISL 2026 at Umiam Lake, Shillong.",
   icons: {
-    icon: '/MM_Logo.webp',
-    apple: '/MM_Logo.webp',
+    icon: '/MM_Logo_1.webp',
+    apple: '/MM_Logo_1.webp',
   },
   openGraph: {
     title: 'Mumbai Meridians | Indian Sailing Franchise',
