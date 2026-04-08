@@ -217,7 +217,7 @@ export default function HomePage() {
               { src: '/media/anita-mhatre.webp', name: 'Anita Sandeep Mhatre', role: 'Captain' },
               { src: '/media/mohit-mhatre.webp', name: 'Mohit Mhatre', role: 'Lead Captain' },
               { src: '/media/vritika-san.webp', name: 'Vritika Sandeep Mhatre', role: 'Junior Captain' },
-              { src: '/media/vikas-kapila.webp', name: 'Vikas Kapila', role: 'Coach' },
+              { src: '/media/vikas-kapila.webp', name: 'Vikas Kapila', role: 'Coach', pos: 'center' },
               { src: '/media/shilpa-oberoi.webp', name: 'Shilpa Oberoi', role: 'Media Manager & Coach' },
             ].map((member) => (
               <div key={member.name} className="group text-center" data-gsap="scale-in">
@@ -226,7 +226,7 @@ export default function HomePage() {
                     src={member.src}
                     alt={member.name}
                     fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className={`object-cover group-hover:scale-105 transition-transform duration-500 ${'pos' in member && member.pos === 'center' ? 'object-center' : 'object-top'}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -242,10 +242,14 @@ export default function HomePage() {
             {[
               { src: '/media/progya-das.webp', name: 'Progya Das', role: 'Sailor' },
               { src: '/media/arjun-marathe.webp', name: 'Arjun Marathe', role: 'Sailor' },
-              { src: '/media/sofia.webp', name: 'Sofiia Magkaeva', role: 'Sailor' },
+              { src: '/media/sofia.webp', name: 'Sofiia Magkaeva', role: 'Sailor', pos: 'center' },
               { src: '/media/vivek-singh.webp', name: 'Vivek Singh Shekhawat', role: 'Sailor' },
               { src: '/media/samanyu-konda.webp', name: 'Samanyu Konda', role: 'Sailor' },
               { src: '/media/naavya-kaku.webp', name: 'Naavya Kaku', role: 'Sailor' },
+              { src: '/media/muhammad-asnawi.webp', name: 'Muhammad Asnawi Iqbal Bin Adam', role: 'Sailor' },
+              { src: '/media/sasha-deputatova.webp', name: 'Aleksandra Deputova', role: 'Sailor' },
+              { src: '/media/daniyar-nabiev.webp', name: 'Daniyar Nabiev', role: 'Sailor' },
+              { src: '/media/aryan-karwar.webp', name: 'Aryan Karwar', role: 'Sailor' },
             ].map((athlete) => (
               <div key={athlete.name} className="group text-center" data-gsap="scale-in">
                 <div className="relative overflow-hidden rounded-2xl mb-4 aspect-square bg-white/5">
@@ -253,7 +257,7 @@ export default function HomePage() {
                     src={athlete.src}
                     alt={athlete.name}
                     fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className={`object-cover group-hover:scale-105 transition-transform duration-500 ${'pos' in athlete && athlete.pos === 'center' ? 'object-center' : 'object-top'}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>

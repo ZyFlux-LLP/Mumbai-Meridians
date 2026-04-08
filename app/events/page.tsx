@@ -51,6 +51,7 @@ const teamMembers = [
     role: 'Coach',
     img: '/media/vikas-kapila.webp' as string | null,
     borderColor: 'border-meridian-gold',
+    pos: 'center',
   },
   {
     name: 'Shilpa Oberoi',
@@ -64,15 +65,15 @@ const sailors = [
   { name: 'Progya Das', img: '/media/progya-das.webp' },
   { name: 'Jhunusree Das', img: null as string | null },
   { name: 'Arjun Marathe', img: '/media/arjun-marathe.webp' },
-  { name: 'Sofiia Magkaeva', img: '/media/sofia.webp' },
+  { name: 'Sofiia Magkaeva', img: '/media/sofia.webp', pos: 'center' },
   { name: 'Vivek Singh Shekhawat', img: '/media/vivek-singh.webp' },
-  { name: 'Muhammad Asnawi Iqbal Bin Adam', img: null as string | null },
+  { name: 'Muhammad Asnawi Iqbal Bin Adam', img: '/media/muhammad-asnawi.webp' },
   { name: 'Pallara Govardhan', img: null as string | null },
   { name: 'Samanyu Konda', img: '/media/samanyu-konda.webp' },
   { name: 'Miron Klimov', img: null as string | null },
-  { name: 'Aleksandra Deputova', img: null as string | null },
-  { name: 'Daniyar Nabiev', img: null as string | null },
-  { name: 'Aryan Karwar', img: null as string | null },
+  { name: 'Aleksandra Deputova', img: '/media/sasha-deputatova.webp' },
+  { name: 'Daniyar Nabiev', img: '/media/daniyar-nabiev.webp' },
+  { name: 'Aryan Karwar', img: '/media/aryan-karwar.webp' },
   { name: 'Subbotina Alexandrian', img: null as string | null },
   { name: 'Naavya Kaku', img: '/media/naavya-kaku.webp' },
 ]
@@ -106,7 +107,7 @@ export default function EventsPage() {
                         src={member.img}
                         alt={member.name}
                         fill
-                        className={`rounded-full object-cover object-center border-4 ${member.borderColor} group-hover:scale-105 transition-transform`}
+                        className={`rounded-full object-cover ${'pos' in member && member.pos === 'center' ? 'object-center' : 'object-top'} border-4 ${member.borderColor} group-hover:scale-105 transition-transform`}
                       />
                     ) : (
                       <div className={`w-full h-full rounded-full border-4 ${member.borderColor} bg-white/5 flex items-center justify-center`}>
@@ -131,7 +132,7 @@ export default function EventsPage() {
                         src={sailor.img}
                         alt={sailor.name}
                         fill
-                        className="rounded-full object-cover object-center border-2 border-meridian-accent/40 group-hover:border-meridian-accent group-hover:scale-105 transition-all"
+                        className={`rounded-full object-cover ${'pos' in sailor && sailor.pos === 'center' ? 'object-center' : 'object-top'} border-2 border-meridian-accent/40 group-hover:border-meridian-accent group-hover:scale-105 transition-all`}
                       />
                     ) : (
                       <div className="w-full h-full rounded-full border-2 border-white/10 bg-white/5 flex items-center justify-center">
